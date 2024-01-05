@@ -10,7 +10,8 @@ set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 set(GLFW_INSTALL OFF CACHE BOOL "" FORCE)
 
-set(GLFW_PATH "external/glfw")
-add_subdirectory(${GLFW_PATH})
+add_subdirectory(external/glfw)
 target_link_libraries(${PROJECT_NAME} glfw)
-target_include_directories(${PROJECT_NAME} PRIVATE ${GLFW_PATH}/include)
+
+add_subdirectory(external/glad)
+target_link_libraries(${PROJECT_NAME} glad)
