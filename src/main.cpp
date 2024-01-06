@@ -4,6 +4,8 @@
 #include <iostream>
 #include <vector>
 
+#include "renderer/shaderprogram.h"
+
 GLfloat points[] = {
     0.0f, 0.5f, 0.0f,
     0.5f, -0.5f, 0.0f,
@@ -86,52 +88,14 @@ int main()
     /* Set clear color */
 	glClearColor(0, 0, 0, 1);
 
-    /* Shader creating */
-    GLint status = GL_TRUE;
-
-    GLuint vs = glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(vs, 1, &vertexShader, nullptr);
-    glCompileShader(vs);
-    glGetShaderiv(vs, GL_COMPILE_STATUS, &status);
-
-    if (status == GL_FALSE)
+    std::string vs(vertexShader);
+    std::string fs(fragmentShader);
+    Renderer::ShaderProgram shaderProgram(vs, fs);
+    if (!shaderProgram.isCompiled())
     {
-        GLchar infolog[1024];
-        glGetShaderInfoLog(vs, 1024, nullptr, infolog);
-        std::cout << "Compile error:" << std::endl << infolog << std::endl;
+        std::cerr << "Shader wasn't created!" << std::endl;
+        return -1;
     }
-
-    GLuint fs = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(fs, 1, &fragmentShader, nullptr);
-    glCompileShader(fs);
-    glGetShaderiv(fs, GL_COMPILE_STATUS, &status);
-
-    if (status == GL_FALSE)
-    {
-        GLchar infolog[1024];
-        glGetShaderInfoLog(fs, 1024, nullptr, infolog);
-        std::cout << "Compile error:" << std::endl << infolog << std::endl;
-    }
-
-    /* Shader linking */
-    GLuint shaderProgram = glCreateProgram();
-    glAttachShader(shaderProgram, vs);
-    glAttachShader(shaderProgram, fs);
-    glLinkProgram(shaderProgram);
-
-    GLint program_linked;
-    glGetProgramiv(shaderProgram, GL_LINK_STATUS, &program_linked);
-    if (program_linked == GL_FALSE)
-    {
-        GLchar infolog[1024];
-
-        glGetProgramInfoLog(shaderProgram, 1024, nullptr, infolog);
-        std::cout << "Linking error:" << std::endl << infolog << std::endl;
-    }
-
-    /* Shader deleting */
-    glDeleteShader(vs);
-    glDeleteShader(fs);
 
     /* Buffer generating */
     GLuint pointsVbo = 0;
@@ -164,7 +128,7 @@ int main()
         glClear(GL_COLOR_BUFFER_BIT);
         
         /* Drawing */
-        glUseProgram(shaderProgram);
+        shaderProgram.use();
         glBindVertexArray(vao);
         glDrawArrays(GL_TRIANGLES, 0, 3);
 
