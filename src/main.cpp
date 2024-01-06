@@ -1,5 +1,6 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <glm/vec2.hpp>
 
 #include <iostream>
 #include <vector>
@@ -19,8 +20,13 @@ GLfloat colors[] = {
     0.0f, 0.0f, 1.0f
 };
 
-int windowSizeX = 640;
-int windowSizeY = 480;
+GLfloat tex[] = {
+    0.0f, 0.0f,
+    1.0f, 0.0f,
+    0.5f, 1.0f
+};
+
+glm::ivec2 windowSize(640, 480);
 
 void glfwWindowSizeCallback(GLFWwindow *win, int w, int h);
 void glfwKeyCallback(GLFWwindow* win, int key, int scancode, int action, int mode);
@@ -40,7 +46,7 @@ int main(int argc, char** argv)
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     /* Create a windowed mode window and its OpenGL context */
-    GLFWwindow* window = glfwCreateWindow(windowSizeX, windowSizeY, "Game", nullptr, nullptr);
+    GLFWwindow* window = glfwCreateWindow(windowSize.x, windowSize.y, "Game", nullptr, nullptr);
     if (window == nullptr)
     {
         std::cout << "Window wasn't created" << std::endl;
@@ -71,12 +77,14 @@ int main(int argc, char** argv)
 
     {
         ResourceManager manager(argv[0]);
-        auto defaultShaderProgram = manager.loadShaderProgram("DefaultShader", "res/shaders/vertex.txt", "res/shaders/fragment.txt");
+        auto defaultShaderProgram = manager.loadShaderProgram("DefaultShader", "res/shaders/shader2d.vert", "res/shaders/shader2d.frag");
         if (defaultShaderProgram == nullptr)
         {
             std::cerr << "ERROR::Shader wasn't created!" << std::endl;
             return -1;
         }
+
+        auto texture = manager.loadTexture("DefaultTexture", "res/textures/map_16x16.png");
 
         /* Buffer generating */
         GLuint pointsVbo = 0;
@@ -88,6 +96,11 @@ int main(int argc, char** argv)
         glGenBuffers(1, &colorsVbo);
         glBindBuffer(GL_ARRAY_BUFFER, colorsVbo);
         glBufferData(GL_ARRAY_BUFFER, sizeof(colors), colors, GL_STATIC_DRAW);
+
+        GLuint textureVbo = 0;
+        glGenBuffers(1, &textureVbo);
+        glBindBuffer(GL_ARRAY_BUFFER, textureVbo);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(tex), tex, GL_STATIC_DRAW);
 
         /* Creating vertex array */
         GLuint vao = 0;
@@ -102,6 +115,13 @@ int main(int argc, char** argv)
         glBindBuffer(GL_ARRAY_BUFFER, colorsVbo);
         glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
 
+        glEnableVertexAttribArray(2);
+        glBindBuffer(GL_ARRAY_BUFFER, textureVbo);
+        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
+
+        defaultShaderProgram->use();
+        defaultShaderProgram->setInt("tex", 0);
+
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))
         {
@@ -111,6 +131,7 @@ int main(int argc, char** argv)
             /* Drawing */
             defaultShaderProgram->use();
             glBindVertexArray(vao);
+            texture->bind();
             glDrawArrays(GL_TRIANGLES, 0, 3);
 
             /* Swap front and back buffers */
@@ -128,9 +149,9 @@ int main(int argc, char** argv)
 /* Window size change handler */
 void glfwWindowSizeCallback(GLFWwindow* win, int w, int h)
 {
-    windowSizeX = w;
-    windowSizeY = h;
-    glViewport(0, 0, windowSizeX, windowSizeY);
+    windowSize.x = w;
+    windowSize.y = h;
+    glViewport(0, 0, windowSize.x, windowSize.y);
 }
 
 /* Key pressing handler */

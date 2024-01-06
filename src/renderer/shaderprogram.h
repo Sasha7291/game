@@ -5,7 +5,6 @@
 #include <iostream>
 #include <string>
 
-
 namespace Renderer {
 	class ShaderProgram
 	{
@@ -15,6 +14,9 @@ namespace Renderer {
 		~ShaderProgram();
 
 		bool isCompiled() const;
+		void setBool(const std::string& name, const GLboolean value);
+		void setFloat(const std::string& name, const GLfloat value);
+		void setInt(const std::string& name, const GLint value);
 		void use() const;
 
 		ShaderProgram& operator=(ShaderProgram&& shaderProgram) noexcept;

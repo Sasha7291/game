@@ -64,6 +64,21 @@ namespace Renderer
         return compiled;
     }
 
+    void ShaderProgram::setBool(const std::string& name, const GLboolean value)
+    {
+        glUniform1i(glGetUniformLocation(id, name.c_str()), (int)value);
+    }
+
+    void ShaderProgram::setFloat(const std::string& name, const GLfloat value)
+    {
+        glUniform1f(glGetUniformLocation(id, name.c_str()), value);
+    }
+
+    void ShaderProgram::setInt(const std::string& name, const GLint value)
+    {
+        glUniform1i(glGetUniformLocation(id, name.c_str()), value);
+    }
+
     void ShaderProgram::use() const
     {
         glUseProgram(id);

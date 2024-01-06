@@ -1,5 +1,8 @@
 #include "resourcemanager.h"
 
+#define STBI_ONLY_PNG
+#include "stb_image.h"
+
 ResourceManager::ResourceManager(const std::string& path)
 {
 	size_t found = path.find_last_of("/\\");
@@ -33,6 +36,31 @@ std::shared_ptr<Renderer::ShaderProgram> ResourceManager::loadShaderProgram(cons
 	return newShader;
 }
 
+std::shared_ptr<Renderer::Texture2d> ResourceManager::loadTexture(const std::string& name, const std::string& relativePath)
+{
+	int nChannels = 0;
+	int width = 0;
+	int height = 0;
+
+	stbi_set_flip_vertically_on_load(true);
+	unsigned char* pixels = stbi_load(std::string(path + "/" + relativePath).c_str(), &width, &height, &nChannels, 0);
+
+	if (pixels == nullptr)
+	{
+		std::cerr << "ERROR::Image wasn't loaded: " << path + "/" + relativePath << std::endl;
+		return nullptr;
+	}
+
+	std::shared_ptr<Renderer::Texture2d> newTexture = textures.emplace(name, std::make_shared<Renderer::Texture2d>(width, 
+																													height, 
+																													pixels, 
+																													nChannels,
+																													GL_NEAREST, 
+																													GL_CLAMP_TO_EDGE)).first->second;
+	stbi_image_free(pixels);
+	return newTexture;
+}
+
 std::shared_ptr<Renderer::ShaderProgram> ResourceManager::getShaderProgram(const std::string& name) const
 {
 	ShaderProgramMap::const_iterator it = shaderPrograms.find(name);
@@ -40,6 +68,19 @@ std::shared_ptr<Renderer::ShaderProgram> ResourceManager::getShaderProgram(const
 	if (it == shaderPrograms.end())
 	{
 		std::cerr << "ERROR::Shader wasn't found!" << std::endl;
+		return nullptr;
+	}
+
+	return it->second;
+}
+
+std::shared_ptr<Renderer::Texture2d> ResourceManager::getTexture(const std::string& name) const
+{
+	TextureMap::const_iterator it = textures.find(name);
+
+	if (it == textures.end())
+	{
+		std::cerr << "ERROR::Texture wasn't found!" << std::endl;
 		return nullptr;
 	}
 

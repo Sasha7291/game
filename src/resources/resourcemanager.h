@@ -8,6 +8,7 @@
 #include <string>
 
 #include "../renderer/shaderprogram.h"
+#include "../renderer/texture2d.h"
 
 class ResourceManager
 {
@@ -16,7 +17,9 @@ public:
 	~ResourceManager() = default;
 
 	std::shared_ptr<Renderer::ShaderProgram> loadShaderProgram(const std::string& name, const std::string& vertexPath, const std::string& fragmentPath);
+	std::shared_ptr<Renderer::Texture2d> loadTexture(const std::string& name, const std::string& relativePath);
 	std::shared_ptr<Renderer::ShaderProgram> getShaderProgram(const std::string& name) const;
+	std::shared_ptr<Renderer::Texture2d> getTexture(const std::string& name) const;
 
 	ResourceManager(const ResourceManager&) = delete;
 	ResourceManager(ResourceManager&&) = delete;
@@ -28,6 +31,9 @@ private:
 
 	typedef std::map<const std::string, std::shared_ptr<Renderer::ShaderProgram>> ShaderProgramMap;
 	ShaderProgramMap shaderPrograms;
+
+	typedef std::map<const std::string, std::shared_ptr<Renderer::Texture2d>> TextureMap;
+	TextureMap textures;
 
 	std::string path;
 };
