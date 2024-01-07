@@ -30,11 +30,6 @@ namespace Renderer
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
-	Texture2d::~Texture2d()
-	{
-		glDeleteTextures(1, &id);
-	}
-
 	Texture2d::Texture2d(Texture2d&& texture2d) noexcept
 	{
 		id = texture2d.id;
@@ -57,6 +52,11 @@ namespace Renderer
 		texture2d.id = 0;
 		
 		return *this;
+	}
+
+	Texture2d::~Texture2d()
+	{
+		glDeleteTextures(1, &id);
 	}
 
 	void Texture2d::bind() const

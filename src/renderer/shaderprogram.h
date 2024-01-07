@@ -1,6 +1,8 @@
 #pragma once
 
 #include <glad/glad.h>
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/mat4x4.hpp>
 
 #include <iostream>
 #include <string>
@@ -17,6 +19,7 @@ namespace Renderer {
 		void setBool(const std::string& name, const GLboolean value);
 		void setFloat(const std::string& name, const GLfloat value);
 		void setInt(const std::string& name, const GLint value);
+		void setMatrix4(const std::string& name, const glm::mat4& matrix);
 		void use() const;
 
 		ShaderProgram& operator=(ShaderProgram&& shaderProgram) noexcept;

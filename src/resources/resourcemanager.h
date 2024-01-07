@@ -30,9 +30,9 @@ private:
 	std::string getFileText(const std::string& relativePath) const;
 
 	typedef std::map<const std::string, std::shared_ptr<Renderer::ShaderProgram>> ShaderProgramMap;
-	ShaderProgramMap shaderPrograms;
-
 	typedef std::map<const std::string, std::shared_ptr<Renderer::Texture2d>> TextureMap;
+	
+	ShaderProgramMap shaderPrograms;
 	TextureMap textures;
 
 	std::string path;

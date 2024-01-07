@@ -12,10 +12,9 @@ namespace Renderer
 						   const unsigned int channels = 4, 
 						   const GLenum filter = GL_LINEAR, 
 						   const GLenum wrapMode = GL_CLAMP_TO_EDGE);
-		~Texture2d();
-
 		Texture2d(Texture2d&& texture2d) noexcept;
 		Texture2d& operator=(Texture2d&& texture2d) noexcept;
+		~Texture2d();
 
 		void bind() const;
 
