@@ -7,7 +7,6 @@
 #include <iostream>
 #include <vector>
 
-#include "renderer/shaderprogram.h"
 #include "resources/resourcemanager.h"
 
 GLfloat points[] = {
@@ -86,7 +85,17 @@ int main(int argc, char** argv)
             return -1;
         }
 
+        auto spriteShaderProgram = manager.loadShaderProgram("SpriteShader", "res/shaders/sprite.vert", "res/shaders/sprite.frag");
+        if (spriteShaderProgram == nullptr)
+        {
+            std::cerr << "ERROR::Shader wasn't created!" << std::endl;
+            return -1;
+        }
+
         auto texture = manager.loadTexture("DefaultTexture", "res/textures/map_16x16.png");
+
+        auto sprite = manager.loadSprite("Sprite", "DefaultTexture", "SpriteShader", 50, 100);
+        sprite->setPosition(glm::vec2(300, 100));
 
         /* Buffer generating */
         GLuint pointsVbo = 0;
@@ -134,6 +143,10 @@ int main(int argc, char** argv)
 
         defaultShaderProgram->setMatrix4("projectionMat", projectionMatrix);
 
+        spriteShaderProgram->use();
+        spriteShaderProgram->setInt("tex", 0);
+        spriteShaderProgram->setMatrix4("projectionMat", projectionMatrix);
+
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))
         {
@@ -150,6 +163,8 @@ int main(int argc, char** argv)
 
             defaultShaderProgram->setMatrix4("modelMat", modelMatrix2);
             glDrawArrays(GL_TRIANGLES, 0, 3);
+
+            sprite->render();
 
             /* Swap front and back buffers */
             glfwSwapBuffers(window);

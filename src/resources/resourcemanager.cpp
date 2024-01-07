@@ -36,6 +36,28 @@ std::shared_ptr<Renderer::ShaderProgram> ResourceManager::loadShaderProgram(cons
 	return newShader;
 }
 
+std::shared_ptr<Renderer::Sprite> ResourceManager::loadSprite(const std::string& spriteName, 
+															  const std::string& textureName, 
+															  const std::string& shaderName, 
+															  const unsigned int width, 
+															  const unsigned int height)
+{
+	auto texture = getTexture(textureName);
+	if (texture == nullptr)
+		std::cerr << "ERROR::Texture " << textureName << " for sprite " << spriteName << " wasn't found!" << std::endl;
+
+	auto shaderProgram = getShaderProgram(shaderName);
+	if (texture == nullptr)
+		std::cerr << "ERROR::Shader program " << shaderName << " for sprite " << spriteName << " wasn't found!" << std::endl;
+
+	std::shared_ptr<Renderer::Sprite> newSprite = sprites.emplace(spriteName, std::make_shared<Renderer::Sprite>(texture,
+																										   shaderProgram,
+																										   glm::vec2(0.0f, 0.0f),
+																										   glm::vec2(width, height))).first->second;
+	return newSprite;
+
+}
+
 std::shared_ptr<Renderer::Texture2d> ResourceManager::loadTexture(const std::string& name, const std::string& relativePath)
 {
 	int nChannels = 0;
@@ -52,11 +74,11 @@ std::shared_ptr<Renderer::Texture2d> ResourceManager::loadTexture(const std::str
 	}
 
 	std::shared_ptr<Renderer::Texture2d> newTexture = textures.emplace(name, std::make_shared<Renderer::Texture2d>(width, 
-																													height, 
-																													pixels, 
-																													nChannels,
-																													GL_NEAREST, 
-																													GL_CLAMP_TO_EDGE)).first->second;
+																												   height, 
+																												   pixels, 
+																												   nChannels,
+																												   GL_NEAREST, 
+																												   GL_CLAMP_TO_EDGE)).first->second;
 	stbi_image_free(pixels);
 	return newTexture;
 }
@@ -67,7 +89,20 @@ std::shared_ptr<Renderer::ShaderProgram> ResourceManager::getShaderProgram(const
 
 	if (it == shaderPrograms.end())
 	{
-		std::cerr << "ERROR::Shader wasn't found!" << std::endl;
+		std::cerr << "ERROR::Shader " << name << "  wasn't found!" << std::endl;
+		return nullptr;
+	}
+
+	return it->second;
+}
+
+std::shared_ptr<Renderer::Sprite> ResourceManager::getSprite(const std::string& name) const
+{
+	SpriteMap::const_iterator it = sprites.find(name);
+
+	if (it == sprites.end())
+	{
+		std::cerr << "ERROR::Sprite " << name << " wasn't found!" << std::endl;
 		return nullptr;
 	}
 
@@ -80,7 +115,7 @@ std::shared_ptr<Renderer::Texture2d> ResourceManager::getTexture(const std::stri
 
 	if (it == textures.end())
 	{
-		std::cerr << "ERROR::Texture wasn't found!" << std::endl;
+		std::cerr << "ERROR::Texture " << name << "  wasn't found!" << std::endl;
 		return nullptr;
 	}
 
