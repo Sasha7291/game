@@ -16,6 +16,7 @@ namespace Renderer
 	{
 	public:
 		Sprite(const std::shared_ptr<Texture2d> texture, 
+			   const std::string& initialSubTexture,
 			   const std::shared_ptr<ShaderProgram> shaderProgram, 
 			   const glm::vec2& position = glm::vec2(0.0f), 
 			   const glm::vec2& size = glm::vec2(1.0f),

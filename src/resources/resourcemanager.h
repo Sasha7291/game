@@ -6,6 +6,7 @@
 #include <memory>
 #include <sstream>
 #include <string>
+#include <vector>
 
 #include "../renderer/shaderprogram.h"
 #include "../renderer/sprite.h"
@@ -24,8 +25,14 @@ public:
 												 const std::string& textureName, 
 												 const std::string& shaderName,
 												 const unsigned int width,
-												 const unsigned int height);
+												 const unsigned int height,
+												 const std::string& subTextureName = "DefaultSubTexture");
 	std::shared_ptr<Renderer::Texture2d> loadTexture(const std::string& name, const std::string& relativePath);
+	std::shared_ptr<Renderer::Texture2d> loadTextureAtlas(const std::string& textureName,
+														  const std::string& texturePath,
+														  const std::vector<std::string>& subTextures,
+														  const unsigned int subTextureWidth,
+														  const unsigned int subTextureHeight);
 	std::shared_ptr<Renderer::ShaderProgram> getShaderProgram(const std::string& name) const;
 	std::shared_ptr<Renderer::Sprite> getSprite(const std::string& name) const;
 	std::shared_ptr<Renderer::Texture2d> getTexture(const std::string& name) const;

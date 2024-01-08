@@ -94,7 +94,11 @@ int main(int argc, char** argv)
 
         auto texture = manager.loadTexture("DefaultTexture", "res/textures/map_16x16.png");
 
-        auto sprite = manager.loadSprite("Sprite", "DefaultTexture", "SpriteShader", 50, 100);
+        std::vector<std::string> subTextureNames = { "block", "topBlock", "bottomBlock", "leftBlock", "rightBlock", "topLeftBlock", "topRightBlock", "bottomLeftBlock", "bottomRightBlock"};
+
+        auto textureAtlas = manager.loadTextureAtlas("DefaultTextureAtlas", "res/textures/map_16x16.png", std::move(subTextureNames), 8, 8);
+
+        auto sprite = manager.loadSprite("Sprite", "DefaultTextureAtlas", "SpriteShader", 100, 100, "block");
         sprite->setPosition(glm::vec2(300, 100));
 
         /* Buffer generating */

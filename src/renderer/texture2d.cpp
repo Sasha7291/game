@@ -2,8 +2,15 @@
 
 namespace Renderer 
 {
-	Texture2d::Texture2d(const GLuint width, const GLuint height, const unsigned char* data, const unsigned int channels, const GLenum filter, const GLenum wrapMode) :
-		id(0), width(width), height(height)
+	Texture2d::Texture2d(const GLuint width, 
+						 const GLuint height, 
+						 const unsigned char* data, 
+						 const unsigned int channels, 
+						 const GLenum filter, 
+						 const GLenum wrapMode) 
+		: id(0)
+		, width(width)
+		, height(height)
 	{
 		switch (channels)
 		{
@@ -59,9 +66,37 @@ namespace Renderer
 		glDeleteTextures(1, &id);
 	}
 
+	void Texture2d::addSubTexture(const std::string& name, const glm::vec2& leftBottomUV, const glm::vec2& rightTopUV)
+	{
+		subTextures.emplace(name, SubTexture2d(leftBottomUV, rightTopUV));
+	}
+
 	void Texture2d::bind() const
 	{
 		glBindTexture(GL_TEXTURE_2D, id);
+	}
+
+	const unsigned int Texture2d::getHeight() const
+	{
+		return height;
+	}
+
+	const Texture2d::SubTexture2d& Texture2d::getSubTexture(const std::string& name) const
+	{
+		auto it = subTextures.find(name);
+
+		if (it == subTextures.end())
+		{
+			const static SubTexture2d defaultSubTexture;
+			return defaultSubTexture;
+		}
+
+		return it->second;
+	}
+
+	const unsigned int Texture2d::getWidth() const
+	{
+		return width;
 	}
 }
 

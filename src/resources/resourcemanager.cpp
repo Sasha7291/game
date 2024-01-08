@@ -17,6 +17,7 @@ std::shared_ptr<Renderer::ShaderProgram> ResourceManager::loadShaderProgram(cons
 		std::cerr << "ERROR::Vertex shader file is empty!" << std::endl;
 		return nullptr;
 	}
+
 	std::string fragmentString = getFileText(fragmentPath);
 	if (fragmentString.empty())
 	{
@@ -24,12 +25,12 @@ std::shared_ptr<Renderer::ShaderProgram> ResourceManager::loadShaderProgram(cons
 		return nullptr;
 	}
 
-	std::shared_ptr<Renderer::ShaderProgram>& newShader = shaderPrograms.emplace(name, std::make_shared<Renderer::ShaderProgram>(vertexString, fragmentString)).first->second;
+	auto& newShader = shaderPrograms.emplace(name, std::make_shared<Renderer::ShaderProgram>(vertexString, fragmentString)).first->second;
 	if (!newShader->isCompiled())
 	{
 		std::cerr << "ERROR::Shader program wasn't loaded: \n" 
-			<< "Vertex shader: " << vertexPath << "\n" 
-			<< "Fragment shader: " << fragmentPath << std::endl;
+				  << "Vertex shader: " << vertexPath << "\n" 
+				  << "Fragment shader: " << fragmentPath << std::endl;
 		return nullptr;
 	}
 	
@@ -40,20 +41,28 @@ std::shared_ptr<Renderer::Sprite> ResourceManager::loadSprite(const std::string&
 															  const std::string& textureName, 
 															  const std::string& shaderName, 
 															  const unsigned int width, 
-															  const unsigned int height)
+															  const unsigned int height,
+															  const std::string& subTextureName)
 {
 	auto texture = getTexture(textureName);
 	if (texture == nullptr)
+	{
 		std::cerr << "ERROR::Texture " << textureName << " for sprite " << spriteName << " wasn't found!" << std::endl;
+		return nullptr;
+	}
 
 	auto shaderProgram = getShaderProgram(shaderName);
 	if (texture == nullptr)
+	{
 		std::cerr << "ERROR::Shader program " << shaderName << " for sprite " << spriteName << " wasn't found!" << std::endl;
+		return nullptr;
+	}
 
-	std::shared_ptr<Renderer::Sprite> newSprite = sprites.emplace(spriteName, std::make_shared<Renderer::Sprite>(texture,
-																										   shaderProgram,
-																										   glm::vec2(0.0f, 0.0f),
-																										   glm::vec2(width, height))).first->second;
+	auto& newSprite = sprites.emplace(spriteName, std::make_shared<Renderer::Sprite>(texture,
+																					 subTextureName,
+																					 shaderProgram,
+																					 glm::vec2(0.0f, 0.0f),
+																					 glm::vec2(width, height))).first->second;
 	return newSprite;
 
 }
@@ -73,14 +82,50 @@ std::shared_ptr<Renderer::Texture2d> ResourceManager::loadTexture(const std::str
 		return nullptr;
 	}
 
-	std::shared_ptr<Renderer::Texture2d> newTexture = textures.emplace(name, std::make_shared<Renderer::Texture2d>(width, 
-																												   height, 
-																												   pixels, 
-																												   nChannels,
-																												   GL_NEAREST, 
-																												   GL_CLAMP_TO_EDGE)).first->second;
+	auto& newTexture = textures.emplace(name, std::make_shared<Renderer::Texture2d>(width, 
+																					height, 
+																					pixels, 
+																					nChannels,
+																					GL_NEAREST, 
+																					GL_CLAMP_TO_EDGE)).first->second;
 	stbi_image_free(pixels);
 	return newTexture;
+}
+
+std::shared_ptr<Renderer::Texture2d> ResourceManager::loadTextureAtlas(const std::string& textureName, 
+																	   const std::string& texturePath,
+																	   const std::vector<std::string>& subTextures,
+																	   const unsigned int subTextureWidth, 
+																	   const unsigned int subTextureHeight)
+{
+	auto texture = loadTexture(textureName, texturePath);
+
+	if (texture != nullptr)
+	{
+		const unsigned int textureWidth = texture->getWidth();
+		const unsigned int textureHeight = texture->getHeight();
+		unsigned int currentTextureOffsetX = 0;
+		unsigned int currentTextureOffsetY = textureHeight;
+
+		for (const auto& currentSubTextureName : subTextures)
+		{
+			glm::vec2 leftBottomUV(static_cast<float>(currentTextureOffsetX) / textureWidth, 
+								   static_cast<float>(currentTextureOffsetY - subTextureHeight) / textureHeight);
+			glm::vec2 rightTopUV(static_cast<float>(currentTextureOffsetX + subTextureWidth) / textureWidth,
+								 static_cast<float>(currentTextureOffsetY) / textureHeight);
+
+			texture->addSubTexture(currentSubTextureName, leftBottomUV, rightTopUV);
+
+			currentTextureOffsetX += subTextureWidth;
+			if (currentTextureOffsetX >= textureWidth)
+			{
+				currentTextureOffsetX = 0;
+				currentTextureOffsetY -= subTextureHeight;
+			}
+		}
+	}
+
+	return texture;
 }
 
 std::shared_ptr<Renderer::ShaderProgram> ResourceManager::getShaderProgram(const std::string& name) const
@@ -125,6 +170,7 @@ std::shared_ptr<Renderer::Texture2d> ResourceManager::getTexture(const std::stri
 std::string ResourceManager::getFileText(const std::string& relativePath) const
 {
 	std::fstream f;
+
 	f.open(path + "/" + relativePath, std::ios::in | std::ios::binary);
 	if (!f.is_open())
 	{
@@ -134,5 +180,6 @@ std::string ResourceManager::getFileText(const std::string& relativePath) const
 
 	std::stringstream buffer;
 	buffer << f.rdbuf();
+
 	return buffer.str();
 }
