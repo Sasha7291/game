@@ -47,20 +47,6 @@ namespace Renderer
 		texture2d.id = 0;
 	}
 
-	Texture2d& Texture2d::operator=(Texture2d&& texture2d) noexcept
-	{
-		glDeleteTextures(1, &id);
-
-		id = texture2d.id;
-		format = texture2d.format;
-		height = texture2d.height;
-		width = texture2d.width;
-
-		texture2d.id = 0;
-		
-		return *this;
-	}
-
 	Texture2d::~Texture2d()
 	{
 		glDeleteTextures(1, &id);
@@ -97,6 +83,20 @@ namespace Renderer
 	const unsigned int Texture2d::getWidth() const
 	{
 		return width;
+	}
+
+	Texture2d& Texture2d::operator=(Texture2d&& texture2d) noexcept
+	{
+		glDeleteTextures(1, &id);
+
+		id = texture2d.id;
+		format = texture2d.format;
+		height = texture2d.height;
+		width = texture2d.width;
+
+		texture2d.id = 0;
+
+		return *this;
 	}
 }
 

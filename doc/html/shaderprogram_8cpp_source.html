@@ -1,0 +1,546 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenGLGame: Исходный файл C:/Users/Admin/Desktop/game/src/renderer/shaderprogram.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">OpenGLGame
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_7bc5e25958a2fb25a8561f3aa0def6c5.html">renderer</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">shaderprogram.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="shaderprogram_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="shaderprogram_8h.html">shaderprogram.h</a>&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="foldopen" id="foldopen00003" data-start="{" data-end="}">
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno"><a class="line" href="namespace_renderer.html">    3</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_renderer.html">Renderer</a></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>{</div>
+<div class="foldopen" id="foldopen00005" data-start="{" data-end="}">
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#ab7fc9905f89d539113e2d8a0333bbb05">    5</a></span>    <a class="code hl_function" href="class_renderer_1_1_shader_program.html#a5c914675c96bfedc3ef71c1b4dd269cf">ShaderProgram::ShaderProgram</a>(<span class="keyword">const</span> std::string&amp; vertexShader, <span class="keyword">const</span> std::string&amp; fragmentShader)</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    {</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>        compiled = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>        <span class="keywordtype">id</span> = 0;</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>        GLuint vertexShaderId = 0;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        GLuint fragmentShaderId = 0;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        <span class="keywordflow">if</span> (!createShader(vertexShader, GL_VERTEX_SHADER, vertexShaderId))</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        {</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>            std::cerr &lt;&lt; <span class="stringliteral">&quot;ERROR::Vertex shader compile time error&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        }</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keywordflow">if</span> (!createShader(fragmentShader, GL_FRAGMENT_SHADER, fragmentShaderId))</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            std::cerr &lt;&lt; <span class="stringliteral">&quot;ERROR::Fragment shader compile time error&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            glDeleteShader(vertexShaderId);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        }</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="keywordtype">id</span> = glCreateProgram();</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        glAttachShader(<span class="keywordtype">id</span>, vertexShaderId);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        glAttachShader(<span class="keywordtype">id</span>, fragmentShaderId);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        glLinkProgram(<span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        GLint linked = GL_TRUE;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        glGetProgramiv(<span class="keywordtype">id</span>, GL_LINK_STATUS, &amp;linked);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keywordflow">if</span> (linked == GL_FALSE)</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        {</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>            GLchar log[1024];</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            glGetProgramInfoLog(<span class="keywordtype">id</span>, 1024, <span class="keyword">nullptr</span>, log);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            std::cerr &lt;&lt; <span class="stringliteral">&quot;ERROR::Link shader time error:&quot;</span> &lt;&lt; std::endl &lt;&lt; log &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        }</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            compiled = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            glDeleteShader(vertexShaderId);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            glDeleteShader(fragmentShaderId);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        }</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    }</div>
+</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="foldopen" id="foldopen00048" data-start="{" data-end="}">
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#a3a633b0ed998dd2dc82f18b5c31f1607">   48</a></span>    <a class="code hl_function" href="class_renderer_1_1_shader_program.html#a5c914675c96bfedc3ef71c1b4dd269cf">ShaderProgram::ShaderProgram</a>(<a class="code hl_class" href="class_renderer_1_1_shader_program.html">ShaderProgram</a>&amp;&amp; shaderProgram) <span class="keyword">noexcept</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    {</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keywordtype">id</span> = shaderProgram.id;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        compiled = shaderProgram.compiled;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        shaderProgram.compiled = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        shaderProgram.id = 0;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    }</div>
+</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="foldopen" id="foldopen00057" data-start="{" data-end="}">
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#ac89ea0c7632dc1bef6be02f6665cdefd">   57</a></span>    <a class="code hl_function" href="class_renderer_1_1_shader_program.html#ac89ea0c7632dc1bef6be02f6665cdefd">ShaderProgram::~ShaderProgram</a>()</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    {</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keywordflow">if</span> (compiled)</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            glDeleteProgram(<span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    }</div>
+</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="foldopen" id="foldopen00063" data-start="{" data-end="}">
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#aaa4180d3dc3e64cfb0c3b2b4b4f16542">   63</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#aaa4180d3dc3e64cfb0c3b2b4b4f16542">ShaderProgram::isCompiled</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="keywordflow">return</span> compiled;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    }</div>
+</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="foldopen" id="foldopen00068" data-start="{" data-end="}">
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#ab43528ab80573ce931c238cfe287a284">   68</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#ab43528ab80573ce931c238cfe287a284">ShaderProgram::setBool</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> GLboolean value)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        glUniform1i(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), <span class="keyword">static_cast&lt;</span>GLint<span class="keyword">&gt;</span>(value));</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    }</div>
+</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="foldopen" id="foldopen00073" data-start="{" data-end="}">
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#a5b00b5c9533e9341515bb7eab2a3edea">   73</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#a5b00b5c9533e9341515bb7eab2a3edea">ShaderProgram::setBoolArray</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> GLsizei size, <span class="keyword">const</span> GLboolean* data)</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    {</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        glUniform1iv(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), size, <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>GLint*<span class="keyword">&gt;</span>(data));</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    }</div>
+</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="foldopen" id="foldopen00078" data-start="{" data-end="}">
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#a9e66b724743b019d7271948c43e462c3">   78</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#a9e66b724743b019d7271948c43e462c3">ShaderProgram::setBvec2</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> GLboolean value1, <span class="keyword">const</span> GLboolean value2)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        glUniform2i(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), <span class="keyword">static_cast&lt;</span>GLint<span class="keyword">&gt;</span>(value1), <span class="keyword">static_cast&lt;</span>GLint<span class="keyword">&gt;</span>(value2));</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    }</div>
+</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="foldopen" id="foldopen00083" data-start="{" data-end="}">
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#ac37aac28b07a30fede189b7357e4f85b">   83</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#ac37aac28b07a30fede189b7357e4f85b">ShaderProgram::setBvec2Array</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> GLsizei size, <span class="keyword">const</span> GLboolean* data)</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    {</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        glUniform2iv(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), size, <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>GLint*<span class="keyword">&gt;</span>(data));</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    }</div>
+</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="foldopen" id="foldopen00088" data-start="{" data-end="}">
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#a5ad4e6234132c63ea4527e5201abb27a">   88</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#a5ad4e6234132c63ea4527e5201abb27a">ShaderProgram::setBvec3</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> GLboolean value1, <span class="keyword">const</span> GLboolean value2, <span class="keyword">const</span> GLboolean value3)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        glUniform3i(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), <span class="keyword">static_cast&lt;</span>GLint<span class="keyword">&gt;</span>(value1), <span class="keyword">static_cast&lt;</span>GLint<span class="keyword">&gt;</span>(value2), <span class="keyword">static_cast&lt;</span>GLint<span class="keyword">&gt;</span>(value3));</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    }</div>
+</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="foldopen" id="foldopen00093" data-start="{" data-end="}">
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#a38297bb13760e2909e8d86c1bddfedaf">   93</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#a38297bb13760e2909e8d86c1bddfedaf">ShaderProgram::setBvec3Array</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> GLsizei size, <span class="keyword">const</span> GLboolean* data)</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    {</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        glUniform3iv(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), size, <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>GLint*<span class="keyword">&gt;</span>(data));</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    }</div>
+</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="foldopen" id="foldopen00098" data-start="{" data-end="}">
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#a02d47f4abce53ebf1969009288e34c45">   98</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#a02d47f4abce53ebf1969009288e34c45">ShaderProgram::setBvec4</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> GLboolean value1, <span class="keyword">const</span> GLboolean value2, <span class="keyword">const</span> GLboolean value3, <span class="keyword">const</span> GLboolean value4)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        glUniform4i(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), <span class="keyword">static_cast&lt;</span>GLint<span class="keyword">&gt;</span>(value1), <span class="keyword">static_cast&lt;</span>GLint<span class="keyword">&gt;</span>(value2), <span class="keyword">static_cast&lt;</span>GLint<span class="keyword">&gt;</span>(value3), <span class="keyword">static_cast&lt;</span>GLint<span class="keyword">&gt;</span>(value4));</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    }</div>
+</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="foldopen" id="foldopen00103" data-start="{" data-end="}">
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#a0c54283ae1058c183dce45b7e15bcff2">  103</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#a0c54283ae1058c183dce45b7e15bcff2">ShaderProgram::setBvec4Array</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> GLsizei size, <span class="keyword">const</span> GLboolean* data)</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    {</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        glUniform4iv(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), size, <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>GLint*<span class="keyword">&gt;</span>(data));</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    }</div>
+</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="foldopen" id="foldopen00108" data-start="{" data-end="}">
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#a463001b2cf706635e19e9ef75fb0ee41">  108</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#a463001b2cf706635e19e9ef75fb0ee41">ShaderProgram::setFloat</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> GLfloat value)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        glUniform1f(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), value);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    }</div>
+</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="foldopen" id="foldopen00113" data-start="{" data-end="}">
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#a0a7d1f92ffaea675b63548abd11547eb">  113</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#a0a7d1f92ffaea675b63548abd11547eb">ShaderProgram::setFloatArray</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> GLsizei size, <span class="keyword">const</span> GLfloat* data)</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    {</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        glUniform1fv(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), size, data);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    }</div>
+</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="foldopen" id="foldopen00118" data-start="{" data-end="}">
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#a6f0fc9b7310f40eca48fee85391a6992">  118</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#a6f0fc9b7310f40eca48fee85391a6992">ShaderProgram::setInt</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> GLint value)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        glUniform1i(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), value);</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    }</div>
+</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
+<div class="foldopen" id="foldopen00123" data-start="{" data-end="}">
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#a367420d38263abbe41bdbb65239f2465">  123</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#a367420d38263abbe41bdbb65239f2465">ShaderProgram::setIntArray</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> GLsizei size, <span class="keyword">const</span> GLint* data)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        glUniform1iv(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), size, data);</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    }</div>
+</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
+<div class="foldopen" id="foldopen00128" data-start="{" data-end="}">
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#ab1c121d7d8aa7ba098238548dd809690">  128</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#ab1c121d7d8aa7ba098238548dd809690">ShaderProgram::setIvec2</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> GLint value1, <span class="keyword">const</span> GLint value2)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        glUniform2i(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), value1, value2);</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    }</div>
+</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
+<div class="foldopen" id="foldopen00133" data-start="{" data-end="}">
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#a07c5c8853d535a29f09b4025b343185c">  133</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#a07c5c8853d535a29f09b4025b343185c">ShaderProgram::setIvec2Array</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> GLsizei size, <span class="keyword">const</span> GLint* data)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        glUniform2iv(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), size, data);</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    }</div>
+</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
+<div class="foldopen" id="foldopen00138" data-start="{" data-end="}">
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#a6dacc08d5509cd6a6003f74413afb57e">  138</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#a6dacc08d5509cd6a6003f74413afb57e">ShaderProgram::setIvec3</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> GLint value1, <span class="keyword">const</span> GLint value2, <span class="keyword">const</span> GLint value3)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        glUniform3i(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), value1, value2, value3);</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    }</div>
+</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
+<div class="foldopen" id="foldopen00143" data-start="{" data-end="}">
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#abd57b33488b1e87148c3b9577d64dc39">  143</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#abd57b33488b1e87148c3b9577d64dc39">ShaderProgram::setIvec3Array</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> GLsizei size, <span class="keyword">const</span> GLint* data)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>        glUniform3iv(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), size, data);</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    }</div>
+</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
+<div class="foldopen" id="foldopen00148" data-start="{" data-end="}">
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#a13d5aa5996fb601356e40c57bc10e98d">  148</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#a13d5aa5996fb601356e40c57bc10e98d">ShaderProgram::setIvec4</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> GLint value1, <span class="keyword">const</span> GLint value2, <span class="keyword">const</span> GLint value3, <span class="keyword">const</span> GLint value4)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        glUniform4i(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), value1, value2, value3, value4);</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    }</div>
+</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
+<div class="foldopen" id="foldopen00153" data-start="{" data-end="}">
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#a3aaa8d00182a20fe5dfb050f0d1d18b1">  153</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#a3aaa8d00182a20fe5dfb050f0d1d18b1">ShaderProgram::setIvec4Array</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> GLsizei size, <span class="keyword">const</span> GLint* data)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        glUniform4iv(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), size, data);</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    }</div>
+</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
+<div class="foldopen" id="foldopen00158" data-start="{" data-end="}">
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#a8290eb56b01a365d137ba3b445074dc9">  158</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#a8290eb56b01a365d137ba3b445074dc9">ShaderProgram::setVec2</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> GLfloat value1, <span class="keyword">const</span> GLfloat value2)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        glUniform2f(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), value1, value2);</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    }</div>
+</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
+<div class="foldopen" id="foldopen00163" data-start="{" data-end="}">
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#a1d2e9545a42d453c2f6ad3343a8e5481">  163</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#a1d2e9545a42d453c2f6ad3343a8e5481">ShaderProgram::setVec2Array</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> GLsizei size, <span class="keyword">const</span> GLfloat* data)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        glUniform2fv(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), size, data);</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    }</div>
+</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
+<div class="foldopen" id="foldopen00168" data-start="{" data-end="}">
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#a19fc659c549f4d23d53287a7d37aec78">  168</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#a19fc659c549f4d23d53287a7d37aec78">ShaderProgram::setVec3</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> GLfloat value1, <span class="keyword">const</span> GLfloat value2, <span class="keyword">const</span> GLfloat value3)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        glUniform3f(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), value1, value2, value3);</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    }</div>
+</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span> </div>
+<div class="foldopen" id="foldopen00173" data-start="{" data-end="}">
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#ae8fab383afc3a0331c71d22d6255f899">  173</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#ae8fab383afc3a0331c71d22d6255f899">ShaderProgram::setVec3Array</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> GLsizei size, <span class="keyword">const</span> GLfloat* data)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>        glUniform3fv(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), size, data);</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    }</div>
+</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
+<div class="foldopen" id="foldopen00178" data-start="{" data-end="}">
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#aabe2d77c2f1a6d92ccbaa5373f25ba37">  178</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#aabe2d77c2f1a6d92ccbaa5373f25ba37">ShaderProgram::setVec4</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> GLfloat value1, <span class="keyword">const</span> GLfloat value2, <span class="keyword">const</span> GLfloat value3, <span class="keyword">const</span> GLfloat value4)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        glUniform4f(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), value1, value2, value3, value4);</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    }</div>
+</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span> </div>
+<div class="foldopen" id="foldopen00183" data-start="{" data-end="}">
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#af767c2622bfc9ce45293b5dd96130b29">  183</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#af767c2622bfc9ce45293b5dd96130b29">ShaderProgram::setVec4Array</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> GLsizei size, <span class="keyword">const</span> GLfloat* data)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>        glUniform4fv(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), size, data);</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    }</div>
+</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
+<div class="foldopen" id="foldopen00188" data-start="{" data-end="}">
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#ac5c5bf516a3d5e1f7b116a18e21a4283">  188</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#ac5c5bf516a3d5e1f7b116a18e21a4283">ShaderProgram::setUint</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> GLuint value)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        glUniform1ui(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), value);</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    }</div>
+</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span> </div>
+<div class="foldopen" id="foldopen00193" data-start="{" data-end="}">
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#a1995f38ec88aa47316a464dc8b939db2">  193</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#a1995f38ec88aa47316a464dc8b939db2">ShaderProgram::setUintArray</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> GLsizei size, <span class="keyword">const</span> GLuint* data)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        glUniform1uiv(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), size, data);</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    }</div>
+</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span> </div>
+<div class="foldopen" id="foldopen00198" data-start="{" data-end="}">
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#afcac1a500b261b7551d777c3527958b4">  198</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#afcac1a500b261b7551d777c3527958b4">ShaderProgram::setUivec2</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> GLuint value1, <span class="keyword">const</span> GLuint value2)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>        glUniform2ui(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), value1, value2);</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    }</div>
+</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
+<div class="foldopen" id="foldopen00203" data-start="{" data-end="}">
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#a8259fe3f5b52fe3f1059e36c4da4b17f">  203</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#a8259fe3f5b52fe3f1059e36c4da4b17f">ShaderProgram::setUivec2Array</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> GLsizei size, <span class="keyword">const</span> GLuint* data)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        glUniform2uiv(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), size, data);</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>    }</div>
+</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span> </div>
+<div class="foldopen" id="foldopen00208" data-start="{" data-end="}">
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#a46ce67fcdfbf0e68cafb5b542c3ba02e">  208</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#a46ce67fcdfbf0e68cafb5b542c3ba02e">ShaderProgram::setUivec3</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> GLuint value1, <span class="keyword">const</span> GLuint value2, <span class="keyword">const</span> GLuint value3)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>        glUniform3ui(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), value1, value2, value3);</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>    }</div>
+</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span> </div>
+<div class="foldopen" id="foldopen00213" data-start="{" data-end="}">
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#ae95d02d549d5cd3a7927435a6d7eddab">  213</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#ae95d02d549d5cd3a7927435a6d7eddab">ShaderProgram::setUivec3Array</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> GLsizei size, <span class="keyword">const</span> GLuint* data)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>        glUniform3uiv(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), size, data);</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>    }</div>
+</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span> </div>
+<div class="foldopen" id="foldopen00218" data-start="{" data-end="}">
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#a76088904953d09563efebdaf6b587553">  218</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#a76088904953d09563efebdaf6b587553">ShaderProgram::setUivec4</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> GLuint value1, <span class="keyword">const</span> GLuint value2, <span class="keyword">const</span> GLuint value3, <span class="keyword">const</span> GLuint value4)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>        glUniform4ui(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), value1, value2, value3, value4);</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    }</div>
+</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span> </div>
+<div class="foldopen" id="foldopen00223" data-start="{" data-end="}">
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#aff75590747ab919077741347019655e8">  223</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#aff75590747ab919077741347019655e8">ShaderProgram::setUivec4Array</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> GLsizei size, <span class="keyword">const</span> GLuint* data)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>        glUniform4uiv(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), size, data);</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    }</div>
+</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span> </div>
+<div class="foldopen" id="foldopen00228" data-start="{" data-end="}">
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#af92386825952f2f47fe83604c17cdba5">  228</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#af92386825952f2f47fe83604c17cdba5">ShaderProgram::setMatrix2</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> glm::mat2&amp; matrix)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>        glUniformMatrix2fv(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), 1, GL_FALSE, glm::value_ptr(matrix));</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>    }</div>
+</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span> </div>
+<div class="foldopen" id="foldopen00233" data-start="{" data-end="}">
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#a431b0a3bb9cc855258763d84c32ed4b4">  233</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#a431b0a3bb9cc855258763d84c32ed4b4">ShaderProgram::setMatrix2x3</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> glm::mat2x3&amp; matrix)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>        glUniformMatrix2x3fv(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), 1, GL_FALSE, glm::value_ptr(matrix));</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>    }</div>
+</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span> </div>
+<div class="foldopen" id="foldopen00238" data-start="{" data-end="}">
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#ad4cf808d6d484e2ec6977c16f517b6ee">  238</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#ad4cf808d6d484e2ec6977c16f517b6ee">ShaderProgram::setMatrix2x4</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> glm::mat2x4&amp; matrix)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>        glUniformMatrix2x4fv(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), 1, GL_FALSE, glm::value_ptr(matrix));</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    }</div>
+</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span> </div>
+<div class="foldopen" id="foldopen00243" data-start="{" data-end="}">
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#aeb53b572b25b6669643335e2aa57b1c9">  243</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#aeb53b572b25b6669643335e2aa57b1c9">ShaderProgram::setMatrix3</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> glm::mat3&amp; matrix)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        glUniformMatrix3fv(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), 1, GL_FALSE, glm::value_ptr(matrix));</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    }</div>
+</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span> </div>
+<div class="foldopen" id="foldopen00248" data-start="{" data-end="}">
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#a2a3352a7675a0d2ab43486e083f8827f">  248</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#a2a3352a7675a0d2ab43486e083f8827f">ShaderProgram::setMatrix3x2</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> glm::mat3x2&amp; matrix)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>        glUniformMatrix3x2fv(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), 1, GL_FALSE, glm::value_ptr(matrix));</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>    }</div>
+</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span> </div>
+<div class="foldopen" id="foldopen00253" data-start="{" data-end="}">
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#a5a417b5674641c26152f46d613be8ffb">  253</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#a5a417b5674641c26152f46d613be8ffb">ShaderProgram::setMatrix3x4</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> glm::mat3x4&amp; matrix)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>        glUniformMatrix3x4fv(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), 1, GL_FALSE, glm::value_ptr(matrix));</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>    }</div>
+</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span> </div>
+<div class="foldopen" id="foldopen00258" data-start="{" data-end="}">
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#a2b1b35d5bbe6ceae6253786af4f88b79">  258</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#a2b1b35d5bbe6ceae6253786af4f88b79">ShaderProgram::setMatrix4</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> glm::mat4&amp; matrix)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>        glUniformMatrix4fv(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), 1, GL_FALSE, glm::value_ptr(matrix));</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    }</div>
+</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span> </div>
+<div class="foldopen" id="foldopen00263" data-start="{" data-end="}">
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#afd0c7ad761f93e6d6c502268edd0e8a0">  263</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#afd0c7ad761f93e6d6c502268edd0e8a0">ShaderProgram::setMatrix4x2</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> glm::mat4x2&amp; matrix)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>        glUniformMatrix4x2fv(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), 1, GL_FALSE, glm::value_ptr(matrix));</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>    }</div>
+</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span> </div>
+<div class="foldopen" id="foldopen00268" data-start="{" data-end="}">
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#a449bff15ef5210664a214664a912803a">  268</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#a449bff15ef5210664a214664a912803a">ShaderProgram::setMatrix4x3</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> glm::mat4x3&amp; matrix)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>        glUniformMatrix4x3fv(glGetUniformLocation(<span class="keywordtype">id</span>, name.c_str()), 1, GL_FALSE, glm::value_ptr(matrix));</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>    }</div>
+</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span> </div>
+<div class="foldopen" id="foldopen00273" data-start="{" data-end="}">
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#af1c36e8854ca166048dacf9f87bd9f25">  273</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_renderer_1_1_shader_program.html#af1c36e8854ca166048dacf9f87bd9f25">ShaderProgram::use</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>        glUseProgram(<span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>    }</div>
+</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span> </div>
+<div class="foldopen" id="foldopen00278" data-start="{" data-end="}">
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno"><a class="line" href="class_renderer_1_1_shader_program.html#a802cf973800e68c9f88fffd7ebe915a7">  278</a></span>    <a class="code hl_class" href="class_renderer_1_1_shader_program.html">ShaderProgram</a>&amp; <a class="code hl_function" href="class_renderer_1_1_shader_program.html#a802cf973800e68c9f88fffd7ebe915a7">ShaderProgram::operator=</a>(<a class="code hl_class" href="class_renderer_1_1_shader_program.html">ShaderProgram</a>&amp;&amp; shaderProgram) <span class="keyword">noexcept</span></div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>    {</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>        glDeleteProgram(<span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>        <span class="keywordtype">id</span> = shaderProgram.id;</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>        compiled = shaderProgram.compiled;</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span> </div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>        shaderProgram.compiled = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>        shaderProgram.id = 0;</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>    }</div>
+</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span> </div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>    <span class="keywordtype">bool</span> ShaderProgram::createShader(<span class="keyword">const</span> std::string&amp; source, <span class="keyword">const</span> GLenum&amp; type, GLuint&amp; shaderId)</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>    {</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>        shaderId = glCreateShader(type);</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>        <span class="keyword">const</span> <span class="keywordtype">char</span>* s = source.c_str();</div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>        glShaderSource(shaderId, 1, &amp;s, <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>        glCompileShader(shaderId);</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span> </div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>        GLint status = GL_TRUE;</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>        glGetShaderiv(shaderId, GL_COMPILE_STATUS, &amp;status);</div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>        <span class="keywordflow">if</span> (status == GL_FALSE)</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>        {</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>            GLchar log[1024];</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>            glGetShaderInfoLog(shaderId, 1024, <span class="keyword">nullptr</span>, log);</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>            std::cerr &lt;&lt; <span class="stringliteral">&quot;Compile shader error:&quot;</span> &lt;&lt; std::endl &lt;&lt; log &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>        }</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span> </div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>    }</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>}</div>
+</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span> </div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html"><div class="ttname"><a href="class_renderer_1_1_shader_program.html">Renderer::ShaderProgram</a></div><div class="ttdoc">Класс шейдерной программы</div><div class="ttdef"><b>Definition</b> <a href="shaderprogram_8h_source.html#l00037">shaderprogram.h:38</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_a02d47f4abce53ebf1969009288e34c45"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#a02d47f4abce53ebf1969009288e34c45">Renderer::ShaderProgram::setBvec4</a></div><div class="ttdeci">void setBvec4(const std::string &amp;name, const GLboolean value1, const GLboolean value2, const GLboolean value3, const GLboolean value4) const</div><div class="ttdoc">Сеттер значения типа bvec4 в uniform @detailed Устанавливает значение типа bvec4 для конкретной юнифо...</div><div class="ttdef"><b>Definition</b> <a href="#l00098">shaderprogram.cpp:98</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_a07c5c8853d535a29f09b4025b343185c"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#a07c5c8853d535a29f09b4025b343185c">Renderer::ShaderProgram::setIvec2Array</a></div><div class="ttdeci">void setIvec2Array(const std::string &amp;name, const GLsizei size, const GLint *data) const</div><div class="ttdef"><b>Definition</b> <a href="#l00133">shaderprogram.cpp:133</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_a0a7d1f92ffaea675b63548abd11547eb"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#a0a7d1f92ffaea675b63548abd11547eb">Renderer::ShaderProgram::setFloatArray</a></div><div class="ttdeci">void setFloatArray(const std::string &amp;name, const GLsizei size, const GLfloat *data)</div><div class="ttdef"><b>Definition</b> <a href="#l00113">shaderprogram.cpp:113</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_a0c54283ae1058c183dce45b7e15bcff2"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#a0c54283ae1058c183dce45b7e15bcff2">Renderer::ShaderProgram::setBvec4Array</a></div><div class="ttdeci">void setBvec4Array(const std::string &amp;name, const GLsizei size, const GLboolean *data)</div><div class="ttdoc">Сеттер массива значений типа bvec4 в uniform @detailed Устанавливает массив значений типа bool для ко...</div><div class="ttdef"><b>Definition</b> <a href="#l00103">shaderprogram.cpp:103</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_a13d5aa5996fb601356e40c57bc10e98d"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#a13d5aa5996fb601356e40c57bc10e98d">Renderer::ShaderProgram::setIvec4</a></div><div class="ttdeci">void setIvec4(const std::string &amp;name, const GLint value1, const GLint value2, const GLint value3, const GLint value4) const</div><div class="ttdef"><b>Definition</b> <a href="#l00148">shaderprogram.cpp:148</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_a1995f38ec88aa47316a464dc8b939db2"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#a1995f38ec88aa47316a464dc8b939db2">Renderer::ShaderProgram::setUintArray</a></div><div class="ttdeci">void setUintArray(const std::string &amp;name, const GLsizei size, const GLuint *data) const</div><div class="ttdef"><b>Definition</b> <a href="#l00193">shaderprogram.cpp:193</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_a19fc659c549f4d23d53287a7d37aec78"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#a19fc659c549f4d23d53287a7d37aec78">Renderer::ShaderProgram::setVec3</a></div><div class="ttdeci">void setVec3(const std::string &amp;name, const GLfloat value1, const GLfloat value2, const GLfloat value3) const</div><div class="ttdef"><b>Definition</b> <a href="#l00168">shaderprogram.cpp:168</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_a1d2e9545a42d453c2f6ad3343a8e5481"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#a1d2e9545a42d453c2f6ad3343a8e5481">Renderer::ShaderProgram::setVec2Array</a></div><div class="ttdeci">void setVec2Array(const std::string &amp;name, const GLsizei size, const GLfloat *data) const</div><div class="ttdef"><b>Definition</b> <a href="#l00163">shaderprogram.cpp:163</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_a2a3352a7675a0d2ab43486e083f8827f"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#a2a3352a7675a0d2ab43486e083f8827f">Renderer::ShaderProgram::setMatrix3x2</a></div><div class="ttdeci">void setMatrix3x2(const std::string &amp;name, const glm::mat3x2 &amp;matrix) const</div><div class="ttdef"><b>Definition</b> <a href="#l00248">shaderprogram.cpp:248</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_a2b1b35d5bbe6ceae6253786af4f88b79"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#a2b1b35d5bbe6ceae6253786af4f88b79">Renderer::ShaderProgram::setMatrix4</a></div><div class="ttdeci">void setMatrix4(const std::string &amp;name, const glm::mat4 &amp;matrix) const</div><div class="ttdef"><b>Definition</b> <a href="#l00258">shaderprogram.cpp:258</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_a367420d38263abbe41bdbb65239f2465"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#a367420d38263abbe41bdbb65239f2465">Renderer::ShaderProgram::setIntArray</a></div><div class="ttdeci">void setIntArray(const std::string &amp;name, const GLsizei size, const GLint *data) const</div><div class="ttdef"><b>Definition</b> <a href="#l00123">shaderprogram.cpp:123</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_a38297bb13760e2909e8d86c1bddfedaf"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#a38297bb13760e2909e8d86c1bddfedaf">Renderer::ShaderProgram::setBvec3Array</a></div><div class="ttdeci">void setBvec3Array(const std::string &amp;name, const GLsizei size, const GLboolean *data)</div><div class="ttdoc">Сеттер массива значений типа bvec3 в uniform @detailed Устанавливает массив значений типа bool для ко...</div><div class="ttdef"><b>Definition</b> <a href="#l00093">shaderprogram.cpp:93</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_a3aaa8d00182a20fe5dfb050f0d1d18b1"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#a3aaa8d00182a20fe5dfb050f0d1d18b1">Renderer::ShaderProgram::setIvec4Array</a></div><div class="ttdeci">void setIvec4Array(const std::string &amp;name, const GLsizei size, const GLint *data) const</div><div class="ttdef"><b>Definition</b> <a href="#l00153">shaderprogram.cpp:153</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_a431b0a3bb9cc855258763d84c32ed4b4"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#a431b0a3bb9cc855258763d84c32ed4b4">Renderer::ShaderProgram::setMatrix2x3</a></div><div class="ttdeci">void setMatrix2x3(const std::string &amp;name, const glm::mat2x3 &amp;matrix) const</div><div class="ttdef"><b>Definition</b> <a href="#l00233">shaderprogram.cpp:233</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_a449bff15ef5210664a214664a912803a"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#a449bff15ef5210664a214664a912803a">Renderer::ShaderProgram::setMatrix4x3</a></div><div class="ttdeci">void setMatrix4x3(const std::string &amp;name, const glm::mat4x3 &amp;matrix) const</div><div class="ttdef"><b>Definition</b> <a href="#l00268">shaderprogram.cpp:268</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_a463001b2cf706635e19e9ef75fb0ee41"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#a463001b2cf706635e19e9ef75fb0ee41">Renderer::ShaderProgram::setFloat</a></div><div class="ttdeci">void setFloat(const std::string &amp;name, const GLfloat value) const</div><div class="ttdef"><b>Definition</b> <a href="#l00108">shaderprogram.cpp:108</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_a46ce67fcdfbf0e68cafb5b542c3ba02e"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#a46ce67fcdfbf0e68cafb5b542c3ba02e">Renderer::ShaderProgram::setUivec3</a></div><div class="ttdeci">void setUivec3(const std::string &amp;name, const GLuint value1, const GLuint value2, const GLuint value3) const</div><div class="ttdef"><b>Definition</b> <a href="#l00208">shaderprogram.cpp:208</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_a5a417b5674641c26152f46d613be8ffb"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#a5a417b5674641c26152f46d613be8ffb">Renderer::ShaderProgram::setMatrix3x4</a></div><div class="ttdeci">void setMatrix3x4(const std::string &amp;name, const glm::mat3x4 &amp;matrix) const</div><div class="ttdef"><b>Definition</b> <a href="#l00253">shaderprogram.cpp:253</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_a5ad4e6234132c63ea4527e5201abb27a"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#a5ad4e6234132c63ea4527e5201abb27a">Renderer::ShaderProgram::setBvec3</a></div><div class="ttdeci">void setBvec3(const std::string &amp;name, const GLboolean value1, const GLboolean value2, const GLboolean value3) const</div><div class="ttdoc">Сеттер значения типа bvec3 в uniform @detailed Устанавливает значение типа bvec3 для конкретной юнифо...</div><div class="ttdef"><b>Definition</b> <a href="#l00088">shaderprogram.cpp:88</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_a5b00b5c9533e9341515bb7eab2a3edea"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#a5b00b5c9533e9341515bb7eab2a3edea">Renderer::ShaderProgram::setBoolArray</a></div><div class="ttdeci">void setBoolArray(const std::string &amp;name, const GLsizei size, const GLboolean *data)</div><div class="ttdoc">Сеттер массива значений типа bool в uniform @detailed Устанавливает массив значений типа bool для кон...</div><div class="ttdef"><b>Definition</b> <a href="#l00073">shaderprogram.cpp:73</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_a5c914675c96bfedc3ef71c1b4dd269cf"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#a5c914675c96bfedc3ef71c1b4dd269cf">Renderer::ShaderProgram::ShaderProgram</a></div><div class="ttdeci">ShaderProgram()=delete</div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_a6dacc08d5509cd6a6003f74413afb57e"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#a6dacc08d5509cd6a6003f74413afb57e">Renderer::ShaderProgram::setIvec3</a></div><div class="ttdeci">void setIvec3(const std::string &amp;name, const GLint value1, const GLint value2, const GLint value3) const</div><div class="ttdef"><b>Definition</b> <a href="#l00138">shaderprogram.cpp:138</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_a6f0fc9b7310f40eca48fee85391a6992"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#a6f0fc9b7310f40eca48fee85391a6992">Renderer::ShaderProgram::setInt</a></div><div class="ttdeci">void setInt(const std::string &amp;name, const GLint value) const</div><div class="ttdef"><b>Definition</b> <a href="#l00118">shaderprogram.cpp:118</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_a76088904953d09563efebdaf6b587553"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#a76088904953d09563efebdaf6b587553">Renderer::ShaderProgram::setUivec4</a></div><div class="ttdeci">void setUivec4(const std::string &amp;name, const GLuint value1, const GLuint value2, const GLuint value3, const GLuint value4) const</div><div class="ttdef"><b>Definition</b> <a href="#l00218">shaderprogram.cpp:218</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_a802cf973800e68c9f88fffd7ebe915a7"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#a802cf973800e68c9f88fffd7ebe915a7">Renderer::ShaderProgram::operator=</a></div><div class="ttdeci">ShaderProgram &amp; operator=(ShaderProgram &amp;&amp;shaderProgram) noexcept</div><div class="ttdoc">Перегрузка оператора присваивания @detailed При присваивании одного объекта шейдера к другому не долж...</div><div class="ttdef"><b>Definition</b> <a href="#l00278">shaderprogram.cpp:278</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_a8259fe3f5b52fe3f1059e36c4da4b17f"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#a8259fe3f5b52fe3f1059e36c4da4b17f">Renderer::ShaderProgram::setUivec2Array</a></div><div class="ttdeci">void setUivec2Array(const std::string &amp;name, const GLsizei size, const GLuint *data) const</div><div class="ttdef"><b>Definition</b> <a href="#l00203">shaderprogram.cpp:203</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_a8290eb56b01a365d137ba3b445074dc9"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#a8290eb56b01a365d137ba3b445074dc9">Renderer::ShaderProgram::setVec2</a></div><div class="ttdeci">void setVec2(const std::string &amp;name, const GLfloat value1, const GLfloat value2) const</div><div class="ttdef"><b>Definition</b> <a href="#l00158">shaderprogram.cpp:158</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_a9e66b724743b019d7271948c43e462c3"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#a9e66b724743b019d7271948c43e462c3">Renderer::ShaderProgram::setBvec2</a></div><div class="ttdeci">void setBvec2(const std::string &amp;name, const GLboolean value1, const GLboolean value2) const</div><div class="ttdoc">Сеттер значения типа bvec2 в uniform @detailed Устанавливает значение типа bvec2 для конкретной юнифо...</div><div class="ttdef"><b>Definition</b> <a href="#l00078">shaderprogram.cpp:78</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_aaa4180d3dc3e64cfb0c3b2b4b4f16542"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#aaa4180d3dc3e64cfb0c3b2b4b4f16542">Renderer::ShaderProgram::isCompiled</a></div><div class="ttdeci">bool isCompiled() const</div><div class="ttdoc">Проверка компиляции шейдерной программы</div><div class="ttdef"><b>Definition</b> <a href="#l00063">shaderprogram.cpp:63</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_aabe2d77c2f1a6d92ccbaa5373f25ba37"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#aabe2d77c2f1a6d92ccbaa5373f25ba37">Renderer::ShaderProgram::setVec4</a></div><div class="ttdeci">void setVec4(const std::string &amp;name, const GLfloat value1, const GLfloat value2, const GLfloat value3, const GLfloat value4) const</div><div class="ttdef"><b>Definition</b> <a href="#l00178">shaderprogram.cpp:178</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_ab1c121d7d8aa7ba098238548dd809690"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#ab1c121d7d8aa7ba098238548dd809690">Renderer::ShaderProgram::setIvec2</a></div><div class="ttdeci">void setIvec2(const std::string &amp;name, const GLint value1, const GLint value2) const</div><div class="ttdef"><b>Definition</b> <a href="#l00128">shaderprogram.cpp:128</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_ab43528ab80573ce931c238cfe287a284"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#ab43528ab80573ce931c238cfe287a284">Renderer::ShaderProgram::setBool</a></div><div class="ttdeci">void setBool(const std::string &amp;name, const GLboolean value) const</div><div class="ttdoc">Сеттер значения типа bool в uniform @detailed Устанавливает значение типа bool для конкретной юниформ...</div><div class="ttdef"><b>Definition</b> <a href="#l00068">shaderprogram.cpp:68</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_abd57b33488b1e87148c3b9577d64dc39"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#abd57b33488b1e87148c3b9577d64dc39">Renderer::ShaderProgram::setIvec3Array</a></div><div class="ttdeci">void setIvec3Array(const std::string &amp;name, const GLsizei size, const GLint *data) const</div><div class="ttdef"><b>Definition</b> <a href="#l00143">shaderprogram.cpp:143</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_ac37aac28b07a30fede189b7357e4f85b"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#ac37aac28b07a30fede189b7357e4f85b">Renderer::ShaderProgram::setBvec2Array</a></div><div class="ttdeci">void setBvec2Array(const std::string &amp;name, const GLsizei size, const GLboolean *data)</div><div class="ttdoc">Сеттер массива значений типа bvec2 в uniform @detailed Устанавливает массив значений типа bool для ко...</div><div class="ttdef"><b>Definition</b> <a href="#l00083">shaderprogram.cpp:83</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_ac5c5bf516a3d5e1f7b116a18e21a4283"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#ac5c5bf516a3d5e1f7b116a18e21a4283">Renderer::ShaderProgram::setUint</a></div><div class="ttdeci">void setUint(const std::string &amp;name, const GLuint value) const</div><div class="ttdef"><b>Definition</b> <a href="#l00188">shaderprogram.cpp:188</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_ac89ea0c7632dc1bef6be02f6665cdefd"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#ac89ea0c7632dc1bef6be02f6665cdefd">Renderer::ShaderProgram::~ShaderProgram</a></div><div class="ttdeci">~ShaderProgram()</div><div class="ttdoc">Деструктор шейдерной программы</div><div class="ttdef"><b>Definition</b> <a href="#l00057">shaderprogram.cpp:57</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_ad4cf808d6d484e2ec6977c16f517b6ee"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#ad4cf808d6d484e2ec6977c16f517b6ee">Renderer::ShaderProgram::setMatrix2x4</a></div><div class="ttdeci">void setMatrix2x4(const std::string &amp;name, const glm::mat2x4 &amp;matrix) const</div><div class="ttdef"><b>Definition</b> <a href="#l00238">shaderprogram.cpp:238</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_ae8fab383afc3a0331c71d22d6255f899"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#ae8fab383afc3a0331c71d22d6255f899">Renderer::ShaderProgram::setVec3Array</a></div><div class="ttdeci">void setVec3Array(const std::string &amp;name, const GLsizei size, const GLfloat *data) const</div><div class="ttdef"><b>Definition</b> <a href="#l00173">shaderprogram.cpp:173</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_ae95d02d549d5cd3a7927435a6d7eddab"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#ae95d02d549d5cd3a7927435a6d7eddab">Renderer::ShaderProgram::setUivec3Array</a></div><div class="ttdeci">void setUivec3Array(const std::string &amp;name, const GLsizei size, const GLuint *data) const</div><div class="ttdef"><b>Definition</b> <a href="#l00213">shaderprogram.cpp:213</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_aeb53b572b25b6669643335e2aa57b1c9"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#aeb53b572b25b6669643335e2aa57b1c9">Renderer::ShaderProgram::setMatrix3</a></div><div class="ttdeci">void setMatrix3(const std::string &amp;name, const glm::mat3 &amp;matrix) const</div><div class="ttdef"><b>Definition</b> <a href="#l00243">shaderprogram.cpp:243</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_af1c36e8854ca166048dacf9f87bd9f25"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#af1c36e8854ca166048dacf9f87bd9f25">Renderer::ShaderProgram::use</a></div><div class="ttdeci">void use() const</div><div class="ttdoc">Устанавливает шейдерную программу в рендеринг @detailed Для использования шейдерной программы её необ...</div><div class="ttdef"><b>Definition</b> <a href="#l00273">shaderprogram.cpp:273</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_af767c2622bfc9ce45293b5dd96130b29"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#af767c2622bfc9ce45293b5dd96130b29">Renderer::ShaderProgram::setVec4Array</a></div><div class="ttdeci">void setVec4Array(const std::string &amp;name, const GLsizei size, const GLfloat *data) const</div><div class="ttdef"><b>Definition</b> <a href="#l00183">shaderprogram.cpp:183</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_af92386825952f2f47fe83604c17cdba5"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#af92386825952f2f47fe83604c17cdba5">Renderer::ShaderProgram::setMatrix2</a></div><div class="ttdeci">void setMatrix2(const std::string &amp;name, const glm::mat2 &amp;matrix) const</div><div class="ttdef"><b>Definition</b> <a href="#l00228">shaderprogram.cpp:228</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_afcac1a500b261b7551d777c3527958b4"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#afcac1a500b261b7551d777c3527958b4">Renderer::ShaderProgram::setUivec2</a></div><div class="ttdeci">void setUivec2(const std::string &amp;name, const GLuint value1, const GLuint value2) const</div><div class="ttdef"><b>Definition</b> <a href="#l00198">shaderprogram.cpp:198</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_afd0c7ad761f93e6d6c502268edd0e8a0"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#afd0c7ad761f93e6d6c502268edd0e8a0">Renderer::ShaderProgram::setMatrix4x2</a></div><div class="ttdeci">void setMatrix4x2(const std::string &amp;name, const glm::mat4x2 &amp;matrix) const</div><div class="ttdef"><b>Definition</b> <a href="#l00263">shaderprogram.cpp:263</a></div></div>
+<div class="ttc" id="aclass_renderer_1_1_shader_program_html_aff75590747ab919077741347019655e8"><div class="ttname"><a href="class_renderer_1_1_shader_program.html#aff75590747ab919077741347019655e8">Renderer::ShaderProgram::setUivec4Array</a></div><div class="ttdeci">void setUivec4Array(const std::string &amp;name, const GLsizei size, const GLuint *data) const</div><div class="ttdef"><b>Definition</b> <a href="#l00223">shaderprogram.cpp:223</a></div></div>
+<div class="ttc" id="anamespace_renderer_html"><div class="ttname"><a href="namespace_renderer.html">Renderer</a></div><div class="ttdoc">Пространство имён Renderer.</div><div class="ttdef"><b>Definition</b> <a href="#l00003">shaderprogram.cpp:4</a></div></div>
+<div class="ttc" id="ashaderprogram_8h_html"><div class="ttname"><a href="shaderprogram_8h.html">shaderprogram.h</a></div><div class="ttdoc">Объявление класса шейдерной программы</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0
+</small></address>
+</body>
+</html>

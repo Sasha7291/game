@@ -28,7 +28,6 @@ namespace Renderer
 						   const GLenum filter = GL_LINEAR, 
 						   const GLenum wrapMode = GL_CLAMP_TO_EDGE);
 		Texture2d(Texture2d&& texture2d) noexcept;
-		Texture2d& operator=(Texture2d&& texture2d) noexcept;
 		~Texture2d();
 
 		void addSubTexture(const std::string& name, const glm::vec2& leftBottomUV, const glm::vec2& rightTopUV);
@@ -36,6 +35,8 @@ namespace Renderer
 		const unsigned int getHeight() const;
 		const SubTexture2d& getSubTexture(const std::string& name) const;
 		const unsigned int getWidth() const;
+
+		Texture2d& operator=(Texture2d&& texture2d) noexcept;
 
 		Texture2d() = delete;
 		Texture2d(const Texture2d&) = delete;
