@@ -9,6 +9,35 @@ ResourceManager::ResourceManager(const std::string& path)
 	this->path = path.substr(0, found);
 }
 
+std::shared_ptr<Renderer::AnimatedSprite> ResourceManager::loadAnimatedSprite(const std::string& spriteName, 
+																			  const std::string& textureName, 
+																			  const std::string& shaderName, 
+																			  const unsigned int width, 
+																			  const unsigned int height, 
+																			  const std::string& subTextureName)
+{
+	auto texture = getTexture(textureName);
+	if (texture == nullptr)
+	{
+		std::cerr << "ERROR::Texture " << textureName << " for sprite " << spriteName << " wasn't found!" << std::endl;
+		return nullptr;
+	}
+
+	auto shaderProgram = getShaderProgram(shaderName);
+	if (texture == nullptr)
+	{
+		std::cerr << "ERROR::Shader program " << shaderName << " for sprite " << spriteName << " wasn't found!" << std::endl;
+		return nullptr;
+	}
+
+	auto& newAnimatedSprite = animatedSprites.emplace(spriteName, std::make_shared<Renderer::AnimatedSprite>(texture,
+																											 subTextureName,
+																											 shaderProgram,
+																											 glm::vec2(0.0f, 0.0f),
+																											 glm::vec2(width, height))).first->second;
+	return newAnimatedSprite;
+}
+
 std::shared_ptr<Renderer::ShaderProgram> ResourceManager::loadShaderProgram(const std::string& name, const std::string& vertexPath, const std::string& fragmentPath)
 {
 	std::string vertexString = getFileText(vertexPath);
@@ -64,7 +93,6 @@ std::shared_ptr<Renderer::Sprite> ResourceManager::loadSprite(const std::string&
 																					 glm::vec2(0.0f, 0.0f),
 																					 glm::vec2(width, height))).first->second;
 	return newSprite;
-
 }
 
 std::shared_ptr<Renderer::Texture2d> ResourceManager::loadTexture(const std::string& name, const std::string& relativePath)
@@ -126,6 +154,19 @@ std::shared_ptr<Renderer::Texture2d> ResourceManager::loadTextureAtlas(const std
 	}
 
 	return texture;
+}
+
+std::shared_ptr<Renderer::AnimatedSprite> ResourceManager::getAnimatedSprite(const std::string& name) const
+{
+	AnimatedSpriteMap::const_iterator it = animatedSprites.find(name);
+
+	if (it == animatedSprites.end())
+	{
+		std::cerr << "ERROR::Sprite " << name << " wasn't found!" << std::endl;
+		return nullptr;
+	}
+
+	return it->second;
 }
 
 std::shared_ptr<Renderer::ShaderProgram> ResourceManager::getShaderProgram(const std::string& name) const

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['resourcemanager_0',['ResourceManager',['../class_resource_manager.html',1,'']]]
+  ['animatedsprite_0',['AnimatedSprite',['../class_renderer_1_1_animated_sprite.html',1,'Renderer']]]
 ];

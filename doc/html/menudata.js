@@ -29,6 +29,7 @@ var menudata={children:[
 {text:"Классы",url:"annotated.html",children:[
 {text:"Классы",url:"annotated.html"},
 {text:"Алфавитный указатель классов",url:"classes.html"},
+{text:"Иерархия классов",url:"hierarchy.html"},
 {text:"Члены классов",url:"functions.html",children:[
 {text:"Указатель",url:"functions.html",children:[
 {text:"a",url:"functions.html#index_a"},
@@ -59,6 +60,7 @@ var menudata={children:[
 {text:"Функции",url:"functions_func.html",children:[
 {text:"a",url:"functions_func.html#index_a"},
 {text:"b",url:"functions_func.html#index_b"},
+{text:"c",url:"functions_func.html#index_c"},
 {text:"g",url:"functions_func.html#index_g"},
 {text:"i",url:"functions_func.html#index_i"},
 {text:"l",url:"functions_func.html#index_l"},
@@ -90,23 +92,28 @@ var menudata={children:[
 {text:"w",url:"functions_vars.html#index_w"},
 {text:"x",url:"functions_vars.html#index_x"},
 {text:"y",url:"functions_vars.html#index_y"},
-{text:"z",url:"functions_vars.html#index_z"}]}]}]},
+{text:"z",url:"functions_vars.html#index_z"}]},
+{text:"Определения типов",url:"functions_type.html"}]}]},
 {text:"Файлы",url:"files.html",children:[
 {text:"Файлы",url:"files.html"},
 {text:"Список членов всех файлов",url:"globals.html",children:[
 {text:"Указатель",url:"globals.html",children:[
 {text:"f",url:"globals.html#index_f"},
-{text:"g",url:"globals.html#index_g"},
-{text:"m",url:"globals.html#index_m"},
-{text:"r",url:"globals.html#index_r"},
-{text:"s",url:"globals.html#index_s"},
-{text:"v",url:"globals.html#index_v"},
-{text:"w",url:"globals.html#index_w"}]},
+{text:"g",url:"globals_g.html#index_g"},
+{text:"l",url:"globals_l.html#index_l"},
+{text:"m",url:"globals_m.html#index_m"},
+{text:"r",url:"globals_r.html#index_r"},
+{text:"s",url:"globals_s.html#index_s"},
+{text:"v",url:"globals_v.html#index_v"},
+{text:"w",url:"globals_w.html#index_w"}]},
 {text:"Функции",url:"globals_func.html",children:[
 {text:"g",url:"globals_func.html#index_g"},
-{text:"m",url:"globals_func.html#index_m"},
-{text:"s",url:"globals_func.html#index_s"},
-{text:"w",url:"globals_func.html#index_w"}]},
+{text:"l",url:"globals_func_l.html#index_l"},
+{text:"m",url:"globals_func_m.html#index_m"},
+{text:"r",url:"globals_func_r.html#index_r"},
+{text:"s",url:"globals_func_s.html#index_s"},
+{text:"w",url:"globals_func_w.html#index_w"}]},
+{text:"Переменные",url:"globals_vars.html"},
 {text:"Определения типов",url:"globals_type.html"},
 {text:"Элементы перечислений",url:"globals_eval.html"},
 {text:"Макросы",url:"globals_defs.html",children:[

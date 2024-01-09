@@ -27,7 +27,7 @@ namespace Renderer
 			0.0f, 0.0f
 		};
 
-		auto& subTexture = texture->getSubTexture(initialSubTexture);
+		auto& subTexture = this->texture->getSubTexture(initialSubTexture);
 
 		const GLfloat textureCoord[] = {
 			subTexture.leftBottomUV.x, subTexture.leftBottomUV.y,

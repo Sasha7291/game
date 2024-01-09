@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['loadshaderprogram_0',['loadShaderProgram',['../class_resource_manager.html#aa4b4efc925705ccc0ba7c80172fcdaf3',1,'ResourceManager']]],
-  ['loadsprite_1',['loadSprite',['../class_resource_manager.html#af88a4523fa3c72a3bc51e4ebb774ca8d',1,'ResourceManager']]],
-  ['loadtexture_2',['loadTexture',['../class_resource_manager.html#af87a0869f3af13904ec59a32f3e0a97a',1,'ResourceManager']]],
-  ['loadtextureatlas_3',['loadTextureAtlas',['../class_resource_manager.html#a8730063ef062b5974697dc4c8d41a594',1,'ResourceManager']]]
+  ['insertstate_0',['insertState',['../class_renderer_1_1_animated_sprite.html#add26a70e0886a6f57f3f1a6362b5b4cd',1,'Renderer::AnimatedSprite']]],
+  ['iscompiled_1',['isCompiled',['../class_renderer_1_1_shader_program.html#aaa4180d3dc3e64cfb0c3b2b4b4f16542',1,'Renderer::ShaderProgram']]]
 ];

@@ -54,7 +54,7 @@ namespace Renderer
 		@details Рендерит спрайт, устанавливая его в определённую позицию,
 				 поворачивая на заданный угол и устаналивая размер.
 		*/
-		void render() const;
+		virtual void render() const;
 		/**
 		@brief Установка позиции спрайта
 		@param[in] position Устанавливаемая позиция
@@ -74,15 +74,23 @@ namespace Renderer
 		Sprite(const Sprite&) = delete;
 		Sprite& operator=(const Sprite&) = delete;
 
-	private:
-		std::shared_ptr<Texture2d> texture; //!< Текстура спрайта
-		std::shared_ptr<ShaderProgram> shaderProgram; //!< Шейдерная программа спрайта
-		glm::vec2 position; //!< Позиция спрайта
-		glm::vec2 size; //!< Размер спрайта
-		float rotationAngle; //!< Угол поворота спрайта
-		GLuint vao; //!< VAP
-		GLuint vertexVbo; //!< Вертексный VBO
-		GLuint textureVbo; //!< Вертексный VBO
+	protected:
+		/// Текстура спрайта
+		std::shared_ptr<Texture2d> texture; 
+		/// Шейдерная программа спрайта
+		std::shared_ptr<ShaderProgram> shaderProgram; 
+		/// Позиция спрайта
+		glm::vec2 position;
+		/// Размер спрайта
+		glm::vec2 size; 
+		/// Угол поворота спрайта
+		float rotationAngle; 
+		/// VAO
+		GLuint vao; 
+		/// Вертексный VBO
+		GLuint vertexVbo; 
+		/// Текстурный VBO
+		GLuint textureVbo; 
 
 	};
 }

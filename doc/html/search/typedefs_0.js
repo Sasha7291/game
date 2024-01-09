@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['resample_5frow_5ffunc_0',['resample_row_func',['../stb__image_8h.html#adf7279cdde465980cea1d8b9351d4c54',1,'stb_image.h']]]
+  ['animatedspritemap_0',['AnimatedSpriteMap',['../class_resource_manager.html#aa1ae653f9cef287bf3e3175725971cd2',1,'ResourceManager']]]
 ];

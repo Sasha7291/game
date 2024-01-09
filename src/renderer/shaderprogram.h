@@ -442,8 +442,10 @@ namespace Renderer
 		*/
 		bool createShader(const std::string& source, const GLenum& type, GLuint& shaderId);
 
-		bool compiled; //!< ‘лаг, хран€щий состо€ние компил€ции шейдерной программы
-		GLuint id; //!< ID шейдерной программы
+		/// ‘лаг, хран€щий состо€ние компил€ции шейдерной программы
+		bool compiled; 
+		/// ID шейдерной программы
+		GLuint id; 
 
 	};
 }

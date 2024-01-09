@@ -9,5 +9,6 @@ var searchData=
   ['resample_5frow_5fhv_5f2_5fkernel_6',['resample_row_hv_2_kernel',['../structstbi____jpeg.html#acc0b39da0f92f6500164fb27d75ea2d7',1,'stbi__jpeg']]],
   ['restart_5finterval_7',['restart_interval',['../structstbi____jpeg.html#ae2caa61baf3d6b9f0349c530470e0c99',1,'stbi__jpeg']]],
   ['rgb_8',['rgb',['../structstbi____jpeg.html#a5cfe752132b0f082743564942015cb05',1,'stbi__jpeg']]],
-  ['righttopuv_9',['rightTopUV',['../struct_renderer_1_1_texture2d_1_1_sub_texture2d.html#adbe09ad50106ce3921731a8554146b26',1,'Renderer::Texture2d::SubTexture2d']]]
+  ['righttopuv_9',['rightTopUV',['../struct_renderer_1_1_texture2d_1_1_sub_texture2d.html#adbe09ad50106ce3921731a8554146b26',1,'Renderer::Texture2d::SubTexture2d']]],
+  ['rotationangle_10',['rotationAngle',['../class_renderer_1_1_sprite.html#abb8109500ecb14e62b144e8a677ee506',1,'Renderer::Sprite']]]
 ];

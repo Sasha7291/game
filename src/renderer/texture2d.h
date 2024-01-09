@@ -10,7 +10,7 @@
 namespace Renderer
 @brief Пространство имён Renderer
 @details Данное пространство имён содержит все классы,
-		  необходимые для рендеринга и отрисовки графики.
+		 необходимые для рендеринга и отрисовки графики.
 */
 namespace Renderer
 {
@@ -113,12 +113,17 @@ namespace Renderer
 		Texture2d& operator=(const Texture2d&) = delete;
 
 	private:
-		GLuint id; //!< ID текстуры
-		GLenum format; //!< Количество цветовых каналов
-		unsigned int width; //!< Ширина текстуры
-		unsigned int height; //!< Высота текстуры
+		/// ID текстуры
+		GLuint id; 
+		/// Количество цветовых каналов
+		GLenum format; 
+		/// Ширина текстуры
+		unsigned int width; 
+		/// Высота текстуры
+		unsigned int height; 
 
-		std::map<std::string, SubTexture2d> subTextures; //!< Список имён субтекстур
+		/// Список имён субтекстур
+		std::map<std::string, SubTexture2d> subTextures; 
 
 	};
 }

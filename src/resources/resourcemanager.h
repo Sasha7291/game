@@ -8,8 +8,8 @@
 #include <string>
 #include <vector>
 
+#include "../renderer/animatedsprite.h"
 #include "../renderer/shaderprogram.h"
-#include "../renderer/sprite.h"
 #include "../renderer/texture2d.h"
 
 /**
@@ -30,6 +30,23 @@ public:
 	explicit ResourceManager(const std::string& path);
 	~ResourceManager() = default;
 
+	/**
+	@brief Загрузка анимированного спрайта
+	@details Загружает анимированный спрайт и запоминает его имя.
+	@param[in] spriteName Имя анимированного спрайта
+	@param[in] textureName Имя текстуры для установки в анимированный спрайт
+	@param[in] shaderName Имя шейдерной программы для установки в анимированный спрайт
+	@param[in] width Ширина анимированного спрайта
+	@param[in] height Высота анимированного спрайта
+	@param[in] subTextureName Имя субтекстуры, устанавливаемой в анимированный спрайт
+	@return Указатель на созданный анимированный спрайт
+	*/
+	std::shared_ptr<Renderer::AnimatedSprite> loadAnimatedSprite(const std::string& spriteName,
+																 const std::string& textureName,
+																 const std::string& shaderName,
+																 const unsigned int width,
+																 const unsigned int height,
+																 const std::string& subTextureName = "DefaultSubTexture");
 	/**
 	@brief Загрузка шейдерной программы
 	@details Загружает шейдерную программу и запоминает её
@@ -84,6 +101,12 @@ public:
 														  const unsigned int subTextureWidth,
 														  const unsigned int subTextureHeight);
 	/**
+	@brief Возвращает анимированный спрайт по имени
+	@param[in] name Имя анимированного спрайта
+	@return Указатель на анимированный спрайт
+	*/
+	std::shared_ptr<Renderer::AnimatedSprite> getAnimatedSprite(const std::string& name) const;
+	/**
 	@brief Возвращает шейдерную программу по имени
 	@param[in] name Имя шейдера
 	@return Указатель на шейдерную программу
@@ -115,13 +138,20 @@ private:
 	*/
 	std::string getFileText(const std::string& relativePath) const;
 
+	typedef std::map<const std::string, std::shared_ptr<Renderer::AnimatedSprite>> AnimatedSpriteMap;
 	typedef std::map<const std::string, std::shared_ptr<Renderer::ShaderProgram>> ShaderProgramMap;
 	typedef std::map<const std::string, std::shared_ptr<Renderer::Sprite>> SpriteMap;
 	typedef std::map<const std::string, std::shared_ptr<Renderer::Texture2d>> TextureMap;
 	
-	ShaderProgramMap shaderPrograms; //!< Список имён шейдерных программ
-	SpriteMap sprites; //!< Список имён спрайтов
-	TextureMap textures; //!< Список имён текстур
+	/// Список имён анимированных спрайтов
+	AnimatedSpriteMap animatedSprites; 
+	/// Список имён шейдерных программ
+	ShaderProgramMap shaderPrograms;
+	/// Список имён спрайтов
+	SpriteMap sprites; 
+	/// Список имён текстур
+	TextureMap textures; 
 
-	std::string path; //!< Путь к ресурсам
+	/// Путь к ресурсам
+	std::string path; 
 };

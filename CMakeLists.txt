@@ -5,6 +5,8 @@ project(${PROJECT_NAME})
 
 add_executable(${PROJECT_NAME} 
 	src/main.cpp
+	src/renderer/animatedsprite.cpp
+	src/renderer/animatedsprite.h
 	src/renderer/shaderprogram.cpp
 	src/renderer/shaderprogram.h
 	src/renderer/sprite.cpp

@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <chrono>
 
 #include "resources/resourcemanager.h"
 
@@ -65,12 +66,34 @@ int main(int argc, char** argv)
             return -1;
         }
 
-        std::vector<std::string> subTextureNames = { "block", "topBlock", "bottomBlock", "leftBlock", "rightBlock", "topLeftBlock", "topRightBlock", "bottomLeftBlock", "bottomRightBlock" };
+        std::vector<std::string> subTextureNames = { 
+            "block", 
+            "topBlock", 
+            "bottomBlock", 
+            "leftBlock", 
+            "rightBlock", 
+            "topLeftBlock", 
+            "topRightBlock", 
+            "bottomLeftBlock", 
+            "bottomRightBlock" 
+        };
 
-        auto texture = manager.loadTexture("DefaultTexture", "res/textures/map_16x16.png");
         auto textureAtlas = manager.loadTextureAtlas("DefaultTextureAtlas", "res/textures/map_16x16.png", std::move(subTextureNames), 8, 8);
-        auto sprite = manager.loadSprite("Sprite", "DefaultTextureAtlas", "SpriteShader", 100, 100, "block");
-        sprite->setPosition(glm::vec2(100, 100));
+        auto animatedSprite = manager.loadAnimatedSprite("AnimatedSprite", "DefaultTextureAtlas", "SpriteShader", 100, 100, "block");
+        std::vector<std::pair<std::string, uint64_t>> state1;
+        state1.emplace_back(std::make_pair<std::string, uint64_t>("block", 1000000000));
+        state1.emplace_back(std::make_pair<std::string, uint64_t>("topBlock", 1000000000));
+        state1.emplace_back(std::make_pair<std::string, uint64_t>("bottomBlock", 1000000000));
+        std::vector<std::pair<std::string, uint64_t>> state2;
+        state2.emplace_back(std::make_pair<std::string, uint64_t>("block", 1000000000));
+        state2.emplace_back(std::make_pair<std::string, uint64_t>("leftBlock", 1000000000));
+        state2.emplace_back(std::make_pair<std::string, uint64_t>("rightBlock", 1000000000));
+
+        animatedSprite->insertState("state1", state1);
+        animatedSprite->insertState("state2", state2);
+
+        animatedSprite->setState("state2");
+        animatedSprite->setPosition(glm::vec2(300, 300));
 
         glm::mat4 projectionMatrix = glm::ortho(0.0f, static_cast<float>(windowSize.x), 0.0f, static_cast<float>(windowSize.y), -100.0f, 100.0f);
 
@@ -78,14 +101,21 @@ int main(int argc, char** argv)
         spriteShaderProgram->setInt("tex", 0);
         spriteShaderProgram->setMatrix4("projectionMat", projectionMatrix);
 
+        auto lastTime = std::chrono::high_resolution_clock::now();
+
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))
         {
+            auto currentTime = std::chrono::high_resolution_clock::now();
+            uint64_t duration = std::chrono::duration_cast<std::chrono::nanoseconds>(currentTime - lastTime).count();
+            lastTime = currentTime;
+            animatedSprite->update(duration);
+
             /* Render here */
             glClear(GL_COLOR_BUFFER_BIT);
 
             /* Drawing */
-            sprite->render();
+            animatedSprite->render();
 
             /* Swap front and back buffers */
             glfwSwapBuffers(window);
