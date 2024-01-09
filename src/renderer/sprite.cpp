@@ -14,17 +14,20 @@ namespace Renderer
 		, size(size)
 		, rotationAngle(rotationAngle)
 		, vao(0)
-		, textureVbo(0)
-		, vertexVbo(0)
+		, textureVbo()
+		, vertexVbo()
+		, ebo()
 	{
 		const GLfloat vertexCoord[] = {
 			0.0f, 0.0f,
 			0.0f, 1.0f,
 			1.0f, 1.0f,
-
-			1.0f, 1.0f,
 			1.0f, 0.0f,
-			0.0f, 0.0f
+		};
+
+		const GLuint indices[] = {
+			0, 1, 2,
+			2, 3, 0
 		};
 
 		auto& subTexture = this->texture->getSubTexture(initialSubTexture);
@@ -33,35 +36,29 @@ namespace Renderer
 			subTexture.leftBottomUV.x, subTexture.leftBottomUV.y,
 			subTexture.leftBottomUV.x, subTexture.rightTopUV.y,
 			subTexture.rightTopUV.x, subTexture.rightTopUV.y,
-
-			subTexture.rightTopUV.x, subTexture.rightTopUV.y,
 			subTexture.rightTopUV.x, subTexture.leftBottomUV.y,
-			subTexture.leftBottomUV.x, subTexture.leftBottomUV.y
 		};
 
 		glGenVertexArrays(1, &vao);
 		glBindVertexArray(vao);
 
-		glGenBuffers(1, &vertexVbo);
-		glBindBuffer(GL_ARRAY_BUFFER, vertexVbo);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vertexCoord), &vertexCoord, GL_STATIC_DRAW);
+		vertexVbo.init(vertexCoord, static_cast<unsigned long long int>(2) * 4 * sizeof(GLfloat));
 		glEnableVertexAttribArray(0);
 		glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
 
-		glGenBuffers(1, &textureVbo);
-		glBindBuffer(GL_ARRAY_BUFFER, textureVbo);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(textureCoord), &textureCoord, GL_STATIC_DRAW);
+		textureVbo.init(textureCoord, static_cast<unsigned long long int>(2) * 4 * sizeof(GLfloat));
 		glEnableVertexAttribArray(1);
 		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
 
+		ebo.init(indices, static_cast<unsigned long long int>(6) * sizeof(GLuint));
+
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		glBindVertexArray(0);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	}
 
 	Sprite::~Sprite()
 	{
-		glDeleteBuffers(1, &vertexVbo);
-		glDeleteBuffers(1, &textureVbo);
 		glDeleteVertexArrays(1, &vao);
 	}
 
@@ -81,8 +78,8 @@ namespace Renderer
 		shaderProgram->setMatrix4("modelMat", modelMat);
 		glActiveTexture(GL_TEXTURE0);
 		texture->bind();
-		glDrawArrays(GL_TRIANGLES, 0, 6);
 
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 		glBindVertexArray(0);
 	} 
 

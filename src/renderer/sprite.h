@@ -1,14 +1,15 @@
 #pragma once
 
-#include <glad/glad.h>
+#include "ebo.h"
+#include "shaderprogram.h"
+#include "texture2d.h"
+#include "vbo.h"
+
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/mat4x4.hpp>
 #include <glm/vec2.hpp>
 
 #include <memory>
-
-#include "texture2d.h"
-#include "shaderprogram.h"
 
 /**
 namespace Renderer
@@ -88,9 +89,11 @@ namespace Renderer
 		/// VAO
 		GLuint vao; 
 		/// Вертексный VBO
-		GLuint vertexVbo; 
+		VBO vertexVbo; 
 		/// Текстурный VBO
-		GLuint textureVbo; 
+		VBO textureVbo;
+		/// EBO
+		EBO ebo;
 
 	};
 }

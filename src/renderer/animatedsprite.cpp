@@ -28,15 +28,11 @@ namespace Renderer
 				subTexture.leftBottomUV.x, subTexture.leftBottomUV.y,
 				subTexture.leftBottomUV.x, subTexture.rightTopUV.y,
 				subTexture.rightTopUV.x, subTexture.rightTopUV.y,
-
-				subTexture.rightTopUV.x, subTexture.rightTopUV.y,
-				subTexture.rightTopUV.x, subTexture.leftBottomUV.y,
-				subTexture.leftBottomUV.x, subTexture.leftBottomUV.y
+				subTexture.rightTopUV.x, subTexture.leftBottomUV.y
 			};
 
-			glBindBuffer(GL_ARRAY_BUFFER, textureVbo);
-			glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(textureCoord), &textureCoord);
-			glBindBuffer(GL_ARRAY_BUFFER, 0);
+			textureVbo.update(textureCoord, static_cast<unsigned long long>(2) * 4 * sizeof(GLfloat));
+			textureVbo.unbind();
 
 			dirty = false;
 		}
