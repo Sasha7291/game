@@ -16,5 +16,6 @@ var searchData=
   ['cur_5fy_13',['cur_y',['../structstbi____gif.html#ab8889ac8a3518775c72c075954684a0b',1,'stbi__gif']]],
   ['currentanimationdurations_14',['currentAnimationDurations',['../class_renderer_1_1_animated_sprite.html#aca6cad937cfbdaadbb64c1faa2c76c6e',1,'Renderer::AnimatedSprite']]],
   ['currentanimationtime_15',['currentAnimationTime',['../class_renderer_1_1_animated_sprite.html#aeda5748973d98b96aba713024061f09b',1,'Renderer::AnimatedSprite']]],
-  ['currentframe_16',['currentFrame',['../class_renderer_1_1_animated_sprite.html#afc3472ad164ba456916f2ace1bd8fbd3',1,'Renderer::AnimatedSprite']]]
+  ['currentframe_16',['currentFrame',['../class_renderer_1_1_animated_sprite.html#afc3472ad164ba456916f2ace1bd8fbd3',1,'Renderer::AnimatedSprite']]],
+  ['currentgamestate_17',['currentGameState',['../class_game.html#a6f5d099f12007d24b9c0efa6996ca819',1,'Game']]]
 ];

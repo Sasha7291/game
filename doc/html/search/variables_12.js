@@ -1,7 +1,10 @@
 var searchData=
 [
-  ['w_0',['w',['../structstbi____gif.html#aa6d5cf40a87ac221381596112c5b9db7',1,'stbi__gif']]],
-  ['w2_1',['w2',['../structstbi____jpeg.html#ad3e572acfe7eafe0aa3978ac2145acce',1,'stbi__jpeg']]],
-  ['w_5flores_2',['w_lores',['../structstbi____resample.html#a7e617ad8b74f995862833fa45c74e27f',1,'stbi__resample']]],
-  ['width_3',['width',['../class_renderer_1_1_texture2d.html#a7b7a17c48ee0f346686d523b4a1b9d9c',1,'Renderer::Texture2d']]]
+  ['texture_0',['texture',['../class_renderer_1_1_sprite.html#a869df1f07be5df7d580b254612095982',1,'Renderer::Sprite']]],
+  ['textures_1',['textures',['../class_resource_manager.html#ac5bc895306d8b28c7361610fd0e928f3',1,'ResourceManager']]],
+  ['texturevbo_2',['textureVbo',['../class_renderer_1_1_sprite.html#a7c2f3ed4e4c19271400915ffd52983ff',1,'Renderer::Sprite']]],
+  ['todo_3',['todo',['../structstbi____jpeg.html#a41181fd3c6b5bb6277a51fafcc8dbf47',1,'stbi__jpeg']]],
+  ['tq_4',['tq',['../structstbi____jpeg.html#a082cff2403c697d89ddf98a752d062cb',1,'stbi__jpeg']]],
+  ['transparent_5',['transparent',['../structstbi____gif.html#a7e82257a52c4eac0b615e228881e2174',1,'stbi__gif']]],
+  ['type_6',['type',['../structstbi____pngchunk.html#a92b7b7a50f90f9e9fb1a97effe1689a6',1,'stbi__pngchunk::type'],['../structstbi____pic__packet.html#ab88dc45f5b83d46016b5310cebec69ac',1,'stbi__pic_packet::type']]]
 ];

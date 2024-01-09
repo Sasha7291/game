@@ -9,8 +9,6 @@
 #include <vector>
 
 #include "../renderer/animatedsprite.h"
-#include "../renderer/shaderprogram.h"
-#include "../renderer/texture2d.h"
 
 /**
 @brief Класс менеджера ресурсов
@@ -21,14 +19,10 @@
 class ResourceManager
 {
 public:
-	/**
-	@brief Основной конструктор менеджера ресурсов
-	@details Создаёт менеджер ресурсов, сохраняет путь к
-			 ресурсам.
-	@param[in] path Путь к ресурсам
-	*/
-	explicit ResourceManager(const std::string& path);
-	~ResourceManager() = default;
+	ResourceManager() = delete;
+	ResourceManager(const ResourceManager&) = delete;
+	ResourceManager(ResourceManager&&) = delete;
+	~ResourceManager() = delete;
 
 	/**
 	@brief Загрузка анимированного спрайта
@@ -41,7 +35,7 @@ public:
 	@param[in] subTextureName Имя субтекстуры, устанавливаемой в анимированный спрайт
 	@return Указатель на созданный анимированный спрайт
 	*/
-	std::shared_ptr<Renderer::AnimatedSprite> loadAnimatedSprite(const std::string& spriteName,
+	static std::shared_ptr<Renderer::AnimatedSprite> loadAnimatedSprite(const std::string& spriteName,
 																 const std::string& textureName,
 																 const std::string& shaderName,
 																 const unsigned int width,
@@ -56,7 +50,7 @@ public:
 	@param[in] fragmentPath Путь к файлу фрагментного шейдера
 	@return Указатель на созданную шейдерную программу
 	*/
-	std::shared_ptr<Renderer::ShaderProgram> loadShaderProgram(const std::string& name, 
+	static std::shared_ptr<Renderer::ShaderProgram> loadShaderProgram(const std::string& name, 
 															   const std::string& vertexPath, 
 															   const std::string& fragmentPath);
 	/**
@@ -70,7 +64,7 @@ public:
 	@param[in] subTextureName Имя субтекстуры, устанавливаемой в спрайт
 	@return Указатель на созданный спрайт
 	*/
-	std::shared_ptr<Renderer::Sprite> loadSprite(const std::string& spriteName, 
+	static std::shared_ptr<Renderer::Sprite> loadSprite(const std::string& spriteName,
 												 const std::string& textureName, 
 												 const std::string& shaderName,
 												 const unsigned int width,
@@ -83,7 +77,7 @@ public:
 	@param[in] relativePath Относительный путь к текстуре 
 	@return Указатель на созданную структуру
 	*/
-	std::shared_ptr<Renderer::Texture2d> loadTexture(const std::string& name, const std::string& relativePath);
+	static std::shared_ptr<Renderer::Texture2d> loadTexture(const std::string& name, const std::string& relativePath);
 	/**
 	@brief Загрузка текстурного атласа
 	@details Загружает текстурный атлас и запоминает его имя
@@ -95,7 +89,7 @@ public:
 	@param[in] subTextureHeight Высота субтекстур
 	@return Указатель на созданный текстурный атлас
 	*/
-	std::shared_ptr<Renderer::Texture2d> loadTextureAtlas(const std::string& textureName,
+	static std::shared_ptr<Renderer::Texture2d> loadTextureAtlas(const std::string& textureName,
 														  const std::string& texturePath,
 														  const std::vector<std::string>& subTextures,
 														  const unsigned int subTextureWidth,
@@ -105,28 +99,32 @@ public:
 	@param[in] name Имя анимированного спрайта
 	@return Указатель на анимированный спрайт
 	*/
-	std::shared_ptr<Renderer::AnimatedSprite> getAnimatedSprite(const std::string& name) const;
+	static std::shared_ptr<Renderer::AnimatedSprite> getAnimatedSprite(const std::string& name);
 	/**
 	@brief Возвращает шейдерную программу по имени
 	@param[in] name Имя шейдера
 	@return Указатель на шейдерную программу
 	*/
-	std::shared_ptr<Renderer::ShaderProgram> getShaderProgram(const std::string& name) const;
+	static std::shared_ptr<Renderer::ShaderProgram> getShaderProgram(const std::string& name);
 	/**
 	@brief Возвращает спрайт по имени
 	@param[in] name Имя спрайта
 	@return Указатель на спрайт
 	*/
-	std::shared_ptr<Renderer::Sprite> getSprite(const std::string& name) const;
+	static std::shared_ptr<Renderer::Sprite> getSprite(const std::string& name);
 	/**
 	@brief Возвращает текстуру по имени
 	@param[in] name Имя текстуры
 	@return Указатель на текстуру
 	*/
-	std::shared_ptr<Renderer::Texture2d> getTexture(const std::string& name) const;
+	static std::shared_ptr<Renderer::Texture2d> getTexture(const std::string& name);
+	/**
+	@brief Устанавливает путь к ресурсам
+	@param[in] path Путь к ресурсам
+	*/
+	static void setExecutablePath(const std::string& path);
+	static void unloadAllResources();
 
-	ResourceManager(const ResourceManager&) = delete;
-	ResourceManager(ResourceManager&&) = delete;
 	ResourceManager& operator=(const ResourceManager&) = delete;
 	ResourceManager& operator=(ResourceManager&&) = delete;
 
@@ -136,7 +134,7 @@ private:
 	@param[in] relativePath Относительный путь до файла
 	@return Прочитанную строку
 	*/
-	std::string getFileText(const std::string& relativePath) const;
+	static std::string getFileText(const std::string& relativePath);
 
 	typedef std::map<const std::string, std::shared_ptr<Renderer::AnimatedSprite>> AnimatedSpriteMap;
 	typedef std::map<const std::string, std::shared_ptr<Renderer::ShaderProgram>> ShaderProgramMap;
@@ -144,14 +142,14 @@ private:
 	typedef std::map<const std::string, std::shared_ptr<Renderer::Texture2d>> TextureMap;
 	
 	/// Список имён анимированных спрайтов
-	AnimatedSpriteMap animatedSprites; 
+	static AnimatedSpriteMap animatedSprites; 
 	/// Список имён шейдерных программ
-	ShaderProgramMap shaderPrograms;
+	static ShaderProgramMap shaderPrograms;
 	/// Список имён спрайтов
-	SpriteMap sprites; 
+	static SpriteMap sprites;
 	/// Список имён текстур
-	TextureMap textures; 
+	static TextureMap textures;
 
 	/// Путь к ресурсам
-	std::string path; 
+	static std::string resPath;
 };

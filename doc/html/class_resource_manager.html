@@ -73,9 +73,10 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Открытые члены</a> &#124;
+<a href="#pub-static-methods">Открытые статические члены</a> &#124;
 <a href="#pri-types">Закрытые типы</a> &#124;
-<a href="#pri-methods">Закрытые члены</a> &#124;
-<a href="#pri-attribs">Закрытые данные</a> &#124;
+<a href="#pri-static-methods">Закрытые статические члены</a> &#124;
+<a href="#pri-static-attribs">Закрытые статические данные</a> &#124;
 <a href="class_resource_manager-members.html">Полный список членов класса</a>  </div>
   <div class="headertitle"><div class="title">Класс ResourceManager</div></div>
 </div><!--header-->
@@ -88,46 +89,53 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Открытые члены</h2></td></tr>
-<tr class="memitem:a53a45442f4fadbe53e571b4a1a38682f" id="r_a53a45442f4fadbe53e571b4a1a38682f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a53a45442f4fadbe53e571b4a1a38682f">ResourceManager</a> (const std::string &amp;<a class="el" href="#a43f424d77bd3b1689cb25ef70223da59">path</a>)</td></tr>
-<tr class="memdesc:a53a45442f4fadbe53e571b4a1a38682f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Основной конструктор менеджера ресурсов  <br /></td></tr>
-<tr class="separator:a53a45442f4fadbe53e571b4a1a38682f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a611e031031ad668b7c462a463577b65c" id="r_a611e031031ad668b7c462a463577b65c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a611e031031ad668b7c462a463577b65c">~ResourceManager</a> ()=default</td></tr>
-<tr class="separator:a611e031031ad668b7c462a463577b65c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc3aaf6cb36e419dee1b9ede50532317" id="r_afc3aaf6cb36e419dee1b9ede50532317"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_renderer_1_1_animated_sprite.html">Renderer::AnimatedSprite</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc3aaf6cb36e419dee1b9ede50532317">loadAnimatedSprite</a> (const std::string &amp;spriteName, const std::string &amp;textureName, const std::string &amp;shaderName, const unsigned int width, const unsigned int height, const std::string &amp;subTextureName=&quot;DefaultSubTexture&quot;)</td></tr>
-<tr class="memdesc:afc3aaf6cb36e419dee1b9ede50532317"><td class="mdescLeft">&#160;</td><td class="mdescRight">Загрузка анимированного спрайта  <br /></td></tr>
-<tr class="separator:afc3aaf6cb36e419dee1b9ede50532317"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa4b4efc925705ccc0ba7c80172fcdaf3" id="r_aa4b4efc925705ccc0ba7c80172fcdaf3"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_renderer_1_1_shader_program.html">Renderer::ShaderProgram</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa4b4efc925705ccc0ba7c80172fcdaf3">loadShaderProgram</a> (const std::string &amp;name, const std::string &amp;vertexPath, const std::string &amp;fragmentPath)</td></tr>
-<tr class="memdesc:aa4b4efc925705ccc0ba7c80172fcdaf3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Загрузка шейдерной программы  <br /></td></tr>
-<tr class="separator:aa4b4efc925705ccc0ba7c80172fcdaf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af88a4523fa3c72a3bc51e4ebb774ca8d" id="r_af88a4523fa3c72a3bc51e4ebb774ca8d"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_renderer_1_1_sprite.html">Renderer::Sprite</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af88a4523fa3c72a3bc51e4ebb774ca8d">loadSprite</a> (const std::string &amp;spriteName, const std::string &amp;textureName, const std::string &amp;shaderName, const unsigned int width, const unsigned int height, const std::string &amp;subTextureName=&quot;DefaultSubTexture&quot;)</td></tr>
-<tr class="memdesc:af88a4523fa3c72a3bc51e4ebb774ca8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Загрузка спрайта  <br /></td></tr>
-<tr class="separator:af88a4523fa3c72a3bc51e4ebb774ca8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af87a0869f3af13904ec59a32f3e0a97a" id="r_af87a0869f3af13904ec59a32f3e0a97a"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_renderer_1_1_texture2d.html">Renderer::Texture2d</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af87a0869f3af13904ec59a32f3e0a97a">loadTexture</a> (const std::string &amp;name, const std::string &amp;relativePath)</td></tr>
-<tr class="memdesc:af87a0869f3af13904ec59a32f3e0a97a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Загрузка текстуры  <br /></td></tr>
-<tr class="separator:af87a0869f3af13904ec59a32f3e0a97a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8730063ef062b5974697dc4c8d41a594" id="r_a8730063ef062b5974697dc4c8d41a594"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_renderer_1_1_texture2d.html">Renderer::Texture2d</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8730063ef062b5974697dc4c8d41a594">loadTextureAtlas</a> (const std::string &amp;textureName, const std::string &amp;texturePath, const std::vector&lt; std::string &gt; &amp;subTextures, const unsigned int subTextureWidth, const unsigned int subTextureHeight)</td></tr>
-<tr class="memdesc:a8730063ef062b5974697dc4c8d41a594"><td class="mdescLeft">&#160;</td><td class="mdescRight">Загрузка текстурного атласа  <br /></td></tr>
-<tr class="separator:a8730063ef062b5974697dc4c8d41a594"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a491de656229eb068ff7d5bcf3aa25f3f" id="r_a491de656229eb068ff7d5bcf3aa25f3f"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_renderer_1_1_animated_sprite.html">Renderer::AnimatedSprite</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a491de656229eb068ff7d5bcf3aa25f3f">getAnimatedSprite</a> (const std::string &amp;name) const</td></tr>
-<tr class="memdesc:a491de656229eb068ff7d5bcf3aa25f3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает анимированный спрайт по имени  <br /></td></tr>
-<tr class="separator:a491de656229eb068ff7d5bcf3aa25f3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b51028a71c55b796d7762c20dbec923" id="r_a6b51028a71c55b796d7762c20dbec923"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_renderer_1_1_shader_program.html">Renderer::ShaderProgram</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b51028a71c55b796d7762c20dbec923">getShaderProgram</a> (const std::string &amp;name) const</td></tr>
-<tr class="memdesc:a6b51028a71c55b796d7762c20dbec923"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает шейдерную программу по имени  <br /></td></tr>
-<tr class="separator:a6b51028a71c55b796d7762c20dbec923"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c70039fba9d0238dab40955577de1bd" id="r_a5c70039fba9d0238dab40955577de1bd"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_renderer_1_1_sprite.html">Renderer::Sprite</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c70039fba9d0238dab40955577de1bd">getSprite</a> (const std::string &amp;name) const</td></tr>
-<tr class="memdesc:a5c70039fba9d0238dab40955577de1bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает спрайт по имени  <br /></td></tr>
-<tr class="separator:a5c70039fba9d0238dab40955577de1bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02562a57954e4c94d1c8730eb49d94b9" id="r_a02562a57954e4c94d1c8730eb49d94b9"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_renderer_1_1_texture2d.html">Renderer::Texture2d</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02562a57954e4c94d1c8730eb49d94b9">getTexture</a> (const std::string &amp;name) const</td></tr>
-<tr class="memdesc:a02562a57954e4c94d1c8730eb49d94b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает текстуру по имени  <br /></td></tr>
-<tr class="separator:a02562a57954e4c94d1c8730eb49d94b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef25bb48c1ff96b8179c9f9cbb547831" id="r_aef25bb48c1ff96b8179c9f9cbb547831"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aef25bb48c1ff96b8179c9f9cbb547831">ResourceManager</a> ()=delete</td></tr>
+<tr class="separator:aef25bb48c1ff96b8179c9f9cbb547831"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab69f63d44bed2b736ac816d9a2bf84c1" id="r_ab69f63d44bed2b736ac816d9a2bf84c1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab69f63d44bed2b736ac816d9a2bf84c1">ResourceManager</a> (const <a class="el" href="class_resource_manager.html">ResourceManager</a> &amp;)=delete</td></tr>
 <tr class="separator:ab69f63d44bed2b736ac816d9a2bf84c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2112fd194e0d1b9fa0b5fca2474099e5" id="r_a2112fd194e0d1b9fa0b5fca2474099e5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2112fd194e0d1b9fa0b5fca2474099e5">ResourceManager</a> (<a class="el" href="class_resource_manager.html">ResourceManager</a> &amp;&amp;)=delete</td></tr>
 <tr class="separator:a2112fd194e0d1b9fa0b5fca2474099e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58e4471be44450a9d9c8a9a695473b4d" id="r_a58e4471be44450a9d9c8a9a695473b4d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a58e4471be44450a9d9c8a9a695473b4d">~ResourceManager</a> ()=delete</td></tr>
+<tr class="separator:a58e4471be44450a9d9c8a9a695473b4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac213fb8bed90e40d1ba8018563f9e4b0" id="r_ac213fb8bed90e40d1ba8018563f9e4b0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_resource_manager.html">ResourceManager</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac213fb8bed90e40d1ba8018563f9e4b0">operator=</a> (const <a class="el" href="class_resource_manager.html">ResourceManager</a> &amp;)=delete</td></tr>
 <tr class="separator:ac213fb8bed90e40d1ba8018563f9e4b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60d8524043be673959b061a3c04f2a02" id="r_a60d8524043be673959b061a3c04f2a02"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_resource_manager.html">ResourceManager</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a60d8524043be673959b061a3c04f2a02">operator=</a> (<a class="el" href="class_resource_manager.html">ResourceManager</a> &amp;&amp;)=delete</td></tr>
 <tr class="separator:a60d8524043be673959b061a3c04f2a02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Открытые статические члены</h2></td></tr>
+<tr class="memitem:afc3aaf6cb36e419dee1b9ede50532317" id="r_afc3aaf6cb36e419dee1b9ede50532317"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="class_renderer_1_1_animated_sprite.html">Renderer::AnimatedSprite</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc3aaf6cb36e419dee1b9ede50532317">loadAnimatedSprite</a> (const std::string &amp;spriteName, const std::string &amp;textureName, const std::string &amp;shaderName, const unsigned int width, const unsigned int height, const std::string &amp;subTextureName=&quot;DefaultSubTexture&quot;)</td></tr>
+<tr class="memdesc:afc3aaf6cb36e419dee1b9ede50532317"><td class="mdescLeft">&#160;</td><td class="mdescRight">Загрузка анимированного спрайта  <br /></td></tr>
+<tr class="separator:afc3aaf6cb36e419dee1b9ede50532317"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4b4efc925705ccc0ba7c80172fcdaf3" id="r_aa4b4efc925705ccc0ba7c80172fcdaf3"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="class_renderer_1_1_shader_program.html">Renderer::ShaderProgram</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa4b4efc925705ccc0ba7c80172fcdaf3">loadShaderProgram</a> (const std::string &amp;name, const std::string &amp;vertexPath, const std::string &amp;fragmentPath)</td></tr>
+<tr class="memdesc:aa4b4efc925705ccc0ba7c80172fcdaf3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Загрузка шейдерной программы  <br /></td></tr>
+<tr class="separator:aa4b4efc925705ccc0ba7c80172fcdaf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af88a4523fa3c72a3bc51e4ebb774ca8d" id="r_af88a4523fa3c72a3bc51e4ebb774ca8d"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="class_renderer_1_1_sprite.html">Renderer::Sprite</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af88a4523fa3c72a3bc51e4ebb774ca8d">loadSprite</a> (const std::string &amp;spriteName, const std::string &amp;textureName, const std::string &amp;shaderName, const unsigned int width, const unsigned int height, const std::string &amp;subTextureName=&quot;DefaultSubTexture&quot;)</td></tr>
+<tr class="memdesc:af88a4523fa3c72a3bc51e4ebb774ca8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Загрузка спрайта  <br /></td></tr>
+<tr class="separator:af88a4523fa3c72a3bc51e4ebb774ca8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af87a0869f3af13904ec59a32f3e0a97a" id="r_af87a0869f3af13904ec59a32f3e0a97a"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="class_renderer_1_1_texture2d.html">Renderer::Texture2d</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af87a0869f3af13904ec59a32f3e0a97a">loadTexture</a> (const std::string &amp;name, const std::string &amp;relativePath)</td></tr>
+<tr class="memdesc:af87a0869f3af13904ec59a32f3e0a97a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Загрузка текстуры  <br /></td></tr>
+<tr class="separator:af87a0869f3af13904ec59a32f3e0a97a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8730063ef062b5974697dc4c8d41a594" id="r_a8730063ef062b5974697dc4c8d41a594"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="class_renderer_1_1_texture2d.html">Renderer::Texture2d</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8730063ef062b5974697dc4c8d41a594">loadTextureAtlas</a> (const std::string &amp;textureName, const std::string &amp;texturePath, const std::vector&lt; std::string &gt; &amp;subTextures, const unsigned int subTextureWidth, const unsigned int subTextureHeight)</td></tr>
+<tr class="memdesc:a8730063ef062b5974697dc4c8d41a594"><td class="mdescLeft">&#160;</td><td class="mdescRight">Загрузка текстурного атласа  <br /></td></tr>
+<tr class="separator:a8730063ef062b5974697dc4c8d41a594"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7956ba65fefbbd37bb6473116e265cd7" id="r_a7956ba65fefbbd37bb6473116e265cd7"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="class_renderer_1_1_animated_sprite.html">Renderer::AnimatedSprite</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7956ba65fefbbd37bb6473116e265cd7">getAnimatedSprite</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:a7956ba65fefbbd37bb6473116e265cd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает анимированный спрайт по имени  <br /></td></tr>
+<tr class="separator:a7956ba65fefbbd37bb6473116e265cd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae409de97b249fc0c23fd0de9516d04a6" id="r_ae409de97b249fc0c23fd0de9516d04a6"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="class_renderer_1_1_shader_program.html">Renderer::ShaderProgram</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae409de97b249fc0c23fd0de9516d04a6">getShaderProgram</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:ae409de97b249fc0c23fd0de9516d04a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает шейдерную программу по имени  <br /></td></tr>
+<tr class="separator:ae409de97b249fc0c23fd0de9516d04a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac689d5ccccb4156a9ea6a384d31e96a7" id="r_ac689d5ccccb4156a9ea6a384d31e96a7"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="class_renderer_1_1_sprite.html">Renderer::Sprite</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac689d5ccccb4156a9ea6a384d31e96a7">getSprite</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:ac689d5ccccb4156a9ea6a384d31e96a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает спрайт по имени  <br /></td></tr>
+<tr class="separator:ac689d5ccccb4156a9ea6a384d31e96a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83e644392fd16a1d01fe91adddb9b28b" id="r_a83e644392fd16a1d01fe91adddb9b28b"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="class_renderer_1_1_texture2d.html">Renderer::Texture2d</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83e644392fd16a1d01fe91adddb9b28b">getTexture</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:a83e644392fd16a1d01fe91adddb9b28b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает текстуру по имени  <br /></td></tr>
+<tr class="separator:a83e644392fd16a1d01fe91adddb9b28b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5072afb919676b72c4eb6c0be8117b20" id="r_a5072afb919676b72c4eb6c0be8117b20"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5072afb919676b72c4eb6c0be8117b20">setExecutablePath</a> (const std::string &amp;path)</td></tr>
+<tr class="memdesc:a5072afb919676b72c4eb6c0be8117b20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает путь к ресурсам  <br /></td></tr>
+<tr class="separator:a5072afb919676b72c4eb6c0be8117b20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8e6c416a491f6fcc78ed682313feb4a" id="r_ac8e6c416a491f6fcc78ed682313feb4a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac8e6c416a491f6fcc78ed682313feb4a">unloadAllResources</a> ()</td></tr>
+<tr class="separator:ac8e6c416a491f6fcc78ed682313feb4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-types" name="pri-types"></a>
 Закрытые типы</h2></td></tr>
@@ -140,29 +148,29 @@ $(function() {
 <tr class="memitem:a63a3b132911ee7b882cea6a41277c231" id="r_a63a3b132911ee7b882cea6a41277c231"><td class="memItemLeft" align="right" valign="top">typedef std::map&lt; const std::string, std::shared_ptr&lt; <a class="el" href="class_renderer_1_1_texture2d.html">Renderer::Texture2d</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63a3b132911ee7b882cea6a41277c231">TextureMap</a></td></tr>
 <tr class="separator:a63a3b132911ee7b882cea6a41277c231"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Закрытые члены</h2></td></tr>
-<tr class="memitem:a344ee1a627e20a72de7feea37db4360b" id="r_a344ee1a627e20a72de7feea37db4360b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a344ee1a627e20a72de7feea37db4360b">getFileText</a> (const std::string &amp;relativePath) const</td></tr>
-<tr class="memdesc:a344ee1a627e20a72de7feea37db4360b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Читает файл  <br /></td></tr>
-<tr class="separator:a344ee1a627e20a72de7feea37db4360b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+Закрытые статические члены</h2></td></tr>
+<tr class="memitem:a04c7a08b82beedc849420901595ee53e" id="r_a04c7a08b82beedc849420901595ee53e"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04c7a08b82beedc849420901595ee53e">getFileText</a> (const std::string &amp;relativePath)</td></tr>
+<tr class="memdesc:a04c7a08b82beedc849420901595ee53e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Читает файл  <br /></td></tr>
+<tr class="separator:a04c7a08b82beedc849420901595ee53e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Закрытые данные</h2></td></tr>
-<tr class="memitem:a40273b7347a5ee644dadc14c8deaefaa" id="r_a40273b7347a5ee644dadc14c8deaefaa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#aa1ae653f9cef287bf3e3175725971cd2">AnimatedSpriteMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a40273b7347a5ee644dadc14c8deaefaa">animatedSprites</a></td></tr>
-<tr class="memdesc:a40273b7347a5ee644dadc14c8deaefaa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Список имён анимированных спрайтов  <br /></td></tr>
-<tr class="separator:a40273b7347a5ee644dadc14c8deaefaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0f84b0db2d84bd24ebdecb576b6a1c3" id="r_ac0f84b0db2d84bd24ebdecb576b6a1c3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a01f0c84c5bed179cb887ca6c932ce518">ShaderProgramMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac0f84b0db2d84bd24ebdecb576b6a1c3">shaderPrograms</a></td></tr>
-<tr class="memdesc:ac0f84b0db2d84bd24ebdecb576b6a1c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Список имён шейдерных программ  <br /></td></tr>
-<tr class="separator:ac0f84b0db2d84bd24ebdecb576b6a1c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad48cd0dd2bc34f5e80cd58670187fb77" id="r_ad48cd0dd2bc34f5e80cd58670187fb77"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a5e9e00574955a624e7f4270c16a2425c">SpriteMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad48cd0dd2bc34f5e80cd58670187fb77">sprites</a></td></tr>
-<tr class="memdesc:ad48cd0dd2bc34f5e80cd58670187fb77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Список имён спрайтов  <br /></td></tr>
-<tr class="separator:ad48cd0dd2bc34f5e80cd58670187fb77"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada085c3bc46313b875917d14502e5b16" id="r_ada085c3bc46313b875917d14502e5b16"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a63a3b132911ee7b882cea6a41277c231">TextureMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada085c3bc46313b875917d14502e5b16">textures</a></td></tr>
-<tr class="memdesc:ada085c3bc46313b875917d14502e5b16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Список имён текстур  <br /></td></tr>
-<tr class="separator:ada085c3bc46313b875917d14502e5b16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43f424d77bd3b1689cb25ef70223da59" id="r_a43f424d77bd3b1689cb25ef70223da59"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a43f424d77bd3b1689cb25ef70223da59">path</a></td></tr>
-<tr class="memdesc:a43f424d77bd3b1689cb25ef70223da59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Путь к ресурсам  <br /></td></tr>
-<tr class="separator:a43f424d77bd3b1689cb25ef70223da59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
+Закрытые статические данные</h2></td></tr>
+<tr class="memitem:a0c9978ecf5cd27bec6c7695892e494d2" id="r_a0c9978ecf5cd27bec6c7695892e494d2"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="#aa1ae653f9cef287bf3e3175725971cd2">AnimatedSpriteMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0c9978ecf5cd27bec6c7695892e494d2">animatedSprites</a></td></tr>
+<tr class="memdesc:a0c9978ecf5cd27bec6c7695892e494d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Список имён анимированных спрайтов  <br /></td></tr>
+<tr class="separator:a0c9978ecf5cd27bec6c7695892e494d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a633fcfe11c8eada2c8b607b147771d66" id="r_a633fcfe11c8eada2c8b607b147771d66"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="#a01f0c84c5bed179cb887ca6c932ce518">ShaderProgramMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a633fcfe11c8eada2c8b607b147771d66">shaderPrograms</a></td></tr>
+<tr class="memdesc:a633fcfe11c8eada2c8b607b147771d66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Список имён шейдерных программ  <br /></td></tr>
+<tr class="separator:a633fcfe11c8eada2c8b607b147771d66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9eae904bffadde28f315cc719315b758" id="r_a9eae904bffadde28f315cc719315b758"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="#a5e9e00574955a624e7f4270c16a2425c">SpriteMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9eae904bffadde28f315cc719315b758">sprites</a></td></tr>
+<tr class="memdesc:a9eae904bffadde28f315cc719315b758"><td class="mdescLeft">&#160;</td><td class="mdescRight">Список имён спрайтов  <br /></td></tr>
+<tr class="separator:a9eae904bffadde28f315cc719315b758"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5bc895306d8b28c7361610fd0e928f3" id="r_ac5bc895306d8b28c7361610fd0e928f3"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="#a63a3b132911ee7b882cea6a41277c231">TextureMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5bc895306d8b28c7361610fd0e928f3">textures</a></td></tr>
+<tr class="memdesc:ac5bc895306d8b28c7361610fd0e928f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Список имён текстур  <br /></td></tr>
+<tr class="separator:ac5bc895306d8b28c7361610fd0e928f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2f0ded4d2ff3204f06d21728c4eabf6" id="r_ab2f0ded4d2ff3204f06d21728c4eabf6"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2f0ded4d2ff3204f06d21728c4eabf6">resPath</a></td></tr>
+<tr class="memdesc:ab2f0ded4d2ff3204f06d21728c4eabf6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Путь к ресурсам  <br /></td></tr>
+<tr class="separator:ab2f0ded4d2ff3204f06d21728c4eabf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
 <div class="textblock"><p>Класс менеджера ресурсов </p>
@@ -257,8 +265,8 @@ $(function() {
 </div>
 </div>
 <h2 class="groupheader">Конструктор(ы)</h2>
-<a id="a53a45442f4fadbe53e571b4a1a38682f" name="a53a45442f4fadbe53e571b4a1a38682f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a53a45442f4fadbe53e571b4a1a38682f">&#9670;&#160;</a></span>ResourceManager() <span class="overload">[1/3]</span></h2>
+<a id="aef25bb48c1ff96b8179c9f9cbb547831" name="aef25bb48c1ff96b8179c9f9cbb547831"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef25bb48c1ff96b8179c9f9cbb547831">&#9670;&#160;</a></span>ResourceManager() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -269,46 +277,13 @@ $(function() {
         <tr>
           <td class="memname">ResourceManager::ResourceManager </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Основной конструктор менеджера ресурсов </p>
-<p>Создаёт менеджер ресурсов, сохраняет путь к ресурсам. </p><dl class="params"><dt>Аргументы</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">path</td><td>Путь к ресурсам </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a611e031031ad668b7c462a463577b65c" name="a611e031031ad668b7c462a463577b65c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a611e031031ad668b7c462a463577b65c">&#9670;&#160;</a></span>~ResourceManager()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">ResourceManager::~ResourceManager </td>
-          <td>(</td>
           <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -365,20 +340,53 @@ $(function() {
 
 </div>
 </div>
-<h2 class="groupheader">Методы</h2>
-<a id="a491de656229eb068ff7d5bcf3aa25f3f" name="a491de656229eb068ff7d5bcf3aa25f3f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a491de656229eb068ff7d5bcf3aa25f3f">&#9670;&#160;</a></span>getAnimatedSprite()</h2>
+<a id="a58e4471be44450a9d9c8a9a695473b4d" name="a58e4471be44450a9d9c8a9a695473b4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58e4471be44450a9d9c8a9a695473b4d">&#9670;&#160;</a></span>~ResourceManager()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ResourceManager::~ResourceManager </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Методы</h2>
+<a id="a7956ba65fefbbd37bb6473116e265cd7" name="a7956ba65fefbbd37bb6473116e265cd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7956ba65fefbbd37bb6473116e265cd7">&#9670;&#160;</a></span>getAnimatedSprite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">std::shared_ptr&lt; <a class="el" href="class_renderer_1_1_animated_sprite.html">Renderer::AnimatedSprite</a> &gt; ResourceManager::getAnimatedSprite </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
-          <td> const</td>
+          <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Возвращает анимированный спрайт по имени </p>
@@ -392,8 +400,8 @@ $(function() {
 
 </div>
 </div>
-<a id="a344ee1a627e20a72de7feea37db4360b" name="a344ee1a627e20a72de7feea37db4360b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a344ee1a627e20a72de7feea37db4360b">&#9670;&#160;</a></span>getFileText()</h2>
+<a id="a04c7a08b82beedc849420901595ee53e" name="a04c7a08b82beedc849420901595ee53e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04c7a08b82beedc849420901595ee53e">&#9670;&#160;</a></span>getFileText()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -405,12 +413,12 @@ $(function() {
           <td class="memname">std::string ResourceManager::getFileText </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>relativePath</em></span></td><td>)</td>
-          <td> const</td>
+          <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -426,19 +434,27 @@ $(function() {
 
 </div>
 </div>
-<a id="a6b51028a71c55b796d7762c20dbec923" name="a6b51028a71c55b796d7762c20dbec923"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6b51028a71c55b796d7762c20dbec923">&#9670;&#160;</a></span>getShaderProgram()</h2>
+<a id="ae409de97b249fc0c23fd0de9516d04a6" name="ae409de97b249fc0c23fd0de9516d04a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae409de97b249fc0c23fd0de9516d04a6">&#9670;&#160;</a></span>getShaderProgram()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">std::shared_ptr&lt; <a class="el" href="class_renderer_1_1_shader_program.html">Renderer::ShaderProgram</a> &gt; ResourceManager::getShaderProgram </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
-          <td> const</td>
+          <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Возвращает шейдерную программу по имени </p>
@@ -452,19 +468,27 @@ $(function() {
 
 </div>
 </div>
-<a id="a5c70039fba9d0238dab40955577de1bd" name="a5c70039fba9d0238dab40955577de1bd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5c70039fba9d0238dab40955577de1bd">&#9670;&#160;</a></span>getSprite()</h2>
+<a id="ac689d5ccccb4156a9ea6a384d31e96a7" name="ac689d5ccccb4156a9ea6a384d31e96a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac689d5ccccb4156a9ea6a384d31e96a7">&#9670;&#160;</a></span>getSprite()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">std::shared_ptr&lt; <a class="el" href="class_renderer_1_1_sprite.html">Renderer::Sprite</a> &gt; ResourceManager::getSprite </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
-          <td> const</td>
+          <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Возвращает спрайт по имени </p>
@@ -478,19 +502,27 @@ $(function() {
 
 </div>
 </div>
-<a id="a02562a57954e4c94d1c8730eb49d94b9" name="a02562a57954e4c94d1c8730eb49d94b9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a02562a57954e4c94d1c8730eb49d94b9">&#9670;&#160;</a></span>getTexture()</h2>
+<a id="a83e644392fd16a1d01fe91adddb9b28b" name="a83e644392fd16a1d01fe91adddb9b28b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83e644392fd16a1d01fe91adddb9b28b">&#9670;&#160;</a></span>getTexture()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">std::shared_ptr&lt; <a class="el" href="class_renderer_1_1_texture2d.html">Renderer::Texture2d</a> &gt; ResourceManager::getTexture </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
-          <td> const</td>
+          <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Возвращает текстуру по имени </p>
@@ -509,6 +541,9 @@ $(function() {
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">std::shared_ptr&lt; <a class="el" href="class_renderer_1_1_animated_sprite.html">Renderer::AnimatedSprite</a> &gt; ResourceManager::loadAnimatedSprite </td>
@@ -541,6 +576,11 @@ $(function() {
           <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>subTextureName</em><span class="paramdefsep"> = </span><span class="paramdefval">&quot;DefaultSubTexture&quot;</span></span>&#160;)</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Загрузка анимированного спрайта </p>
@@ -564,6 +604,9 @@ $(function() {
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">std::shared_ptr&lt; <a class="el" href="class_renderer_1_1_shader_program.html">Renderer::ShaderProgram</a> &gt; ResourceManager::loadShaderProgram </td>
@@ -581,6 +624,11 @@ $(function() {
           <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>fragmentPath</em></span>&#160;)</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Загрузка шейдерной программы </p>
@@ -601,6 +649,9 @@ $(function() {
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">std::shared_ptr&lt; <a class="el" href="class_renderer_1_1_sprite.html">Renderer::Sprite</a> &gt; ResourceManager::loadSprite </td>
@@ -633,6 +684,11 @@ $(function() {
           <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>subTextureName</em><span class="paramdefsep"> = </span><span class="paramdefval">&quot;DefaultSubTexture&quot;</span></span>&#160;)</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Загрузка спрайта </p>
@@ -656,6 +712,9 @@ $(function() {
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">std::shared_ptr&lt; <a class="el" href="class_renderer_1_1_texture2d.html">Renderer::Texture2d</a> &gt; ResourceManager::loadTexture </td>
@@ -668,6 +727,11 @@ $(function() {
           <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>relativePath</em></span>&#160;)</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Загрузка текстуры </p>
@@ -687,6 +751,9 @@ $(function() {
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">std::shared_ptr&lt; <a class="el" href="class_renderer_1_1_texture2d.html">Renderer::Texture2d</a> &gt; ResourceManager::loadTextureAtlas </td>
@@ -714,6 +781,11 @@ $(function() {
           <td class="paramtype">const unsigned int</td>          <td class="paramname"><span class="paramname"><em>subTextureHeight</em></span>&#160;)</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Загрузка текстурного атласа </p>
@@ -781,9 +853,8 @@ $(function() {
 
 </div>
 </div>
-<h2 class="groupheader">Данные класса</h2>
-<a id="a40273b7347a5ee644dadc14c8deaefaa" name="a40273b7347a5ee644dadc14c8deaefaa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a40273b7347a5ee644dadc14c8deaefaa">&#9670;&#160;</a></span>animatedSprites</h2>
+<a id="a5072afb919676b72c4eb6c0be8117b20" name="a5072afb919676b72c4eb6c0be8117b20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5072afb919676b72c4eb6c0be8117b20">&#9670;&#160;</a></span>setExecutablePath()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -792,12 +863,71 @@ $(function() {
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="#aa1ae653f9cef287bf3e3175725971cd2">AnimatedSpriteMap</a> ResourceManager::animatedSprites</td>
+          <td class="memname">void ResourceManager::setExecutablePath </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span></td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает путь к ресурсам </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">path</td><td>Путь к ресурсам </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac8e6c416a491f6fcc78ed682313feb4a" name="ac8e6c416a491f6fcc78ed682313feb4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8e6c416a491f6fcc78ed682313feb4a">&#9670;&#160;</a></span>unloadAllResources()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ResourceManager::unloadAllResources </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Данные класса</h2>
+<a id="a0c9978ecf5cd27bec6c7695892e494d2" name="a0c9978ecf5cd27bec6c7695892e494d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c9978ecf5cd27bec6c7695892e494d2">&#9670;&#160;</a></span>animatedSprites</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#aa1ae653f9cef287bf3e3175725971cd2">ResourceManager::AnimatedSpriteMap</a> ResourceManager::animatedSprites</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -806,8 +936,8 @@ $(function() {
 
 </div>
 </div>
-<a id="a43f424d77bd3b1689cb25ef70223da59" name="a43f424d77bd3b1689cb25ef70223da59"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a43f424d77bd3b1689cb25ef70223da59">&#9670;&#160;</a></span>path</h2>
+<a id="ab2f0ded4d2ff3204f06d21728c4eabf6" name="ab2f0ded4d2ff3204f06d21728c4eabf6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2f0ded4d2ff3204f06d21728c4eabf6">&#9670;&#160;</a></span>resPath</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -816,12 +946,12 @@ $(function() {
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string ResourceManager::path</td>
+          <td class="memname">std::string ResourceManager::resPath</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -830,8 +960,8 @@ $(function() {
 
 </div>
 </div>
-<a id="ac0f84b0db2d84bd24ebdecb576b6a1c3" name="ac0f84b0db2d84bd24ebdecb576b6a1c3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac0f84b0db2d84bd24ebdecb576b6a1c3">&#9670;&#160;</a></span>shaderPrograms</h2>
+<a id="a633fcfe11c8eada2c8b607b147771d66" name="a633fcfe11c8eada2c8b607b147771d66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a633fcfe11c8eada2c8b607b147771d66">&#9670;&#160;</a></span>shaderPrograms</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -840,12 +970,12 @@ $(function() {
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="#a01f0c84c5bed179cb887ca6c932ce518">ShaderProgramMap</a> ResourceManager::shaderPrograms</td>
+          <td class="memname"><a class="el" href="#a01f0c84c5bed179cb887ca6c932ce518">ResourceManager::ShaderProgramMap</a> ResourceManager::shaderPrograms</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -854,8 +984,8 @@ $(function() {
 
 </div>
 </div>
-<a id="ad48cd0dd2bc34f5e80cd58670187fb77" name="ad48cd0dd2bc34f5e80cd58670187fb77"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad48cd0dd2bc34f5e80cd58670187fb77">&#9670;&#160;</a></span>sprites</h2>
+<a id="a9eae904bffadde28f315cc719315b758" name="a9eae904bffadde28f315cc719315b758"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9eae904bffadde28f315cc719315b758">&#9670;&#160;</a></span>sprites</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -864,12 +994,12 @@ $(function() {
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="#a5e9e00574955a624e7f4270c16a2425c">SpriteMap</a> ResourceManager::sprites</td>
+          <td class="memname"><a class="el" href="#a5e9e00574955a624e7f4270c16a2425c">ResourceManager::SpriteMap</a> ResourceManager::sprites</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -878,8 +1008,8 @@ $(function() {
 
 </div>
 </div>
-<a id="ada085c3bc46313b875917d14502e5b16" name="ada085c3bc46313b875917d14502e5b16"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ada085c3bc46313b875917d14502e5b16">&#9670;&#160;</a></span>textures</h2>
+<a id="ac5bc895306d8b28c7361610fd0e928f3" name="ac5bc895306d8b28c7361610fd0e928f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5bc895306d8b28c7361610fd0e928f3">&#9670;&#160;</a></span>textures</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -888,12 +1018,12 @@ $(function() {
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="#a63a3b132911ee7b882cea6a41277c231">TextureMap</a> ResourceManager::textures</td>
+          <td class="memname"><a class="el" href="#a63a3b132911ee7b882cea6a41277c231">ResourceManager::TextureMap</a> ResourceManager::textures</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

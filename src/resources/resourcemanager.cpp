@@ -3,11 +3,11 @@
 #define STBI_ONLY_PNG
 #include "stb_image.h"
 
-ResourceManager::ResourceManager(const std::string& path)
-{
-	size_t found = path.find_last_of("/\\");
-	this->path = path.substr(0, found);
-}
+ResourceManager::AnimatedSpriteMap ResourceManager::animatedSprites;
+ResourceManager::ShaderProgramMap ResourceManager::shaderPrograms;
+ResourceManager::SpriteMap ResourceManager::sprites;
+ResourceManager::TextureMap ResourceManager::textures;
+std::string ResourceManager::resPath;
 
 std::shared_ptr<Renderer::AnimatedSprite> ResourceManager::loadAnimatedSprite(const std::string& spriteName, 
 																			  const std::string& textureName, 
@@ -102,11 +102,11 @@ std::shared_ptr<Renderer::Texture2d> ResourceManager::loadTexture(const std::str
 	int height = 0;
 
 	stbi_set_flip_vertically_on_load(true);
-	unsigned char* pixels = stbi_load(std::string(path + "/" + relativePath).c_str(), &width, &height, &nChannels, 0);
+	unsigned char* pixels = stbi_load(std::string(resPath + "/" + relativePath).c_str(), &width, &height, &nChannels, 0);
 
 	if (pixels == nullptr)
 	{
-		std::cerr << "ERROR::Image wasn't loaded: " << path + "/" + relativePath << std::endl;
+		std::cerr << "ERROR::Image wasn't loaded: " << resPath + "/" + relativePath << std::endl;
 		return nullptr;
 	}
 
@@ -156,7 +156,7 @@ std::shared_ptr<Renderer::Texture2d> ResourceManager::loadTextureAtlas(const std
 	return texture;
 }
 
-std::shared_ptr<Renderer::AnimatedSprite> ResourceManager::getAnimatedSprite(const std::string& name) const
+std::shared_ptr<Renderer::AnimatedSprite> ResourceManager::getAnimatedSprite(const std::string& name)
 {
 	AnimatedSpriteMap::const_iterator it = animatedSprites.find(name);
 
@@ -169,7 +169,7 @@ std::shared_ptr<Renderer::AnimatedSprite> ResourceManager::getAnimatedSprite(con
 	return it->second;
 }
 
-std::shared_ptr<Renderer::ShaderProgram> ResourceManager::getShaderProgram(const std::string& name) const
+std::shared_ptr<Renderer::ShaderProgram> ResourceManager::getShaderProgram(const std::string& name)
 {
 	ShaderProgramMap::const_iterator it = shaderPrograms.find(name);
 
@@ -182,7 +182,7 @@ std::shared_ptr<Renderer::ShaderProgram> ResourceManager::getShaderProgram(const
 	return it->second;
 }
 
-std::shared_ptr<Renderer::Sprite> ResourceManager::getSprite(const std::string& name) const
+std::shared_ptr<Renderer::Sprite> ResourceManager::getSprite(const std::string& name)
 {
 	SpriteMap::const_iterator it = sprites.find(name);
 
@@ -195,7 +195,7 @@ std::shared_ptr<Renderer::Sprite> ResourceManager::getSprite(const std::string& 
 	return it->second;
 }
 
-std::shared_ptr<Renderer::Texture2d> ResourceManager::getTexture(const std::string& name) const
+std::shared_ptr<Renderer::Texture2d> ResourceManager::getTexture(const std::string& name)
 {
 	TextureMap::const_iterator it = textures.find(name);
 
@@ -208,14 +208,28 @@ std::shared_ptr<Renderer::Texture2d> ResourceManager::getTexture(const std::stri
 	return it->second;
 }
 
-std::string ResourceManager::getFileText(const std::string& relativePath) const
+void ResourceManager::setExecutablePath(const std::string& path)
+{
+	size_t found = path.find_last_of("/\\");
+	resPath = path.substr(0, found);
+}
+
+void ResourceManager::unloadAllResources()
+{
+	animatedSprites.clear();
+	shaderPrograms.clear();
+	sprites.clear();
+	textures.clear();
+}
+
+std::string ResourceManager::getFileText(const std::string& relativePath)
 {
 	std::fstream f;
 
-	f.open(path + "/" + relativePath, std::ios::in | std::ios::binary);
+	f.open(resPath + "/" + relativePath, std::ios::in | std::ios::binary);
 	if (!f.is_open())
 	{
-		std::cerr << "ERROR::File wasn't opened: " << path + "/" + relativePath << std::endl;
+		std::cerr << "ERROR::File wasn't opened: " << resPath + "/" + relativePath << std::endl;
 		return std::string();
 	}
 

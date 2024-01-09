@@ -59,7 +59,7 @@ namespace Renderer
 		void setState(const std::string& name);
 		/**
 		@brief Обновление состояние спрайта
-		@param[in] delta Промежуток времени вызова обновления
+		@param[in] delta Частота обновления
 		*/
 		void update(const uint64_t delta);
 

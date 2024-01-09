@@ -18,8 +18,9 @@ var searchData=
   ['img_5fv_5fmax_15',['img_v_max',['../structstbi____jpeg.html#a3780a6adea2c793fb0166ab04e3ae126',1,'stbi__jpeg']]],
   ['img_5fx_16',['img_x',['../structstbi____context.html#a1ef0d00dcf3fbc9ea468995b1b53fbeb',1,'stbi__context']]],
   ['img_5fy_17',['img_y',['../structstbi____context.html#a5392767d41a587c3773d70ad2f8f33be',1,'stbi__context']]],
-  ['insertstate_18',['insertState',['../class_renderer_1_1_animated_sprite.html#add26a70e0886a6f57f3f1a6362b5b4cd',1,'Renderer::AnimatedSprite']]],
-  ['io_19',['io',['../structstbi____context.html#af29e836af996b4f948e4e89da2deb950',1,'stbi__context']]],
-  ['io_5fuser_5fdata_20',['io_user_data',['../structstbi____context.html#a1c42c824da190f71d058ef58fc7375fb',1,'stbi__context']]],
-  ['iscompiled_21',['isCompiled',['../class_renderer_1_1_shader_program.html#aaa4180d3dc3e64cfb0c3b2b4b4f16542',1,'Renderer::ShaderProgram']]]
+  ['init_18',['init',['../class_game.html#a8ff3a6838bad4ea9493c103f96d7bff3',1,'Game']]],
+  ['insertstate_19',['insertState',['../class_renderer_1_1_animated_sprite.html#add26a70e0886a6f57f3f1a6362b5b4cd',1,'Renderer::AnimatedSprite']]],
+  ['io_20',['io',['../structstbi____context.html#af29e836af996b4f948e4e89da2deb950',1,'stbi__context']]],
+  ['io_5fuser_5fdata_21',['io_user_data',['../structstbi____context.html#a1c42c824da190f71d058ef58fc7375fb',1,'stbi__context']]],
+  ['iscompiled_22',['isCompiled',['../class_renderer_1_1_shader_program.html#aaa4180d3dc3e64cfb0c3b2b4b4f16542',1,'Renderer::ShaderProgram']]]
 ];
