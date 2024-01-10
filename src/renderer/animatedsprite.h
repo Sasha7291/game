@@ -6,12 +6,12 @@
 #include <vector>
 
 /**
-namespace Renderer
-@brief Пространство имён Renderer
+namespace RenderEngine
+@brief Пространство имён RenderEngine
 @details Данное пространство имён содержит все классы,
 		  необходимые для рендеринга и отрисовки графики.
 */
-namespace Renderer
+namespace RenderEngine
 {
 	/**
 	@brief Класс анимированного спрайта

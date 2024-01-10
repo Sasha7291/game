@@ -13,7 +13,7 @@ public:
 		Right
 	};
 
-	explicit Tank(std::shared_ptr<Renderer::AnimatedSprite> sprite,
+	explicit Tank(std::shared_ptr<RenderEngine::AnimatedSprite> sprite,
 				  const float velocity,
 				  const glm::vec2& position);
 
@@ -24,7 +24,7 @@ public:
 
 private:
 	Orientation orientation;
-	std::shared_ptr<Renderer::AnimatedSprite> sprite;
+	std::shared_ptr<RenderEngine::AnimatedSprite> sprite;
 	glm::vec2 position;
 	glm::vec2 moveOffset;
 	float velocity;

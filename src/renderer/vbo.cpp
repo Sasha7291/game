@@ -1,6 +1,6 @@
 #include "vbo.h"
 
-namespace Renderer
+namespace RenderEngine
 {
 	VBO::VBO()
 		: id(0) {}

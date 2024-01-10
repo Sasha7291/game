@@ -1,6 +1,6 @@
 #include "tank.h"
 
-Tank::Tank(std::shared_ptr<Renderer::AnimatedSprite> sprite, const float velocity, const glm::vec2& position)
+Tank::Tank(std::shared_ptr<RenderEngine::AnimatedSprite> sprite, const float velocity, const glm::vec2& position)
 	: orientation(Orientation::Top)
 	, sprite(sprite)
 	, position(position)

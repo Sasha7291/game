@@ -1,9 +1,8 @@
 #pragma once
 
-#include "ebo.h"
+#include "renderer.h"
 #include "shaderprogram.h"
 #include "texture2d.h"
-#include "vao.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/mat4x4.hpp>
@@ -12,12 +11,12 @@
 #include <memory>
 
 /**
-namespace Renderer
-@brief Пространство имён Renderer
+namespace RenderEngine
+@brief Пространство имён RenderEngine
 @details Данное пространство имён содержит все классы,
 		  необходимые для рендеринга и отрисовки графики.
 */
-namespace Renderer 
+namespace RenderEngine 
 {
 	/**
 	@brief Класс спрайта

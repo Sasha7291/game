@@ -1,6 +1,6 @@
 #include "sprite.h"
 
-namespace Renderer
+namespace RenderEngine
 {
 	Sprite::Sprite(const std::shared_ptr<Texture2d> texture, 
 		    	   const std::string& initialSubTexture,
@@ -49,7 +49,7 @@ namespace Renderer
 		textureLayout.addElementFloat(2, false);
 		vao.addBuffer(textureVbo, textureLayout);
 
-		ebo.init(indices, static_cast<unsigned long long int>(6) * sizeof(GLuint));
+		ebo.init(indices, 6);
 
 		vao.unbind();
 		ebo.unbind();
@@ -70,14 +70,12 @@ namespace Renderer
 		modelMat = glm::translate(modelMat, glm::vec3(-0.5f * size, 1.0f));
 		modelMat = glm::scale(modelMat, glm::vec3(size, 1.0f));
 
-		vao.bind();
 		shaderProgram->setMatrix4("modelMat", modelMat);
 		glActiveTexture(GL_TEXTURE0);
 		texture->bind();
 
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
-		vao.bind();
-	} 
+		Renderer::draw(vao, ebo, *shaderProgram);
+	}
 
 	void Sprite::setPosition(const glm::vec2& position)
 	{

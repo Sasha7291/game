@@ -1,14 +1,18 @@
 #include "ebo.h"
 
-namespace Renderer
+namespace RenderEngine
 {
 	EBO::EBO()
-		: id(0) {}
+		: id(0)
+		, count(0) {}
 
-	EBO::EBO(EBO&& ebo)
+	EBO::EBO(EBO&& ebo) noexcept
 	{
 		id = ebo.id;
+		count = ebo.count;
+
 		ebo.id = 0;
+		ebo.count = 0;
 	}
 
 	EBO::~EBO()
@@ -21,11 +25,17 @@ namespace Renderer
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, id);
 	}
 
-	void EBO::init(const void* data, const unsigned int size)
+	unsigned int EBO::getCount() const
 	{
+		return count;
+	}
+
+	void EBO::init(const void* data, const unsigned int count)
+	{
+		this->count = count;
 		glGenBuffers(1, &id);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, id);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, size, data, GL_STATIC_DRAW);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, count * sizeof(GLuint), data, GL_STATIC_DRAW);
 	}
 
 	void EBO::unbind() const
@@ -36,7 +46,10 @@ namespace Renderer
 	EBO& EBO::operator=(EBO&& ebo) noexcept
 	{
 		id = ebo.id;
+		count = ebo.count;
+
 		ebo.id = 0;
+		ebo.count = 0;
 
 		return *this;
 	}

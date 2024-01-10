@@ -2,18 +2,19 @@
 
 #include <glad/glad.h>
 
-namespace Renderer
+namespace RenderEngine
 {
 	class EBO
 	{
 	public:
 		EBO();
 		EBO(const EBO&) = delete;
-		EBO(EBO&& ebo);
+		EBO(EBO&& ebo) noexcept;
 		~EBO();
 
 		void bind() const;
-		void init(const void* data, const unsigned int size);
+		unsigned int getCount() const;
+		void init(const void* data, const unsigned int count);
 		void unbind() const;
 
 		EBO& operator=(EBO&& ebo) noexcept;
@@ -21,6 +22,7 @@ namespace Renderer
 
 	private:
 		GLuint id;
+		unsigned int count;
 
 	};
 }

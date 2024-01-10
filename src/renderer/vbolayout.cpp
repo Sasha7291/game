@@ -1,6 +1,6 @@
 #include "vbolayout.h"
 
-namespace Renderer
+namespace RenderEngine
 {
 	VboLayout::VboLayout()
 		: stride(0)

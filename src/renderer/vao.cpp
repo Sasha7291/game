@@ -1,6 +1,6 @@
 #include "vao.h"
 
-namespace Renderer
+namespace RenderEngine
 {
 	VAO::VAO()
 		: id(0)

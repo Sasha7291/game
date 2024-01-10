@@ -48,11 +48,11 @@ int main(int argc, char** argv)
 	}
 	
     /* Information about OpenGL version */
-    std::cout << "Renderer: " << glGetString(GL_RENDERER) << std::endl;
-	std::cout << "OpenGL version: " << glGetString(GL_VERSION) << std::endl;
+    std::cout << "Renderer: " << RenderEngine::Renderer::getRenderStr() << std::endl;
+	std::cout << "OpenGL version: " << RenderEngine::Renderer::getVersionStr() << std::endl;
 	
     /* Set clear color */
-	glClearColor(0, 0, 0, 1);
+    RenderEngine::Renderer::setClearColor(0, 0, 0, 1);
 
     {
         ResourceManager::setExecutablePath(argv[0]);
@@ -70,7 +70,7 @@ int main(int argc, char** argv)
             game.update(duration);
 
             /* Render here */
-            glClear(GL_COLOR_BUFFER_BIT);
+            RenderEngine::Renderer::clear();
 
             /* Drawing */
             game.render();
@@ -94,7 +94,7 @@ void glfwWindowSizeCallback(GLFWwindow* win, int w, int h)
 {
     windowSize.x = w;
     windowSize.y = h;
-    glViewport(0, 0, windowSize.x, windowSize.y);
+    RenderEngine::Renderer::setViewport(0, 0, windowSize.x, windowSize.y);
 }
 
 /* Key pressing handler */

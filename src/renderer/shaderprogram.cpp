@@ -1,6 +1,6 @@
 #include "shaderprogram.h"
 
-namespace Renderer
+namespace RenderEngine
 {
     ShaderProgram::ShaderProgram(const std::string& vertexShader, const std::string& fragmentShader)
     {

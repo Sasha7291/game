@@ -13,6 +13,8 @@ add_executable(${PROJECT_NAME}
 	src/renderer/animatedsprite.h
 	src/renderer/ebo.cpp
 	src/renderer/ebo.h
+	src/renderer/renderer.cpp
+	src/renderer/renderer.h
 	src/renderer/shaderprogram.cpp
 	src/renderer/shaderprogram.h
 	src/renderer/sprite.cpp

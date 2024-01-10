@@ -3,7 +3,7 @@
 #include "vbo.h"
 #include "vbolayout.h"
 
-namespace Renderer
+namespace RenderEngine
 {
 	class VAO
 	{

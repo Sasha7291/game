@@ -35,7 +35,7 @@ public:
 	@param[in] subTextureName Имя субтекстуры, устанавливаемой в анимированный спрайт
 	@return Указатель на созданный анимированный спрайт
 	*/
-	static std::shared_ptr<Renderer::AnimatedSprite> loadAnimatedSprite(const std::string& spriteName,
+	static std::shared_ptr<RenderEngine::AnimatedSprite> loadAnimatedSprite(const std::string& spriteName,
 																 const std::string& textureName,
 																 const std::string& shaderName,
 																 const unsigned int width,
@@ -50,7 +50,7 @@ public:
 	@param[in] fragmentPath Путь к файлу фрагментного шейдера
 	@return Указатель на созданную шейдерную программу
 	*/
-	static std::shared_ptr<Renderer::ShaderProgram> loadShaderProgram(const std::string& name, 
+	static std::shared_ptr<RenderEngine::ShaderProgram> loadShaderProgram(const std::string& name, 
 															   const std::string& vertexPath, 
 															   const std::string& fragmentPath);
 	/**
@@ -64,7 +64,7 @@ public:
 	@param[in] subTextureName Имя субтекстуры, устанавливаемой в спрайт
 	@return Указатель на созданный спрайт
 	*/
-	static std::shared_ptr<Renderer::Sprite> loadSprite(const std::string& spriteName,
+	static std::shared_ptr<RenderEngine::Sprite> loadSprite(const std::string& spriteName,
 												 const std::string& textureName, 
 												 const std::string& shaderName,
 												 const unsigned int width,
@@ -77,7 +77,7 @@ public:
 	@param[in] relativePath Относительный путь к текстуре 
 	@return Указатель на созданную структуру
 	*/
-	static std::shared_ptr<Renderer::Texture2d> loadTexture(const std::string& name, const std::string& relativePath);
+	static std::shared_ptr<RenderEngine::Texture2d> loadTexture(const std::string& name, const std::string& relativePath);
 	/**
 	@brief Загрузка текстурного атласа
 	@details Загружает текстурный атлас и запоминает его имя
@@ -89,7 +89,7 @@ public:
 	@param[in] subTextureHeight Высота субтекстур
 	@return Указатель на созданный текстурный атлас
 	*/
-	static std::shared_ptr<Renderer::Texture2d> loadTextureAtlas(const std::string& textureName,
+	static std::shared_ptr<RenderEngine::Texture2d> loadTextureAtlas(const std::string& textureName,
 														  const std::string& texturePath,
 														  const std::vector<std::string>& subTextures,
 														  const unsigned int subTextureWidth,
@@ -99,25 +99,25 @@ public:
 	@param[in] name Имя анимированного спрайта
 	@return Указатель на анимированный спрайт
 	*/
-	static std::shared_ptr<Renderer::AnimatedSprite> getAnimatedSprite(const std::string& name);
+	static std::shared_ptr<RenderEngine::AnimatedSprite> getAnimatedSprite(const std::string& name);
 	/**
 	@brief Возвращает шейдерную программу по имени
 	@param[in] name Имя шейдера
 	@return Указатель на шейдерную программу
 	*/
-	static std::shared_ptr<Renderer::ShaderProgram> getShaderProgram(const std::string& name);
+	static std::shared_ptr<RenderEngine::ShaderProgram> getShaderProgram(const std::string& name);
 	/**
 	@brief Возвращает спрайт по имени
 	@param[in] name Имя спрайта
 	@return Указатель на спрайт
 	*/
-	static std::shared_ptr<Renderer::Sprite> getSprite(const std::string& name);
+	static std::shared_ptr<RenderEngine::Sprite> getSprite(const std::string& name);
 	/**
 	@brief Возвращает текстуру по имени
 	@param[in] name Имя текстуры
 	@return Указатель на текстуру
 	*/
-	static std::shared_ptr<Renderer::Texture2d> getTexture(const std::string& name);
+	static std::shared_ptr<RenderEngine::Texture2d> getTexture(const std::string& name);
 	/**
 	@brief Устанавливает путь к ресурсам
 	@param[in] path Путь к ресурсам
@@ -136,10 +136,10 @@ private:
 	*/
 	static std::string getFileText(const std::string& relativePath);
 
-	typedef std::map<const std::string, std::shared_ptr<Renderer::AnimatedSprite>> AnimatedSpriteMap;
-	typedef std::map<const std::string, std::shared_ptr<Renderer::ShaderProgram>> ShaderProgramMap;
-	typedef std::map<const std::string, std::shared_ptr<Renderer::Sprite>> SpriteMap;
-	typedef std::map<const std::string, std::shared_ptr<Renderer::Texture2d>> TextureMap;
+	typedef std::map<const std::string, std::shared_ptr<RenderEngine::AnimatedSprite>> AnimatedSpriteMap;
+	typedef std::map<const std::string, std::shared_ptr<RenderEngine::ShaderProgram>> ShaderProgramMap;
+	typedef std::map<const std::string, std::shared_ptr<RenderEngine::Sprite>> SpriteMap;
+	typedef std::map<const std::string, std::shared_ptr<RenderEngine::Texture2d>> TextureMap;
 	
 	/// Список имён анимированных спрайтов
 	static AnimatedSpriteMap animatedSprites; 
