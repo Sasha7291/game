@@ -3,7 +3,7 @@
 #include "ebo.h"
 #include "shaderprogram.h"
 #include "texture2d.h"
-#include "vbo.h"
+#include "vao.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/mat4x4.hpp>
@@ -87,7 +87,7 @@ namespace Renderer
 		/// Угол поворота спрайта
 		float rotationAngle; 
 		/// VAO
-		GLuint vao; 
+		VAO vao; 
 		/// Вертексный VBO
 		VBO vertexVbo; 
 		/// Текстурный VBO

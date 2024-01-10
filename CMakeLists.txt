@@ -19,8 +19,12 @@ add_executable(${PROJECT_NAME}
 	src/renderer/sprite.h
 	src/renderer/texture2d.cpp
 	src/renderer/texture2d.h
+	src/renderer/vao.cpp
+	src/renderer/vao.h
 	src/renderer/vbo.cpp
 	src/renderer/vbo.h
+	src/renderer/vbolayout.cpp
+	src/renderer/vbolayout.h
 	src/resources/resourcemanager.cpp
 	src/resources/resourcemanager.h
 	src/resources/stb_image.h

@@ -13,7 +13,7 @@ namespace Renderer
 		, position(position)
 		, size(size)
 		, rotationAngle(rotationAngle)
-		, vao(0)
+		, vao()
 		, textureVbo()
 		, vertexVbo()
 		, ebo()
@@ -39,28 +39,24 @@ namespace Renderer
 			subTexture.rightTopUV.x, subTexture.leftBottomUV.y,
 		};
 
-		glGenVertexArrays(1, &vao);
-		glBindVertexArray(vao);
-
 		vertexVbo.init(vertexCoord, static_cast<unsigned long long int>(2) * 4 * sizeof(GLfloat));
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
+		VboLayout vertexLayout;
+		vertexLayout.addElementFloat(2, false);
+		vao.addBuffer(vertexVbo, vertexLayout);
 
 		textureVbo.init(textureCoord, static_cast<unsigned long long int>(2) * 4 * sizeof(GLfloat));
-		glEnableVertexAttribArray(1);
-		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
+		VboLayout textureLayout;
+		textureLayout.addElementFloat(2, false);
+		vao.addBuffer(textureVbo, textureLayout);
 
 		ebo.init(indices, static_cast<unsigned long long int>(6) * sizeof(GLuint));
 
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
-		glBindVertexArray(0);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+		vao.unbind();
+		ebo.unbind();
 	}
 
 	Sprite::~Sprite()
-	{
-		glDeleteVertexArrays(1, &vao);
-	}
+	{}
 
 	void Sprite::render() const
 	{
@@ -74,13 +70,13 @@ namespace Renderer
 		modelMat = glm::translate(modelMat, glm::vec3(-0.5f * size, 1.0f));
 		modelMat = glm::scale(modelMat, glm::vec3(size, 1.0f));
 
-		glBindVertexArray(vao);
+		vao.bind();
 		shaderProgram->setMatrix4("modelMat", modelMat);
 		glActiveTexture(GL_TEXTURE0);
 		texture->bind();
 
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
-		glBindVertexArray(0);
+		vao.bind();
 	} 
 
 	void Sprite::setPosition(const glm::vec2& position)
