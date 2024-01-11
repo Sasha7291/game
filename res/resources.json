@@ -1,0 +1,431 @@
+{
+	"shaders" : 
+	[
+		{
+			"name" 		 : "SpriteShader",
+			"filePath_v" : "res/shaders/sprite.vert",
+			"filePath_f" : "res/shaders/sprite.frag"
+		}
+	],
+	
+	"textureAtlases" : 
+	[
+		{
+			"name" 	   		   : "MapTextureAtlas",
+			"filePath"  	   : "res/textures/map_16x16.png",
+			"subTextureWidth"  : 16,
+			"subTextureHeight" : 16,
+			"subTextures" 	   : 
+			[
+				"Block",
+				"TopBlock",
+				"LeftBlock",
+				"RightBlock",
+				"TopLeftBlock",
+				"TopRightBlock",
+				"BottomLeftBlock",
+				"BottomRightBlock",
+				
+				"Beton",
+				"TopBeton",
+				"LeftBeton",
+				"RightBeton",
+				"TopLeftBeton",
+				"TopRightBeton",
+				"BottomLeftBeton",
+				"BottomRightBeton",
+				
+				"Water1",
+				"Water2",
+				"Water3",
+				"Trees",
+				"Ice",
+				"Wall",
+				
+				"Eagle",
+				"DeadEagle",
+				
+				"Nothing",
+				"Respawn1",
+				"Respawn2",
+				"Respawn3",
+				"Respawn4"
+			]
+		},
+		
+		{
+			"name" 			   : "TanksTextureAtlas",
+			"filePath" 		   : "res/textures/tanks.png",
+			"subTextureWidth"  : 16,
+			"subTextureHeight" : 16,
+			"subTextures" 	   : 
+			[
+				"YellowType1_Top1",
+				"YellowType1_Top2",
+				"YellowType1_Left1",
+				"YellowType1_Left2",
+				"YellowType1_Bottom1",
+				"YellowType1_Bottom2",
+				"YellowType1_Right1",
+				"YellowType1_Right2",
+				
+				"WhiteType1_Top1",
+				"WhiteType1_Top2",
+				"WhiteType1_Left1",
+				"WhiteType1_Left2",
+				"WhiteType1_Bottom1",
+				"WhiteType1_Bottom2",
+				"WhiteType1_Right1",
+				"WhiteType1_Right2",
+				
+				"YellowType2_Top1",
+				"YellowType2_Top2",
+				"YellowType2_Left1",
+				"YellowType2_Left2",
+				"YellowType2_Bottom1",
+				"YellowType2_Bottom2",
+				"YellowType2_Right1",
+				"YellowType2_Right2",
+				
+				"WhiteType2_Top1",
+				"WhiteType2_Top2",
+				"WhiteType2_Left1",
+				"WhiteType2_Left2",
+				"WhiteType2_Bottom1",
+				"WhiteType2_Bottom2",
+				"WhiteType2_Right1",
+				"WhiteType2_Right2",
+				
+				"YellowType3_Top1",
+				"YellowType3_Top2",
+				"YellowType3_Left1",
+				"YellowType3_Left2",
+				"YellowType3_Bottom1",
+				"YellowType3_Bottom2",
+				"YellowType3_Right1",
+				"YellowType3_Right2",
+				
+				"WhiteType3_Top1",
+				"WhiteType3_Top2",
+				"WhiteType3_Left1",
+				"WhiteType3_Left2",
+				"WhiteType3_Bottom1",
+				"WhiteType3_Bottom2",
+				"WhiteType3_Right1",
+				"WhiteType3_Right2",
+				
+				"YellowType4_Top1",
+				"YellowType4_Top2",
+				"YellowType4_Left1",
+				"YellowType4_Left2",
+				"YellowType4_Bottom1",
+				"YellowType4_Bottom2",
+				"YellowType4_Right1",
+				"YellowType4_Right2",
+				
+				"WhiteType4_Top1",
+				"WhiteType4_Top2",
+				"WhiteType4_Left1",
+				"WhiteType4_Left2",
+				"WhiteType4_Bottom1",
+				"WhiteType4_Bottom2",
+				"WhiteType4_Right1",
+				"WhiteType4_Right2",
+				
+				"YellowType5_Top1",
+				"YellowType5_Top2",
+				"YellowType5_Left1",
+				"YellowType5_Left2",
+				"YellowType5_Bottom1",
+				"YellowType5_Bottom2",
+				"YellowType5_Right1",
+				"YellowType5_Right2",
+				
+				"WhiteType5_Top1",
+				"WhiteType5_Top2",
+				"WhiteType5_Left1",
+				"WhiteType5_Left2",
+				"WhiteType5_Bottom1",
+				"WhiteType5_Bottom2",
+				"WhiteType5_Right1",
+				"WhiteType5_Right2",
+				
+				"YellowType6_Top1",
+				"YellowType6_Top2",
+				"YellowType6_Left1",
+				"YellowType6_Left2",
+				"YellowType6_Bottom1",
+				"YellowType6_Bottom2",
+				"YellowType6_Right1",
+				"YellowType6_Right2",
+				
+				"WhiteType6_Top1",
+				"WhiteType6_Top2",
+				"WhiteType6_Left1",
+				"WhiteType6_Left2",
+				"WhiteType6_Bottom1",
+				"WhiteType6_Bottom2",
+				"WhiteType6_Right1",
+				"WhiteType6_Right2",
+				
+				"YellowType7_Top1",
+				"YellowType7_Top2",
+				"YellowType7_Left1",
+				"YellowType7_Left2",
+				"YellowType7_Bottom1",
+				"YellowType7_Bottom2",
+				"YellowType7_Right1",
+				"YellowType7_Right2",
+				
+				"WhiteType7_Top1",
+				"WhiteType7_Top2",
+				"WhiteType7_Left1",
+				"WhiteType7_Left2",
+				"WhiteType7_Bottom1",
+				"WhiteType7_Bottom2",
+				"WhiteType7_Right1",
+				"WhiteType7_Right2",
+				
+				"YellowType8_Top1",
+				"YellowType8_Top2",
+				"YellowType8_Left1",
+				"YellowType8_Left2",
+				"YellowType8_Bottom1",
+				"YellowType8_Bottom2",
+				"YellowType8_Right1",
+				"YellowType8_Right2",
+				
+				"WhiteType8_Top1",
+				"WhiteType8_Top2",
+				"WhiteType8_Left1",
+				"WhiteType8_Left2",
+				"WhiteType8_Bottom1",
+				"WhiteType8_Bottom2",
+				"WhiteType8_Right1",
+				"WhiteType8_Right2",
+				
+				"GreenType1_Top1",
+				"GreenType1_Top2",
+				"GreenType1_Left1",
+				"GreenType1_Left2",
+				"GreenType1_Bottom1",
+				"GreenType1_Bottom2",
+				"GreenType1_Right1",
+				"GreenType1_Right2",
+				
+				"RedType1_Top1",
+				"RedType1_Top2",
+				"RedType1_Left1",
+				"RedType1_Left2",
+				"RedType1_Bottom1",
+				"RedType1_Bottom2",
+				"RedType1_Right1",
+				"RedType1_Right2",
+				
+				"GreenType2_Top1",
+				"GreenType2_Top2",
+				"GreenType2_Left1",
+				"GreenType2_Left2",
+				"GreenType2_Bottom1",
+				"GreenType2_Bottom2",
+				"GreenType2_Right1",
+				"GreenType2_Right2",
+				
+				"RedType2_Top1",
+				"RedType2_Top2",
+				"RedType2_Left1",
+				"RedType2_Left2",
+				"RedType2_Bottom1",
+				"RedType2_Bottom2",
+				"RedType2_Right1",
+				"RedType2_Right2",
+				
+				"GreenType3_Top1",
+				"GreenType3_Top2",
+				"GreenType3_Left1",
+				"GreenType3_Left2",
+				"GreenType3_Bottom1",
+				"GreenType3_Bottom2",
+				"GreenType3_Right1",
+				"GreenType3_Right2",
+				
+				"RedType3_Top1",
+				"RedType3_Top2",
+				"RedType3_Left1",
+				"RedType3_Left2",
+				"RedType3_Bottom1",
+				"RedType3_Bottom2",
+				"RedType3_Right1",
+				"RedType3_Right2",
+				
+				"GreenType4_Top1",
+				"GreenType4_Top2",
+				"GreenType4_Left1",
+				"GreenType4_Left2",
+				"GreenType4_Bottom1",
+				"GreenType4_Bottom2",
+				"GreenType4_Right1",
+				"GreenType4_Right2",
+				
+				"RedType4_Top1",
+				"RedType4_Top2",
+				"RedType4_Left1",
+				"RedType4_Left2",
+				"RedType4_Bottom1",
+				"RedType4_Bottom2",
+				"RedType4_Right1",
+				"RedType4_Right2",
+				
+				"GreenType5_Top1",
+				"GreenType5_Top2",
+				"GreenType5_Left1",
+				"GreenType5_Left2",
+				"GreenType5_Bottom1",
+				"GreenType5_Bottom2",
+				"GreenType5_Right1",
+				"GreenType5_Right2",
+				
+				"RedType5_Top1",
+				"RedType5_Top2",
+				"RedType5_Left1",
+				"RedType5_Left2",
+				"RedType5_Bottom1",
+				"RedType5_Bottom2",
+				"RedType5_Right1",
+				"RedType5_Right2",
+				
+				"GreenType6_Top1",
+				"GreenType6_Top2",
+				"GreenType6_Left1",
+				"GreenType6_Left2",
+				"GreenType6_Bottom1",
+				"GreenType6_Bottom2",
+				"GreenType6_Right1",
+				"GreenType6_Right2",
+				
+				"RedType6_Top1",
+				"RedType6_Top2",
+				"RedType6_Left1",
+				"RedType6_Left2",
+				"RedType6_Bottom1",
+				"RedType6_Bottom2",
+				"RedType6_Right1",
+				"RedType6_Right2",
+				
+				"GreenType7_Top1",
+				"GreenType7_Top2",
+				"GreenType7_Left1",
+				"GreenType7_Left2",
+				"GreenType7_Bottom1",
+				"GreenType7_Bottom2",
+				"GreenType7_Right1",
+				"GreenType7_Right2",
+				
+				"RedType7_Top1",
+				"RedType7_Top2",
+				"RedType7_Left1",
+				"RedType7_Left2",
+				"RedType7_Bottom1",
+				"RedType7_Bottom2",
+				"RedType7_Right1",
+				"RedType7_Right2",
+				
+				"GreenType8_Top1",
+				"GreenType8_Top2",
+				"GreenType8_Left1",
+				"GreenType8_Left2",
+				"GreenType8_Bottom1",
+				"GreenType8_Bottom2",
+				"GreenType8_Right1",
+				"GreenType8_Right2",
+				
+				"RedType8_Top1",
+				"RedType8_Top2",
+				"RedType8_Left1",
+				"RedType8_Left2",
+				"RedType8_Bottom1",
+				"RedType8_Bottom2",
+				"RedType8_Right1",
+				"RedType8_Right2"
+			]
+		}
+	],
+	
+	"animatedSprites" : 
+	[
+		{
+			"name" 		   	    : "TanksAnimatedSprite",
+			"textureAtlas" 	    : "TanksTextureAtlas",
+			"shader" 		    : "SpriteShader",
+			"initialWidth" 	    : 100,
+			"initialHeight" 	: 100,
+			"initialSubTexture" : "YellowType1_Top1",
+			"states" 		    : 
+			[
+				{
+					"stateName" : "TankTopState",
+					"frames" 	: 
+					[
+						{
+							"subTexture" : "YellowType1_Top1",
+							"duration" 	 : 500000000
+						},
+						
+						{
+							"subTexture" : "YellowType1_Top2",
+							"duration" 	 : 500000000
+						}
+					]
+				},
+				
+				{
+					"stateName" : "TankLeftState",
+					"frames" 	: 
+					[
+						{
+							"subTexture" : "YellowType1_Left1",
+							"duration" 	 : 500000000
+						},
+						
+						{
+							"subTexture" : "YellowType1_Left2",
+							"duration" 	 : 500000000
+						}
+					]
+				},
+				
+				{
+					"stateName" : "TankBottomState",
+					"frames" 	: 
+					[
+						{
+							"subTexture" : "YellowType1_Bottom1",
+							"duration" 	 : 500000000
+						},
+						
+						{
+							"subTexture" : "YellowType1_Bottom2",
+							"duration" 	 : 500000000
+						}
+					]
+				},
+				
+				{
+					"stateName" : "TankRightState",
+					"frames" 	: 
+					[
+						{
+							"subTexture" : "YellowType1_Right1",
+							"duration" 	 : 500000000
+						},
+						
+						{
+							"subTexture" : "YellowType1_Right2",
+							"duration" 	 : 500000000
+						}
+					]
+				}
+			]
+		}
+	]
+}

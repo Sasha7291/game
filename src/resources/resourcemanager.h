@@ -1,14 +1,14 @@
 #pragma once
 
+#include "../renderer/animatedsprite.h"
+
+#include "rapidjson/document.h"
+#include "rapidjson/error/en.h"
+#include "rapidjson/error/error.h"
+
 #include <fstream>
 #include <iostream>
-#include <map>
-#include <memory>
 #include <sstream>
-#include <string>
-#include <vector>
-
-#include "../renderer/animatedsprite.h"
 
 /**
 @brief Класс менеджера ресурсов
@@ -41,6 +41,7 @@ public:
 																 const unsigned int width,
 																 const unsigned int height,
 																 const std::string& subTextureName = "DefaultSubTexture");
+	static bool loadJsonResources(const std::string& jsonPath);
 	/**
 	@brief Загрузка шейдерной программы
 	@details Загружает шейдерную программу и запоминает её

@@ -31,25 +31,25 @@ void Tank::setOrientation(Orientation orientation)
 	switch (orientation)
 	{
 	case Tank::Orientation::Top:
-		sprite->setState("tankTopState");
+		sprite->setState("TankTopState");
 		moveOffset.x = 0.0f;
 		moveOffset.y = 1.0f;
 		break;
 
 	case Tank::Orientation::Bottom:
-		sprite->setState("tankBottomState");
+		sprite->setState("TankBottomState");
 		moveOffset.x = 0.0f;
 		moveOffset.y = -1.0f;
 		break;
 
 	case Tank::Orientation::Left:
-		sprite->setState("tankLeftState");
+		sprite->setState("TankLeftState");
 		moveOffset.x = -1.0f;
 		moveOffset.y = 0.0f;
 		break;
 
 	case Tank::Orientation::Right:
-		sprite->setState("tankRightState");
+		sprite->setState("TankRightState");
 		moveOffset.x = 1.0f;
 		moveOffset.y = 0.0f;
 		break;

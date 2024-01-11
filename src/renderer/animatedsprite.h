@@ -2,7 +2,6 @@
 
 #include "sprite.h"
 
-#include <map>
 #include <vector>
 
 /**

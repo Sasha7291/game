@@ -38,6 +38,94 @@ std::shared_ptr<RenderEngine::AnimatedSprite> ResourceManager::loadAnimatedSprit
 	return newAnimatedSprite;
 }
 
+bool ResourceManager::loadJsonResources(const std::string& jsonPath)
+{
+	const std::string jsonString = getFileText(jsonPath);
+
+	if (jsonString.empty())
+	{
+		std::cerr << "ERROR::No JSON resource file in " << jsonPath << std::endl;
+		return false;
+	}
+
+	rapidjson::Document document;
+	rapidjson::ParseResult parseResult = document.Parse(jsonString.c_str());
+
+	if (!parseResult)
+	{
+		std::cerr << "ERROR::JSON parse error: " << rapidjson::GetParseError_En(parseResult.Code()) << "(" << parseResult.Offset() << "), file " << jsonPath << std::endl;
+		return false;
+	}
+
+	auto shaderIterator = document.FindMember("shaders");
+	if (shaderIterator != document.MemberEnd())
+	{
+		for (const auto& currentShader : shaderIterator->value.GetArray())
+		{
+			const std::string name = currentShader["name"].GetString();
+			const std::string filePath_v = currentShader["filePath_v"].GetString();
+			const std::string filePath_f = currentShader["filePath_f"].GetString();
+			loadShaderProgram(name, filePath_v, filePath_f);
+		}
+	}
+
+	auto textureAtlasesIterator = document.FindMember("textureAtlases");
+	if (textureAtlasesIterator != document.MemberEnd())
+	{
+		for (const auto& currentTextureAtlas : textureAtlasesIterator->value.GetArray())
+		{
+			const std::string name = currentTextureAtlas["name"].GetString();
+			const std::string filePath = currentTextureAtlas["filePath"].GetString();
+			const unsigned int subTextureWidth = currentTextureAtlas["subTextureWidth"].GetInt();
+			const unsigned int subTextureHeight = currentTextureAtlas["subTextureHeight"].GetInt();
+
+			const auto subTextureArray = currentTextureAtlas["subTextures"].GetArray();	
+			std::vector<std::string> subTextures;
+			subTextures.reserve(subTextureArray.Size());
+			for (const auto& currentSubTexture : subTextureArray)
+				subTextures.emplace_back(currentSubTexture.GetString());
+
+			loadTextureAtlas(name, filePath, subTextures, subTextureWidth, subTextureHeight);
+		}
+	}
+
+	auto animatedSpritesIterator = document.FindMember("animatedSprites");
+	for (const auto& currentAnimatedSprite : animatedSpritesIterator->value.GetArray())
+	{
+		const std::string name = currentAnimatedSprite["name"].GetString();
+		const std::string textureAtlasName = currentAnimatedSprite["textureAtlas"].GetString();
+		const std::string shaderName = currentAnimatedSprite["shader"].GetString();
+		const unsigned int initialWidht = currentAnimatedSprite["initialWidth"].GetInt();
+		const unsigned int initialHeight = currentAnimatedSprite["initialHeight"].GetInt();
+		const std::string intialSubTextureName = currentAnimatedSprite["initialSubTexture"].GetString();
+
+		auto animatedSprite = loadAnimatedSprite(name, textureAtlasName, shaderName, initialWidht, initialHeight, intialSubTextureName);
+		if (animatedSprite == nullptr)
+			continue;
+
+		const auto statesArray = currentAnimatedSprite["states"].GetArray();
+		for (const auto& currentState : statesArray)
+		{
+			const std::string stateName = currentState["stateName"].GetString();
+
+			const auto framesArray = currentState["frames"].GetArray();
+			std::vector<std::pair<std::string, uint64_t>> frames;
+			frames.reserve(framesArray.Size());
+			for (const auto& currentFrame : framesArray)
+			{
+				const std::string subTexture = currentFrame["subTexture"].GetString();
+				const uint64_t duration = currentFrame["duration"].GetInt();
+
+				frames.emplace_back(std::pair<std::string, uint64_t>(subTexture, duration));
+			}
+			
+			animatedSprite->insertState(stateName, frames);
+		}
+	}
+
+	return true;
+}
+
 std::shared_ptr<RenderEngine::ShaderProgram> ResourceManager::loadShaderProgram(const std::string& name, const std::string& vertexPath, const std::string& fragmentPath)
 {
 	std::string vertexString = getFileText(vertexPath);

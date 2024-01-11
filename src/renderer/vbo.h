@@ -16,9 +16,9 @@ namespace RenderEngine
 		void init(const void* data, const unsigned int size);
 		void unbind() const;
 		void update(const void* data, const unsigned int size) const;
-
-		VBO& operator=(VBO&& vbo) noexcept;
+		
 		VBO& operator=(const VBO&) = delete;
+		VBO& operator=(VBO&& vbo) noexcept;
 
 	private:
 		GLuint id;
