@@ -31,14 +31,17 @@ bool Game::init()
 
     auto tankAnimatedSprite = ResourceManager::getAnimatedSprite("TanksAnimatedSprite");
 
-    tank = std::make_unique<Tank>(tankAnimatedSprite, 0.0000001f, glm::vec2(100, 100));
+    tank = std::make_unique<Tank>(tankAnimatedSprite, 0.0000001f, glm::vec2(100.0f, 100.0f), glm::vec2(16.0f, 16.0f));
+
+    level = std::make_unique<Level>(ResourceManager::getLevels()[0]);
 
 	return true;
 }
 
 void Game::render()
 {
-    //ResourceManager::getAnimatedSprite("AnimatedSprite")->render();
+    if (level != nullptr)
+        level->render();
     if (tank != nullptr)
         tank->render();
 }
@@ -50,7 +53,9 @@ void Game::setKey(const int key, const int action)
 
 void Game::update(const uint64_t delta)
 {
-    //ResourceManager::getAnimatedSprite("AnimatedSprite")->update(delta);
+    if (level != nullptr)
+        level->update(delta);
+
     if (tank != nullptr)
     {
         if (keys[GLFW_KEY_W])

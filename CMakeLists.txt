@@ -7,8 +7,14 @@ add_executable(${PROJECT_NAME}
 	src/main.cpp
 	src/game/game.cpp
 	src/game/game.h
-	src/game/tank.cpp
-	src/game/tank.h
+	src/game/gameobjects/brickwall.cpp
+	src/game/gameobjects/brickwall.h
+	src/game/gameobjects/gameobject.cpp
+	src/game/gameobjects/gameobject.h
+	src/game/gameobjects/level.cpp
+	src/game/gameobjects/level.h
+	src/game/gameobjects/tank.cpp
+	src/game/gameobjects/tank.h
 	src/renderer/animatedsprite.cpp
 	src/renderer/animatedsprite.h
 	src/renderer/ebo.cpp

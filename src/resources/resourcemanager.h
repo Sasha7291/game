@@ -36,11 +36,9 @@ public:
 	@return Указатель на созданный анимированный спрайт
 	*/
 	static std::shared_ptr<RenderEngine::AnimatedSprite> loadAnimatedSprite(const std::string& spriteName,
-																 const std::string& textureName,
-																 const std::string& shaderName,
-																 const unsigned int width,
-																 const unsigned int height,
-																 const std::string& subTextureName = "DefaultSubTexture");
+																			const std::string& textureName,
+																			const std::string& shaderName,
+																			const std::string& subTextureName = "DefaultSubTexture");
 	static bool loadJsonResources(const std::string& jsonPath);
 	/**
 	@brief Загрузка шейдерной программы
@@ -52,8 +50,8 @@ public:
 	@return Указатель на созданную шейдерную программу
 	*/
 	static std::shared_ptr<RenderEngine::ShaderProgram> loadShaderProgram(const std::string& name, 
-															   const std::string& vertexPath, 
-															   const std::string& fragmentPath);
+																		  const std::string& vertexPath, 
+																		  const std::string& fragmentPath);
 	/**
 	@brief Загрузка спрайта
 	@details Загружает спрайт и запоминает его имя.
@@ -66,11 +64,9 @@ public:
 	@return Указатель на созданный спрайт
 	*/
 	static std::shared_ptr<RenderEngine::Sprite> loadSprite(const std::string& spriteName,
-												 const std::string& textureName, 
-												 const std::string& shaderName,
-												 const unsigned int width,
-												 const unsigned int height,
-												 const std::string& subTextureName = "DefaultSubTexture");
+															const std::string& textureName, 
+															const std::string& shaderName,
+															const std::string& subTextureName = "DefaultSubTexture");
 	/**
 	@brief Загрузка текстуры
 	@details Загружает текстуру и запоминает её имя.
@@ -101,6 +97,7 @@ public:
 	@return Указатель на анимированный спрайт
 	*/
 	static std::shared_ptr<RenderEngine::AnimatedSprite> getAnimatedSprite(const std::string& name);
+	static std::vector<std::vector<std::string>> getLevels();
 	/**
 	@brief Возвращает шейдерную программу по имени
 	@param[in] name Имя шейдера
@@ -150,6 +147,8 @@ private:
 	static SpriteMap sprites;
 	/// Список имён текстур
 	static TextureMap textures;
+	/// Список уровней
+	static std::vector<std::vector<std::string>> levels;
 
 	/// Путь к ресурсам
 	static std::string resPath;

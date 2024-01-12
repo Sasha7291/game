@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../resources/resourcemanager.h"
-#include "tank.h"
+#include "gameobjects/level.h"
+#include "gameobjects/tank.h"
 #include <GLFW/glfw3.h>
 
 #include <array>
@@ -67,4 +67,5 @@ private:
 	glm::ivec2 windowSize;
 
 	std::unique_ptr<Tank> tank;
+	std::unique_ptr<Level> level;
 };

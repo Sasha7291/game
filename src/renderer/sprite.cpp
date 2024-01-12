@@ -4,15 +4,9 @@ namespace RenderEngine
 {
 	Sprite::Sprite(const std::shared_ptr<Texture2d> texture, 
 		    	   const std::string& initialSubTexture,
-				   const std::shared_ptr<ShaderProgram> shaderProgram, 
-				   const glm::vec2& position, 
-				   const glm::vec2& size, 
-				   const float rotationAngle)
+				   const std::shared_ptr<ShaderProgram> shaderProgram)
 		: texture(texture)
 		, shaderProgram(shaderProgram)
-		, position(position)
-		, size(size)
-		, rotationAngle(rotationAngle)
 		, vao()
 		, textureVbo()
 		, vertexVbo()
@@ -58,7 +52,7 @@ namespace RenderEngine
 	Sprite::~Sprite()
 	{}
 
-	void Sprite::render() const
+	void Sprite::render(const glm::vec2& position, const glm::vec2& size, const float rotation) const
 	{
 		shaderProgram->use();
 
@@ -66,7 +60,7 @@ namespace RenderEngine
 
 		modelMat = glm::translate(modelMat, glm::vec3(position, 1.0f));
 		modelMat = glm::translate(modelMat, glm::vec3(0.5f * size, 1.0f));
-		modelMat = glm::rotate(modelMat, glm::radians(rotationAngle), glm::vec3(0.0f, 0.0f, 1.0f));
+		modelMat = glm::rotate(modelMat, glm::radians(rotation), glm::vec3(0.0f, 0.0f, 1.0f));
 		modelMat = glm::translate(modelMat, glm::vec3(-0.5f * size, 1.0f));
 		modelMat = glm::scale(modelMat, glm::vec3(size, 1.0f));
 
@@ -75,20 +69,5 @@ namespace RenderEngine
 		texture->bind();
 
 		Renderer::draw(vao, ebo, *shaderProgram);
-	}
-
-	void Sprite::setPosition(const glm::vec2& position)
-	{
-		this->position = position;
-	}
-
-	void Sprite::setRotation(const float rotationAngle)
-	{
-		this->rotationAngle = rotationAngle;
-	}
-
-	void Sprite::setSize(const glm::vec2& size)
-	{
-		this->size = size;
 	}
 }

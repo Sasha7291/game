@@ -40,10 +40,7 @@ namespace RenderEngine
 		*/
 		explicit Sprite(const std::shared_ptr<Texture2d> texture, 
 					    const std::string& initialSubTexture,
-					    const std::shared_ptr<ShaderProgram> shaderProgram, 
-					    const glm::vec2& position = glm::vec2(0.0f), 
-					    const glm::vec2& size = glm::vec2(1.0f),
-					    const float rotationAngle = 0.0f);
+					    const std::shared_ptr<ShaderProgram> shaderProgram);
 		/**
 		@brief Деструктор спрайта
 		*/
@@ -54,23 +51,8 @@ namespace RenderEngine
 		@details Рендерит спрайт, устанавливая его в определённую позицию,
 				 поворачивая на заданный угол и устаналивая размер.
 		*/
-		virtual void render() const;
-		/**
-		@brief Установка позиции спрайта
-		@param[in] position Устанавливаемая позиция
-		*/
-		void setPosition(const glm::vec2& position);
-		/**
-		@brief Установка угла поворота спрайта
-		@param[in] position Устанавливаемый угол поворота
-		*/
-		void setRotation(const float rotationAngle);
-		/**
-		@brief Установка размера спрайта
-		@param[in] position Устанавливаемый размер
-		*/
-		void setSize(const glm::vec2& size);
-
+		virtual void render(const glm::vec2& position, const glm::vec2& size, const float rotation) const;
+		
 		Sprite(const Sprite&) = delete;
 		Sprite& operator=(const Sprite&) = delete;
 
@@ -78,13 +60,7 @@ namespace RenderEngine
 		/// Текстура спрайта
 		std::shared_ptr<Texture2d> texture; 
 		/// Шейдерная программа спрайта
-		std::shared_ptr<ShaderProgram> shaderProgram; 
-		/// Позиция спрайта
-		glm::vec2 position;
-		/// Размер спрайта
-		glm::vec2 size; 
-		/// Угол поворота спрайта
-		float rotationAngle; 
+		std::shared_ptr<ShaderProgram> shaderProgram;
 		/// VAO
 		VAO vao; 
 		/// Вертексный VBO

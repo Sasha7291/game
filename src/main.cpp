@@ -4,8 +4,8 @@
 #include <vector>
 #include <chrono>
 
-glm::ivec2 windowSize(640, 480);
-Game game(windowSize);
+glm::ivec2 windowSize(13 * 16, 14 * 16);
+std::unique_ptr<Game> game = std::make_unique<Game>(windowSize);
 
 void glfwWindowSizeCallback(GLFWwindow *win, int w, int h);
 void glfwKeyCallback(GLFWwindow* win, int key, int scancode, int action, int mode);
@@ -57,7 +57,7 @@ int main(int argc, char** argv)
     {
         ResourceManager::setExecutablePath(argv[0]);
 
-        game.init();
+        game->init();
 
         auto lastTime = std::chrono::high_resolution_clock::now();
 
@@ -67,13 +67,13 @@ int main(int argc, char** argv)
             auto currentTime = std::chrono::high_resolution_clock::now();
             uint64_t duration = std::chrono::duration_cast<std::chrono::nanoseconds>(currentTime - lastTime).count();
             lastTime = currentTime;
-            game.update(duration);
+            game->update(duration);
 
             /* Render here */
             RenderEngine::Renderer::clear();
 
             /* Drawing */
-            game.render();
+            game->render();
 
             /* Swap front and back buffers */
             glfwSwapBuffers(window);
@@ -82,6 +82,7 @@ int main(int argc, char** argv)
             glfwPollEvents();
         }
 
+        game = nullptr;
         ResourceManager::unloadAllResources();
     }
 
@@ -103,5 +104,5 @@ void glfwKeyCallback(GLFWwindow* win, int key, int scancode, int action, int mod
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
         glfwSetWindowShouldClose(win, GL_TRUE);
 
-    game.setKey(key, action);
+    game->setKey(key, action);
 }
