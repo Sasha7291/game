@@ -7,9 +7,9 @@ namespace RenderEngine
 		glClear(GL_COLOR_BUFFER_BIT);
 	}
 
-	void Renderer::draw(const VAO& vao, const EBO& ebo, const ShaderProgram& shaderProgram)
+	void Renderer::draw(const VAO& vao, const EBO& ebo, const std::shared_ptr<ShaderProgram> shaderProgram)
 	{
-		shaderProgram.use();
+		shaderProgram->use();
 		vao.bind();
 		ebo.bind();
 

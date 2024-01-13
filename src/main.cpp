@@ -67,6 +67,10 @@ int main(int argc, char** argv)
             auto currentTime = std::chrono::high_resolution_clock::now();
             uint64_t duration = std::chrono::duration_cast<std::chrono::nanoseconds>(currentTime - lastTime).count();
             lastTime = currentTime;
+
+            /* Poll for and process events */
+            glfwPollEvents();
+
             game->update(duration);
 
             /* Render here */
@@ -77,9 +81,6 @@ int main(int argc, char** argv)
 
             /* Swap front and back buffers */
             glfwSwapBuffers(window);
-
-            /* Poll for and process events */
-            glfwPollEvents();
         }
 
         game = nullptr;
@@ -95,7 +96,25 @@ void glfwWindowSizeCallback(GLFWwindow* win, int w, int h)
 {
     windowSize.x = w;
     windowSize.y = h;
-    RenderEngine::Renderer::setViewport(0, 0, windowSize.x, windowSize.y);
+
+    const float mapAspectRatio = 13.0f / 14.0f;
+    unsigned int viewPortWidth = windowSize.x;
+    unsigned int viewPortHeight = windowSize.y;
+    unsigned int viewPortLeftOffset = 0;
+    unsigned int viewPortBottomOffset = 0;
+
+    if (static_cast<float>(windowSize.x) / windowSize.y > mapAspectRatio)
+    {
+        viewPortWidth = windowSize.y * mapAspectRatio;
+        viewPortLeftOffset = (windowSize.x - viewPortWidth) / 2;
+    }
+    else
+    {
+        viewPortHeight = windowSize.x / mapAspectRatio;
+        viewPortBottomOffset = (windowSize.y - viewPortHeight) / 2;
+    }
+
+    RenderEngine::Renderer::setViewport(viewPortLeftOffset, viewPortBottomOffset, viewPortWidth, viewPortHeight);
 }
 
 /* Key pressing handler */

@@ -58,16 +58,17 @@ namespace RenderEngine
 
 		glm::mat4 modelMat(1.0f);
 
-		modelMat = glm::translate(modelMat, glm::vec3(position, 1.0f));
-		modelMat = glm::translate(modelMat, glm::vec3(0.5f * size, 1.0f));
+		modelMat = glm::translate(modelMat, glm::vec3(position, 0.0f));
+		modelMat = glm::translate(modelMat, glm::vec3(0.5f * size, 0.0f));
 		modelMat = glm::rotate(modelMat, glm::radians(rotation), glm::vec3(0.0f, 0.0f, 1.0f));
-		modelMat = glm::translate(modelMat, glm::vec3(-0.5f * size, 1.0f));
+		modelMat = glm::translate(modelMat, glm::vec3(-0.5f * size, 0.0f));
 		modelMat = glm::scale(modelMat, glm::vec3(size, 1.0f));
 
 		shaderProgram->setMatrix4("modelMat", modelMat);
+
 		glActiveTexture(GL_TEXTURE0);
 		texture->bind();
 
-		Renderer::draw(vao, ebo, *shaderProgram);
+		Renderer::draw(vao, ebo, shaderProgram);
 	}
 }

@@ -10,7 +10,7 @@ namespace RenderEngine
 	{
 	public:
 		static void clear();
-		static void draw(const VAO& vao, const EBO& ebo, const ShaderProgram& shaderProgram);
+		static void draw(const VAO& vao, const EBO& ebo, const std::shared_ptr<ShaderProgram> shaderProgram);
 		static std::string getRenderStr();
 		static std::string getVersionStr();
 		static void setClearColor(const GLfloat red, const GLfloat blue, const GLfloat green, const GLfloat alpha);
