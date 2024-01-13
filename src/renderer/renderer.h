@@ -14,7 +14,7 @@ namespace RenderEngine
 		static std::string getRenderStr();
 		static std::string getVersionStr();
 		static void setClearColor(const GLfloat red, const GLfloat blue, const GLfloat green, const GLfloat alpha);
-		static void setViewport(const GLuint width, const GLuint height, const GLuint offsetLeft = 0, const GLuint offsetBottom = 0);
+		static void setViewport(const GLint width, const GLint height, const GLsizei offsetLeft = 0, const GLsizei offsetBottom = 0);
 		
 	};
 }

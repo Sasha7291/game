@@ -31,7 +31,7 @@ namespace RenderEngine
 		glClearColor(red, blue, green, alpha);
 	}
 
-	void Renderer::setViewport(const GLuint width, const GLuint height, const GLuint offsetLeft, const GLuint offsetBottom)
+	void Renderer::setViewport(const GLint offsetLeft, const GLint offsetBottom, const GLsizei width, const GLsizei height)
 	{
 		glViewport(offsetLeft, offsetBottom, width, height);
 	}

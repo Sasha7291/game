@@ -64,19 +64,19 @@ int main(int argc, char** argv)
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))
         {
+            /* Poll for and process events */
+            glfwPollEvents();
+
+            /* Drawing */
             auto currentTime = std::chrono::high_resolution_clock::now();
             uint64_t duration = std::chrono::duration_cast<std::chrono::nanoseconds>(currentTime - lastTime).count();
             lastTime = currentTime;
 
-            /* Poll for and process events */
-            glfwPollEvents();
-
             game->update(duration);
 
-            /* Render here */
             RenderEngine::Renderer::clear();
 
-            /* Drawing */
+            /* Render here */
             game->render();
 
             /* Swap front and back buffers */
@@ -96,6 +96,7 @@ void glfwWindowSizeCallback(GLFWwindow* win, int w, int h)
 {
     windowSize.x = w;
     windowSize.y = h;
+    
 
     const float mapAspectRatio = 13.0f / 14.0f;
     unsigned int viewPortWidth = windowSize.x;
