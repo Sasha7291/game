@@ -27,6 +27,8 @@ add_executable(${PROJECT_NAME}
 	src/renderer/sprite.h
 	src/renderer/texture2d.cpp
 	src/renderer/texture2d.h
+	src/renderer/textureatlas.cpp
+	src/renderer/textureatlas.h
 	src/renderer/vao.cpp
 	src/renderer/vao.h
 	src/renderer/vbo.cpp

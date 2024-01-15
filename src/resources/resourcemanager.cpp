@@ -7,31 +7,102 @@ ResourceManager::AnimatedSpriteMap ResourceManager::animatedSprites;
 ResourceManager::ShaderProgramMap ResourceManager::shaderPrograms;
 ResourceManager::SpriteMap ResourceManager::sprites;
 ResourceManager::TextureMap ResourceManager::textures;
-std::vector<std::vector<std::string>> ResourceManager::levels;
+ResourceManager::TextureAtlasMap ResourceManager::textureAtlases;
+ResourceManager::LevelMap ResourceManager::levels;
 std::string ResourceManager::resPath;
 
-std::shared_ptr<RenderEngine::AnimatedSprite> ResourceManager::loadAnimatedSprite(const std::string& spriteName, 
-																				  const std::string& textureName, 
-																				  const std::string& shaderName,
-																				  const std::string& subTextureName)
+ResourceManager::AnimatedSpritePtr ResourceManager::getAnimatedSprite(const std::string& name)
 {
-	auto texture = getTexture(textureName);
-	if (texture == nullptr)
+	AnimatedSpriteMap::const_iterator it = animatedSprites.find(name);
+
+	if (it == animatedSprites.end())
+	{
+		std::cerr << "ERROR::Sprite " << name << " wasn't found!" << std::endl;
+		return nullptr;
+	}
+
+	return it->second;
+}
+
+ResourceManager::LevelMap ResourceManager::getLevels()
+{
+	return levels;
+}
+
+ResourceManager::ShaderProgramPtr ResourceManager::getShaderProgram(const std::string& name)
+{
+	ShaderProgramMap::const_iterator it = shaderPrograms.find(name);
+
+	if (it == shaderPrograms.end())
+	{
+		std::cerr << "ERROR::Shader " << name << "  wasn't found!" << std::endl;
+		return nullptr;
+	}
+
+	return it->second;
+}
+
+ResourceManager::SpritePtr ResourceManager::getSprite(const std::string& name)
+{
+	SpriteMap::const_iterator it = sprites.find(name);
+
+	if (it == sprites.end())
+	{
+		std::cerr << "ERROR::Sprite " << name << " wasn't found!" << std::endl;
+		return nullptr;
+	}
+
+	return it->second;
+}
+
+ResourceManager::Texture2dPtr ResourceManager::getTexture(const std::string& name)
+{
+	TextureMap::const_iterator it = textures.find(name);
+
+	if (it == textures.end())
+	{
+		std::cerr << "ERROR::Texture " << name << "  wasn't found!" << std::endl;
+		return nullptr;
+	}
+
+	return it->second;
+}
+
+ResourceManager::TextureAtlasPtr ResourceManager::getTextureAtlas(const std::string& name)
+{
+	TextureAtlasMap::const_iterator it = textureAtlases.find(name);
+
+	if (it == textureAtlases.end())
+	{
+		std::cerr << "ERROR::Texture " << name << "  wasn't found!" << std::endl;
+		return nullptr;
+	}
+
+	return it->second;
+}
+
+ResourceManager::AnimatedSpritePtr ResourceManager::loadAnimatedSprite(const std::string& spriteName,
+																	   const std::string& textureName, 
+																	   const std::string& shaderName,
+																	   const std::string& subTextureName)
+{
+	auto textureAtlas = getTextureAtlas(textureName);
+	if (textureAtlas == nullptr)
 	{
 		std::cerr << "ERROR::Texture " << textureName << " for sprite " << spriteName << " wasn't found!" << std::endl;
 		return nullptr;
 	}
 
 	auto shaderProgram = getShaderProgram(shaderName);
-	if (texture == nullptr)
+	if (shaderProgram == nullptr)
 	{
 		std::cerr << "ERROR::Shader program " << shaderName << " for sprite " << spriteName << " wasn't found!" << std::endl;
 		return nullptr;
 	}
 
-	auto& newAnimatedSprite = animatedSprites.emplace(spriteName, std::make_shared<RenderEngine::AnimatedSprite>(texture,
-																											 subTextureName,
-																											 shaderProgram)).first->second;
+	auto& newAnimatedSprite = animatedSprites.emplace(spriteName, std::make_shared<RenderEngine::AnimatedSprite>(textureAtlas,
+																												 shaderProgram,
+																												 subTextureName)).first->second;
 	return newAnimatedSprite;
 }
 
@@ -62,7 +133,20 @@ bool ResourceManager::loadJsonResources(const std::string& jsonPath)
 			const std::string name = currentShader["name"].GetString();
 			const std::string filePath_v = currentShader["filePath_v"].GetString();
 			const std::string filePath_f = currentShader["filePath_f"].GetString();
+
 			loadShaderProgram(name, filePath_v, filePath_f);
+		}
+	}
+
+	auto texturesIterator = document.FindMember("textures");
+	if (texturesIterator != document.MemberEnd())
+	{
+		for (const auto& currentTexture : texturesIterator->value.GetArray())
+		{
+			const std::string name = currentTexture["name"].GetString();
+			const std::string filePath = currentTexture["filePath"].GetString();
+
+			loadTexture(name, filePath);
 		}
 	}
 
@@ -96,9 +180,10 @@ bool ResourceManager::loadJsonResources(const std::string& jsonPath)
 			const std::string shaderName = currentSprite["shader"].GetString();
 			const std::string subTextureName = currentSprite["subTextureName"].GetString();
 
-			auto sprite = loadSprite(name, textureAtlasName, shaderName, subTextureName);
-			if (sprite == nullptr)
-				continue;
+			if (subTextureName.empty())
+				loadSprite(name, textureAtlasName, shaderName);
+			else
+				loadSprite(name, textureAtlasName, shaderName, subTextureName);
 		}
 	}
 
@@ -167,7 +252,9 @@ bool ResourceManager::loadJsonResources(const std::string& jsonPath)
 	return true;
 }
 
-std::shared_ptr<RenderEngine::ShaderProgram> ResourceManager::loadShaderProgram(const std::string& name, const std::string& vertexPath, const std::string& fragmentPath)
+ResourceManager::ShaderProgramPtr ResourceManager::loadShaderProgram(const std::string& name, 
+																	 const std::string& vertexPath,	
+																	 const std::string& fragmentPath)
 {
 	std::string vertexString = getFileText(vertexPath);
 	if (vertexString.empty())
@@ -195,32 +282,54 @@ std::shared_ptr<RenderEngine::ShaderProgram> ResourceManager::loadShaderProgram(
 	return newShader;
 }
 
-std::shared_ptr<RenderEngine::Sprite> ResourceManager::loadSprite(const std::string& spriteName, 
-																  const std::string& textureName, 
-																  const std::string& shaderName,
-																  const std::string& subTextureName)
+ResourceManager::SpritePtr ResourceManager::loadSprite(const std::string& spriteName,
+													   const std::string& textureName, 
+													   const std::string& shaderName,
+													   const std::string& subTextureName)
 {
-	auto texture = getTexture(textureName);
-	if (texture == nullptr)
+	auto textureAtlas = getTextureAtlas(textureName);
+	if (textureAtlas == nullptr)
 	{
 		std::cerr << "ERROR::Texture " << textureName << " for sprite " << spriteName << " wasn't found!" << std::endl;
 		return nullptr;
 	}
 
 	auto shaderProgram = getShaderProgram(shaderName);
-	if (texture == nullptr)
+	if (shaderProgram == nullptr)
 	{
 		std::cerr << "ERROR::Shader program " << shaderName << " for sprite " << spriteName << " wasn't found!" << std::endl;
 		return nullptr;
 	}
 
-	auto& newSprite = sprites.emplace(spriteName, std::make_shared<RenderEngine::Sprite>(texture,
-																						 subTextureName,
-																						 shaderProgram)).first->second;
+	auto& newSprite = sprites.emplace(spriteName, std::make_shared<RenderEngine::Sprite>(textureAtlas,
+																						 shaderProgram,
+																						 subTextureName)).first->second;
 	return newSprite;
 }
 
-std::shared_ptr<RenderEngine::Texture2d> ResourceManager::loadTexture(const std::string& name, const std::string& relativePath)
+ResourceManager::SpritePtr ResourceManager::loadSprite(const std::string& spriteName, const std::string& textureName, const std::string& shaderName)
+{
+	auto textureAtlas = getTexture(textureName);
+	if (textureAtlas == nullptr)
+	{
+		std::cerr << "ERROR::Texture " << textureName << " for sprite " << spriteName << " wasn't found!" << std::endl;
+		return nullptr;
+	}
+
+	auto shaderProgram = getShaderProgram(shaderName);
+	if (shaderProgram == nullptr)
+	{
+		std::cerr << "ERROR::Shader program " << shaderName << " for sprite " << spriteName << " wasn't found!" << std::endl;
+		return nullptr;
+	}
+
+	auto& newSprite = sprites.emplace(spriteName, std::make_shared<RenderEngine::Sprite>(textureAtlas,
+																						 shaderProgram)).first->second;
+
+	return newSprite;
+}
+
+ResourceManager::Texture2dPtr ResourceManager::loadTexture(const std::string& name, const std::string& relativePath)
 {
 	int nChannels = 0;
 	int width = 0;
@@ -235,28 +344,47 @@ std::shared_ptr<RenderEngine::Texture2d> ResourceManager::loadTexture(const std:
 		return nullptr;
 	}
 
-	auto& newTexture = textures.emplace(name, std::make_shared<RenderEngine::Texture2d>(width, 
-																						height, 
-																						pixels, 
+	auto& newTexture = textures.emplace(name, std::make_shared<RenderEngine::Texture2d>(pixels,
 																						nChannels,
+																						width, 
+																						height, 
 																						GL_NEAREST, 
 																						GL_CLAMP_TO_EDGE)).first->second;
 	stbi_image_free(pixels);
 	return newTexture;
 }
 
-std::shared_ptr<RenderEngine::Texture2d> ResourceManager::loadTextureAtlas(const std::string& textureName, 
-																		   const std::string& texturePath,
-																		   const std::vector<std::string>& subTextures,
-																		   const unsigned int subTextureWidth, 
-																		   const unsigned int subTextureHeight)
+ResourceManager::TextureAtlasPtr ResourceManager::loadTextureAtlas(const std::string& textureAtlasName,
+																   const std::string& textureAtlasPath,
+																   const std::vector<std::string>& subTextures,
+																   const unsigned int subTextureWidth, 
+																   const unsigned int subTextureHeight)
 {
-	auto texture = loadTexture(textureName, texturePath);
+	int nChannels = 0;
+	int width = 0;
+	int height = 0;
 
-	if (texture != nullptr)
+	stbi_set_flip_vertically_on_load(true);
+	unsigned char* pixels = stbi_load(std::string(resPath + "/" + textureAtlasPath).c_str(), &width, &height, &nChannels, 0);
+
+	if (pixels == nullptr)
 	{
-		const unsigned int textureWidth = texture->getWidth();
-		const unsigned int textureHeight = texture->getHeight();
+		std::cerr << "ERROR::Image wasn't loaded: " << resPath + "/" + textureAtlasPath << std::endl;
+		return nullptr;
+	}
+
+	auto& newTextureAtlas = textureAtlases.emplace(textureAtlasName, std::make_shared<RenderEngine::TextureAtlas>(pixels,
+																												  nChannels,
+																												  width,
+																												  height,
+																												  GL_NEAREST,
+																												  GL_CLAMP_TO_EDGE)).first->second;
+	stbi_image_free(pixels);
+
+	if (newTextureAtlas != nullptr)
+	{
+		const unsigned int textureWidth = newTextureAtlas->getWidth();
+		const unsigned int textureHeight = newTextureAtlas->getHeight();
 		unsigned int currentTextureOffsetX = 0;
 		unsigned int currentTextureOffsetY = textureHeight;
 
@@ -267,7 +395,7 @@ std::shared_ptr<RenderEngine::Texture2d> ResourceManager::loadTextureAtlas(const
 			glm::vec2 rightTopUV(static_cast<float>(currentTextureOffsetX + subTextureWidth - 0.01f) / textureWidth,
 								 static_cast<float>(currentTextureOffsetY - 0.01f) / textureHeight);
 
-			texture->addSubTexture(currentSubTextureName, leftBottomUV, rightTopUV);
+			newTextureAtlas->addSubTexture(currentSubTextureName, leftBottomUV, rightTopUV);
 
 			currentTextureOffsetX += subTextureWidth;
 			if (currentTextureOffsetX >= textureWidth)
@@ -278,64 +406,7 @@ std::shared_ptr<RenderEngine::Texture2d> ResourceManager::loadTextureAtlas(const
 		}
 	}
 
-	return texture;
-}
-
-std::shared_ptr<RenderEngine::AnimatedSprite> ResourceManager::getAnimatedSprite(const std::string& name)
-{
-	AnimatedSpriteMap::const_iterator it = animatedSprites.find(name);
-
-	if (it == animatedSprites.end())
-	{
-		std::cerr << "ERROR::Sprite " << name << " wasn't found!" << std::endl;
-		return nullptr;
-	}
-
-	return it->second;
-}
-
-std::vector<std::vector<std::string>> ResourceManager::getLevels()
-{
-	return levels;
-}
-
-std::shared_ptr<RenderEngine::ShaderProgram> ResourceManager::getShaderProgram(const std::string& name)
-{
-	ShaderProgramMap::const_iterator it = shaderPrograms.find(name);
-
-	if (it == shaderPrograms.end())
-	{
-		std::cerr << "ERROR::Shader " << name << "  wasn't found!" << std::endl;
-		return nullptr;
-	}
-
-	return it->second;
-}
-
-std::shared_ptr<RenderEngine::Sprite> ResourceManager::getSprite(const std::string& name)
-{
-	SpriteMap::const_iterator it = sprites.find(name);
-
-	if (it == sprites.end())
-	{
-		std::cerr << "ERROR::Sprite " << name << " wasn't found!" << std::endl;
-		return nullptr;
-	}
-
-	return it->second;
-}
-
-std::shared_ptr<RenderEngine::Texture2d> ResourceManager::getTexture(const std::string& name)
-{
-	TextureMap::const_iterator it = textures.find(name);
-
-	if (it == textures.end())
-	{
-		std::cerr << "ERROR::Texture " << name << "  wasn't found!" << std::endl;
-		return nullptr;
-	}
-
-	return it->second;
+	return newTextureAtlas;
 }
 
 void ResourceManager::setExecutablePath(const std::string& path)

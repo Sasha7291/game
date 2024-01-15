@@ -2,10 +2,10 @@
 
 namespace RenderEngine 
 {
-	Texture2d::Texture2d(const GLuint width, 
-						 const GLuint height, 
-						 const unsigned char* data, 
-						 const unsigned int channels, 
+	Texture2d::Texture2d(const unsigned char* data,
+						 const unsigned int channels,
+						 const GLuint width,
+						 const GLuint height,
 						 const GLenum filter, 
 						 const GLenum wrapMode) 
 		: id(0)
@@ -45,16 +45,14 @@ namespace RenderEngine
 		width = texture2d.width;
 
 		texture2d.id = 0;
+		texture2d.format = 0;
+		texture2d.height = 0;
+		texture2d.width = 0;
 	}
 
 	Texture2d::~Texture2d()
 	{
 		glDeleteTextures(1, &id);
-	}
-
-	void Texture2d::addSubTexture(const std::string& name, const glm::vec2& leftBottomUV, const glm::vec2& rightTopUV)
-	{
-		subTextures.emplace(name, SubTexture2d(leftBottomUV, rightTopUV));
 	}
 
 	void Texture2d::bind() const
@@ -65,19 +63,6 @@ namespace RenderEngine
 	const unsigned int Texture2d::getHeight() const
 	{
 		return height;
-	}
-
-	const Texture2d::SubTexture2d& Texture2d::getSubTexture(const std::string& name) const
-	{
-		auto it = subTextures.find(name);
-
-		if (it == subTextures.end())
-		{
-			const static SubTexture2d defaultSubTexture;
-			return defaultSubTexture;
-		}
-
-		return it->second;
 	}
 
 	const unsigned int Texture2d::getWidth() const
@@ -95,6 +80,9 @@ namespace RenderEngine
 		width = texture2d.width;
 
 		texture2d.id = 0;
+		texture2d.format = 0;
+		texture2d.height = 0;
+		texture2d.width = 0;
 
 		return *this;
 	}

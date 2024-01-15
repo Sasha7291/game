@@ -3,19 +3,17 @@
 namespace RenderEngine
 {
     ShaderProgram::ShaderProgram(const std::string& vertexShader, const std::string& fragmentShader)
+        : compiled(false)
+        , id(0)
     {
-        compiled = false;
-        id = 0;
-
         GLuint vertexShaderId = 0;
-        GLuint fragmentShaderId = 0;
-
         if (!createShader(vertexShader, GL_VERTEX_SHADER, vertexShaderId))
         {
             std::cerr << "ERROR::Vertex shader compile time error" << std::endl;
             return;
         }
 
+        GLuint fragmentShaderId = 0;
         if (!createShader(fragmentShader, GL_FRAGMENT_SHADER, fragmentShaderId))
         {
             std::cerr << "ERROR::Fragment shader compile time error" << std::endl;
@@ -283,13 +281,15 @@ namespace RenderEngine
 
         shaderProgram.compiled = false;
         shaderProgram.id = 0;
+
         return *this;
     }
 
     bool ShaderProgram::createShader(const std::string& source, const GLenum& type, GLuint& shaderId)
     {
-        shaderId = glCreateShader(type);
         const char* s = source.c_str();
+
+        shaderId = glCreateShader(type);
         glShaderSource(shaderId, 1, &s, nullptr);
         glCompileShader(shaderId);
 

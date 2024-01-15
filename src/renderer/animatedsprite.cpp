@@ -2,24 +2,27 @@
 
 namespace RenderEngine
 {
-	AnimatedSprite::AnimatedSprite(const std::shared_ptr<Texture2d> texture, 
-								   const std::string& initialSubTexture, 
-								   const std::shared_ptr<ShaderProgram> shaderProgram)
-	: Sprite(texture, initialSubTexture, shaderProgram)
+	AnimatedSprite::AnimatedSprite(const std::shared_ptr<TextureAtlas> textureAtlas,
+								   const std::shared_ptr<ShaderProgram> shaderProgram,
+								   const std::string& initialSubTexture)
+		: Sprite(textureAtlas, shaderProgram, initialSubTexture)
+		, currentFrame(0)
+		, currentAnimationTime(0)
+		, dirty(false)
 	{
-		currentAnimationDurations = statesMap.end();
+		currentAnimationDurations = states.end();
 	}
 
-	void AnimatedSprite::insertState(const std::string& name, const std::vector<std::pair<std::string, uint64_t>>& subTectureDuration)
+	void AnimatedSprite::insertState(const std::string& name, const std::vector<State>& subTectureDuration)
 	{
-		statesMap.emplace(name, subTectureDuration);
+		states.emplace(name, subTectureDuration);
 	}
 
 	void AnimatedSprite::render(const glm::vec2& position, const glm::vec2& size, const float rotation) const
 	{
 		if (dirty)
 		{
-			auto& subTexture = texture->getSubTexture(currentAnimationDurations->second[currentFrame].first);
+			auto& subTexture = textureAtlas->getSubTexture(currentAnimationDurations->second[currentFrame].first);
 
 			const GLfloat textureCoord[] = {
 				subTexture.leftBottomUV.x, subTexture.leftBottomUV.y,
@@ -28,7 +31,7 @@ namespace RenderEngine
 				subTexture.rightTopUV.x, subTexture.leftBottomUV.y
 			};
 
-			textureVbo.update(textureCoord, static_cast<unsigned long long>(2) * 4 * sizeof(GLfloat));
+			textureVbo.update(textureCoord, sizeof(GLfloat) * 8);
 			textureVbo.unbind();
 
 			dirty = false;
@@ -39,9 +42,9 @@ namespace RenderEngine
 
 	void AnimatedSprite::setState(const std::string& name)
 	{
-		auto it = statesMap.find(name);
+		auto it = states.find(name);
 
-		if (it == statesMap.end())
+		if (it == states.end())
 		{
 			std::cerr << "ERROR::Animation state " << name << " wasn't found!" << std::endl;
 			return;
@@ -58,7 +61,7 @@ namespace RenderEngine
 
 	void AnimatedSprite::update(const uint64_t delta)
 	{
-		if (currentAnimationDurations != statesMap.end())
+		if (currentAnimationDurations != states.end())
 		{
 			currentAnimationTime += delta;
 

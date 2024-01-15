@@ -13,9 +13,9 @@ namespace RenderEngine
 		~VBO();
 		
 		void bind() const;
-		void init(const void* data, const unsigned int size);
+		void init(const void* data, const size_t size);
 		void unbind() const;
-		void update(const void* data, const unsigned int size) const;
+		void update(const void* data, const size_t size) const;
 		
 		VBO& operator=(const VBO&) = delete;
 		VBO& operator=(VBO&& vbo) noexcept;

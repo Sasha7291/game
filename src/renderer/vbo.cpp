@@ -8,6 +8,7 @@ namespace RenderEngine
 	VBO::VBO(VBO&& vbo) noexcept
 	{
 		id = vbo.id;
+
 		vbo.id = 0;
 	}
 	
@@ -21,7 +22,7 @@ namespace RenderEngine
 		glBindBuffer(GL_ARRAY_BUFFER, id);
 	}
 	
-	void VBO::init(const void* data, const unsigned int size)
+	void VBO::init(const void* data, const size_t size)
 	{
 		glGenBuffers(1, &id);
 		glBindBuffer(GL_ARRAY_BUFFER, id);
@@ -33,7 +34,7 @@ namespace RenderEngine
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
 	
-	void VBO::update(const void* data, const unsigned int size) const
+	void VBO::update(const void* data, const size_t size) const
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, id);
 		glBufferSubData(GL_ARRAY_BUFFER, 0, size, data);
@@ -42,6 +43,7 @@ namespace RenderEngine
 	VBO& VBO::operator=(VBO&& vbo) noexcept
 	{
 		id = vbo.id;
+
 		vbo.id = 0;
 
 		return *this;
